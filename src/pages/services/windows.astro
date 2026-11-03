@@ -1,0 +1,231 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageBanner from '../../components/PageBanner.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import { mediaManifest } from '../../data/media';
+
+const bannerVideo = mediaManifest.banners.windows;
+
+const windowTypes = [
+  {
+    id: 'steel-window',
+    name: 'Steel Window Systems & High-Security Grills',
+    subtitle: 'Precision welded mild steel frames with integrated security bars',
+    image: '/images/services/steel-window.webp',
+    alt: 'Custom welded steel window frame and safety grill in Surathkal, Mangaluru',
+    description:
+      'Engineered for ultimate burglary resistance and enduring structural strength. Our steel windows are built using heavy-gauge cold-rolled hollow tubes, solid steel flats, and laser-cut decorative safety grills. Every weld seam is ground flush and treated with multi-coat anti-corrosive primer.',
+    benefits: [
+      'Unsurpassed security and break-in protection for ground floor openings',
+      'Solid anchoring directly into structural concrete lintels',
+      'Custom decorative or contemporary minimalist grill configurations',
+      'Compatible with traditional wooden shutter frames or glazed sash insets',
+    ],
+    bestUseCases: [
+      'Ground floor villa windows, storage facilities, and industrial complexes in Surathkal',
+      'Security boundary windows and ventilated utility rooms in Mangaluru',
+      'Commercial perimeter buildings requiring tamper-resistant glazing frames',
+    ],
+    specs: 'Heavy MS hollow sections | 12mm/16mm solid square bars | Red oxide & zinc primer',
+  },
+  {
+    id: 'gi-window',
+    name: 'GI Window Systems (Galvanized Iron)',
+    subtitle: 'Zinc-passivated anti-rust window frames built for severe coastal monsoons',
+    image: '/images/services/gi-window.webp',
+    alt: 'Zinc-coated GI window profiles for coastal weather in Mangaluru',
+    description:
+      'Coastal Mangaluru receives heavy monsoon rainfall exceeding 3,500mm annually, combined with humid sea breeze. Our GI windows utilize continuous hot-dip galvanized steel sheet profiles treated with chromate conversion coating, ensuring zero rust formation while offering higher structural stiffness than vinyl or thin plastics.',
+    benefits: [
+      'Severe weather resistance: withstands relentless coastal monsoon downpours',
+      'Multi-chamber hollow profile geometry prevents thermal warping and frame twist',
+      'Electrostatically powder-coated in architectural hues with UV stabilizers',
+      'Budget-conscious investment offering multi-decade durability',
+    ],
+    bestUseCases: [
+      'Coastal residences in Katipalla, Surathkal, and Mulki exposed to sea-facing rains',
+      'Commercial educational complexes, hospital annexes, and multi-unit apartments',
+      'Industrial administrative buildings and factory offices in Baikampady',
+    ],
+    specs: 'Hot-dip GI profile | Chromate passivated | 80-micron powder coated finish',
+  },
+  {
+    id: 'aluminium-window',
+    name: 'Aluminium Window Systems (Sliding, Casement & Tilt-Turn)',
+    subtitle: 'Slim architectural profiles with acoustic double-glazing and smooth glide rollers',
+    image: '/images/services/aluminium-window.webp',
+    alt: 'Slim-line sliding aluminium window system installed in Mangaluru apartment',
+    description:
+      'Architectural aluminium (often searched as aluminum windows) represents the pinnacle of modern facade design. We fabricate slim-profile multi-track sliding windows, side-hung casement systems, and acoustic soundproof windows with EPDM weatherstripping and high-load nylon/brass rollers for effortless whisper-quiet operation.',
+    benefits: [
+      '100% rustproof and unaffected by saline ocean air or humidity',
+      'Ultra-slim sightlines maximizing natural daylight and outdoor vistas',
+      'Superior acoustic isolation and rain sealing with continuous EPDM rubber gaskets',
+      'Smooth sliding on anodized tracks with integrated stainless steel mosquito mesh',
+    ],
+    bestUseCases: [
+      'Modern apartment balconies, high-rise living rooms, and bedrooms in Mangaluru',
+      'Luxury villas and seaside penthouses seeking sleek, zero-maintenance windows',
+      'Air-conditioned commercial corporate spaces requiring thermal and acoustic efficiency',
+    ],
+    specs: 'Architectural Alloy 6063-T6 | 2/3/4 track sliding & casement | Acoustic EPDM seals',
+  },
+];
+---
+
+<Layout
+  title="Steel, GI & Aluminium Windows in Mangaluru & Surathkal"
+  description="High-precision custom steel security windows, weather-sealed GI windows, and modern acoustic sliding aluminium windows engineered for coastal Karnataka."
+  serviceSchema={{
+    name: 'Architectural Window Fabrication & Installation',
+    description: 'Custom steel security windows, rustproof GI window systems, and precision sliding aluminium windows in Mangaluru.',
+    serviceType: 'Window Fabrication & Glazing',
+  }}
+  videoSchema={{
+    name: bannerVideo.title,
+    description: bannerVideo.description,
+    thumbnailUrl: bannerVideo.poster,
+    uploadDate: bannerVideo.uploadDate,
+    contentUrl: bannerVideo.mp4,
+  }}
+>
+  <!-- Page Banner with Video Background -->
+  <PageBanner
+    title="Custom Steel, GI & Aluminium Window Systems"
+    subtitle="Engineered for severe coastal monsoons, wind-pressure resistance, and noise reduction. Precision manufactured at our Surathkal workshop for homes across Mangaluru."
+    badge="WEATHER-SEALED COASTAL WINDOWS"
+    video={bannerVideo}
+    breadcrumbs={[
+      { label: 'Services', href: '/services/' },
+      { label: 'Windows' },
+    ]}
+    serviceName="Architectural Windows"
+  />
+
+  <!-- Detailed Window Sections -->
+  <section class="py-16 sm:py-24 bg-slate-950 space-y-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28">
+      {windowTypes.map((item, index) => (
+        <div
+          id={item.id}
+          class="scroll-mt-36 pt-6 border-t border-slate-800/80 first:border-t-0 first:pt-0"
+        >
+          <div class={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+            
+            <!-- Visual Card (5 Cols) -->
+            <div class={`lg:col-span-5 space-y-4 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+              <div class="relative rounded-2xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900 group aspect-[4/3]">
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[11px] text-slate-300">
+                  <span class="text-amber-400 font-semibold">Specs:</span> {item.specs}
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between text-xs text-slate-400 px-1">
+                <span>Precision Surathkal Fabrication</span>
+                <button
+                  type="button"
+                  data-lightbox-trigger
+                  data-type="image"
+                  data-image={item.image}
+                  data-title={item.name}
+                  data-description={item.description}
+                  data-location="Surathkal, Mangaluru"
+                  class="text-amber-400 hover:underline flex items-center gap-1"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                  <span>Zoom Image</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Content Details (7 Cols) -->
+            <div class={`lg:col-span-7 space-y-6 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+              <div class="space-y-2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-semibold uppercase tracking-wider">
+                  WINDOW SPECIFICATION 0{index + 1}
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white font-heading">
+                  {item.name}
+                </h2>
+                <p class="text-sm font-medium text-amber-400/90">
+                  {item.subtitle}
+                </p>
+              </div>
+
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                {item.description}
+              </p>
+
+              <!-- Benefits List -->
+              <div class="space-y-2.5">
+                <h3 class="text-xs font-bold text-white uppercase tracking-wider">Performance Highlights</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                  {item.benefits.map((b) => (
+                    <div class="flex items-start gap-2 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800">
+                      <svg class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>{b}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Applications -->
+              <div class="space-y-2">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Ideal For</h3>
+                <ul class="space-y-1.5 text-xs text-slate-300">
+                  {item.bestUseCases.map((u) => (
+                    <li class="flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                      <span>{u}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="pt-2 flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  data-open-whatsapp
+                  data-service={item.name}
+                  class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs shadow-md transition-all"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+                  <span>Inquire for {item.name.split(' (')[0]}</span>
+                </button>
+
+                <a
+                  href="/contact/#enquiry-form"
+                  class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-600 text-slate-200 text-xs font-semibold transition-colors"
+                >
+                  <span>Book Window Measure</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <CTABanner
+    title="Upgrade Your Windows for Coastal Monsoon Resilience"
+    subtitle="Get an on-site evaluation of your window openings in Surathkal or Mangaluru. We ensure water-tight sealing and acoustic comfort."
+    serviceName="Window System Consultation"
+  />
+</Layout>

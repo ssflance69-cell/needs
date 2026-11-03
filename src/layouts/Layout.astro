@@ -1,0 +1,67 @@
+---
+import '../styles/global.css';
+import SEOHead from '../components/SEOHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FloatingContactButton from '../components/FloatingContactButton.astro';
+import WhatsAppPicker from '../components/WhatsAppPicker.astro';
+import Lightbox from '../components/Lightbox.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  serviceSchema?: any;
+  videoSchema?: any;
+  noindex?: boolean;
+  defaultService?: string;
+}
+
+const {
+  title,
+  description,
+  canonicalUrl,
+  ogImage,
+  serviceSchema,
+  videoSchema,
+  noindex,
+  defaultService,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en-IN" class="scroll-smooth">
+  <head>
+    <SEOHead
+      title={title}
+      description={description}
+      canonicalUrl={canonicalUrl}
+      ogImage={ogImage}
+      serviceSchema={serviceSchema}
+      videoSchema={videoSchema}
+      noindex={noindex}
+    />
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-100 flex flex-col antialiased selection:bg-amber-500 selection:text-slate-950">
+    <!-- Main Header -->
+    <Header currentPath={Astro.url.pathname} />
+
+    <!-- Page Body Slot -->
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Global Footer -->
+    <Footer />
+
+    <!-- Sticky Floating Actions for Mobile -->
+    <FloatingContactButton />
+
+    <!-- Universal WhatsApp & Call Direct Selector Modal -->
+    <WhatsAppPicker defaultService={defaultService} />
+
+    <!-- Universal Media Lightbox -->
+    <Lightbox />
+  </body>
+</html>

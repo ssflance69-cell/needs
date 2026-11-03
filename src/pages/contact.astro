@@ -1,0 +1,404 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageBanner from '../components/PageBanner.astro';
+import { siteConfig } from '../data/site';
+import { mediaManifest } from '../data/media';
+
+const bannerVideo = mediaManifest.banners.about;
+---
+
+<Layout
+  title="Contact Us – WhatsApp, Call & Location in Surathkal, Mangaluru"
+  description="Connect with Needs Group for railing, window, canopy & construction enquiries in Surathkal, Mangaluru. Dual WhatsApp support, direct call line, and location map."
+  videoSchema={{
+    name: 'Needs Group Contact & Customer Support Center',
+    description: 'Direct inquiry, site visit booking, and quotation assistance in Surathkal, Mangaluru.',
+    thumbnailUrl: bannerVideo.poster,
+    uploadDate: bannerVideo.uploadDate,
+    contentUrl: bannerVideo.mp4,
+  }}
+>
+  <PageBanner
+    title="Get in Touch with Needs Group"
+    subtitle="Dual WhatsApp assistance, direct phone calls, site visit scheduling, and transparent estimates in Indian Rupees (₹). Based in Surathkal, serving all of Mangaluru and coastal Karnataka."
+    badge="IMMEDIATE ASSISTANCE"
+    video={bannerVideo}
+    breadcrumbs={[{ label: 'Contact' }]}
+    serviceName="General Contact Inquiry"
+  />
+
+  <section class="py-16 sm:py-24 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <!-- Direct Contact Channels Cards (Dual WhatsApp & Phone) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- WhatsApp 1 Card -->
+        <div class="p-6 rounded-2xl bg-slate-900 border border-emerald-500/30 flex flex-col justify-between space-y-4 shadow-xl">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                Sales & Quotes
+              </span>
+              <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-white font-heading">{siteConfig.whatsappNumbers[0].label}</h3>
+            <p class="text-xs text-slate-300">
+              {siteConfig.whatsappNumbers[0].description}
+            </p>
+            <div class="text-lg font-mono font-bold text-emerald-400">
+              {siteConfig.whatsappNumbers[0].displayNumber}
+            </div>
+          </div>
+
+          <div class="pt-2 flex gap-2">
+            <a
+              href={`https://wa.me/${siteConfig.whatsappNumbers[0].waNumber}?text=${encodeURIComponent("Hi Needs Group, I'd like to get a quote for my project.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex-1 text-center py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs shadow-md transition-all"
+            >
+              Open WhatsApp
+            </a>
+            <a
+              href={`tel:${siteConfig.whatsappNumbers[0].telNumber}`}
+              class="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold"
+              title="Call Line 1"
+            >
+              Call
+            </a>
+          </div>
+        </div>
+
+        <!-- WhatsApp 2 Card -->
+        <div class="p-6 rounded-2xl bg-slate-900 border border-emerald-500/30 flex flex-col justify-between space-y-4 shadow-xl">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                Technical & Site Support
+              </span>
+              <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold text-white font-heading">{siteConfig.whatsappNumbers[1].label}</h3>
+            <p class="text-xs text-slate-300">
+              {siteConfig.whatsappNumbers[1].description}
+            </p>
+            <div class="text-lg font-mono font-bold text-emerald-400">
+              {siteConfig.whatsappNumbers[1].displayNumber}
+            </div>
+          </div>
+
+          <div class="pt-2 flex gap-2">
+            <a
+              href={`https://wa.me/${siteConfig.whatsappNumbers[1].waNumber}?text=${encodeURIComponent("Hi Needs Group, I need technical consultation regarding site measurements.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex-1 text-center py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs shadow-md transition-all"
+            >
+              Open WhatsApp
+            </a>
+            <a
+              href={`tel:${siteConfig.whatsappNumbers[1].telNumber}`}
+              class="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold"
+              title="Call Line 2"
+            >
+              Call
+            </a>
+          </div>
+        </div>
+
+        <!-- Universal Contact Switcher Modal Trigger -->
+        <div class="p-6 rounded-2xl bg-slate-900 border border-amber-500/30 flex flex-col justify-between space-y-4 shadow-xl">
+          <div class="space-y-3">
+            <span class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 text-xs font-bold uppercase tracking-wider">
+              Quick Pickers
+            </span>
+            <h3 class="text-xl font-bold text-white font-heading">Choose Direct Route</h3>
+            <p class="text-xs text-slate-300">
+              Trigger our dynamic channel picker to select the ideal contact route with pre-filled context from anywhere on the site.
+            </p>
+            <div class="text-xs text-slate-400">
+              Official Email: <a href={`mailto:${siteConfig.email}`} class="text-amber-400 hover:underline">{siteConfig.email}</a>
+            </div>
+          </div>
+
+          <div class="pt-2 flex gap-2">
+            <button
+              type="button"
+              data-open-whatsapp
+              class="flex-1 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all"
+            >
+              WhatsApp Selector
+            </button>
+            <button
+              type="button"
+              data-open-call
+              class="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 font-semibold text-xs transition-all"
+            >
+              Call Selector
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Two-Column Grid: Form & Location Details -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start" id="enquiry-form">
+        
+        <!-- Online Form (7 Cols) -->
+        <div class="lg:col-span-7 p-8 rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl space-y-6">
+          <div class="space-y-2">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+              ONLINE ENQUIRY FORM
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white font-heading">
+              Request a Free Quote & Site Measurement
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-400">
+              Submit your project details via our secure form or immediately transfer your inputs to WhatsApp with one click.
+            </p>
+          </div>
+
+          <form
+            id="site-contact-form"
+            action={siteConfig.formspreeEndpoint}
+            method="POST"
+            class="space-y-4"
+          >
+            <!-- Anti-Spam Honeypot Field -->
+            <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+
+            <!-- Hidden Meta for Formspree -->
+            <input type="hidden" name="_subject" value="New Inquiry from needs.group" />
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Name -->
+              <div class="space-y-1.5">
+                <label for="form-name" class="text-xs font-semibold text-slate-300">
+                  Your Full Name <span class="text-amber-400">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="form-name"
+                  name="name"
+                  required
+                  placeholder="e.g. Raghavendra Bhat"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+                />
+              </div>
+
+              <!-- Phone -->
+              <div class="space-y-1.5">
+                <label for="form-phone" class="text-xs font-semibold text-slate-300">
+                  Phone / WhatsApp Number <span class="text-amber-400">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="form-phone"
+                  name="phone"
+                  required
+                  placeholder="+91 9XXXXXXXXX"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+                />
+              </div>
+            </div>
+
+            <!-- Service Dropdown -->
+            <div class="space-y-1.5">
+              <label for="form-service" class="text-xs font-semibold text-slate-300">
+                Service Category <span class="text-amber-400">*</span>
+              </label>
+              <select
+                id="form-service"
+                name="service"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+              >
+                <option value="" disabled selected>Select an architectural discipline...</option>
+                {siteConfig.services.map((svc) => (
+                  <option value={svc.name}>{svc.name} ({svc.category})</option>
+                ))}
+              </select>
+            </div>
+
+            <!-- Message -->
+            <div class="space-y-1.5">
+              <label for="form-message" class="text-xs font-semibold text-slate-300">
+                Project Scope / Site Details <span class="text-amber-400">*</span>
+              </label>
+              <textarea
+                id="form-message"
+                name="message"
+                rows="4"
+                required
+                placeholder="Mention your location (e.g. Surathkal, Mangaluru), approximate running feet, or balcony floor plans..."
+                class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+              ></textarea>
+            </div>
+
+            <!-- Form Action Buttons -->
+            <div class="pt-2 flex flex-col sm:flex-row items-center gap-3">
+              <!-- Submit via Formspree -->
+              <button
+                type="submit"
+                id="form-submit-btn"
+                class="w-full sm:flex-1 py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm shadow-glow transition-all focus:outline-none focus:ring-2 focus:ring-amber-400"
+              >
+                Send Official Inquiry
+              </button>
+
+              <!-- Send via WhatsApp Fallback Button -->
+              <button
+                type="button"
+                id="form-whatsapp-btn"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-all focus:outline-none focus:ring-2 focus:ring-emerald-400"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+                <span>Send via WhatsApp</span>
+              </button>
+            </div>
+
+            <!-- Form Feedback Status -->
+            <div id="form-status-msg" class="text-xs pt-2 hidden"></div>
+          </form>
+        </div>
+
+        <!-- Address, Map & Working Hours (5 Cols) -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <!-- Address & Workshop Block -->
+          <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-white font-heading">Fabrication Workshop & Office</h3>
+                <p class="text-xs text-amber-400 font-medium">Surathkal, Mangaluru, Karnataka</p>
+              </div>
+            </div>
+
+            <div class="text-xs text-slate-300 leading-relaxed pl-1 space-y-1">
+              <p class="font-medium text-white">{siteConfig.address.fullFormatted}</p>
+              <p class="text-slate-400 italic">[Street/Landmark & Pincode placeholders to be confirmed with client]</p>
+            </div>
+
+            <!-- Google Maps Directions Link -->
+            <div class="pt-1">
+              <a
+                href={siteConfig.address.googleMapsDirectionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-xs font-semibold text-sky-400 hover:text-sky-300 hover:underline"
+              >
+                <span>Get Directions on Google Maps</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Google Maps Embed Placeholder -->
+          <div class="rounded-3xl overflow-hidden border border-slate-800 aspect-[16/10] bg-slate-900 shadow-xl relative">
+            <iframe
+              src={siteConfig.address.googleMapsEmbedUrl}
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Needs Group Location Surathkal Mangaluru"
+              class="w-full h-full grayscale opacity-85 contrast-125"
+            ></iframe>
+            <div class="absolute bottom-2 left-2 px-2 py-1 rounded bg-slate-950/80 backdrop-blur-sm text-[10px] text-slate-400 pointer-events-none">
+              Surathkal • Mangaluru Centre
+            </div>
+          </div>
+
+          <!-- Working Hours & Service Areas -->
+          <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
+            <div>
+              <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-2">Operating Hours</h4>
+              <div class="space-y-1 text-xs text-slate-300">
+                {siteConfig.workingHours.map((wh) => (
+                  <div class="flex justify-between py-1 border-b border-slate-800 last:border-b-0">
+                    <span class="text-slate-400">{wh.days}</span>
+                    <span class="font-medium text-white">{wh.hours}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-2">Active Service Zones</h4>
+              <div class="flex flex-wrap gap-1.5">
+                {siteConfig.serviceAreas.map((area) => (
+                  <span class="px-2 py-0.5 rounded text-[11px] bg-slate-950 border border-slate-800 text-slate-300">
+                    {area.name}
+                    {area.status === 'confirm with client' && (
+                      <span class="text-[9px] text-amber-500/80 ml-1">*</span>
+                    )}
+                  </span>
+                ))}
+              </div>
+              <p class="text-[10px] text-slate-400 mt-2 italic">*Marked areas: Confirm coverage radius with client</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Script for Form & WhatsApp Fallback Transfer -->
+  <script>
+    (function initContactPageForm() {
+      const form = document.getElementById('site-contact-form') as HTMLFormElement;
+      const waBtn = document.getElementById('form-whatsapp-btn');
+      const nameInput = document.getElementById('form-name') as HTMLInputElement;
+      const phoneInput = document.getElementById('form-phone') as HTMLInputElement;
+      const serviceSelect = document.getElementById('form-service') as HTMLSelectElement;
+      const messageText = document.getElementById('form-message') as HTMLTextAreaElement;
+      const statusMsg = document.getElementById('form-status-msg');
+
+      // WhatsApp Fallback Transfer
+      waBtn?.addEventListener('click', () => {
+        const name = nameInput?.value.trim() || 'Prospective Client';
+        const phone = phoneInput?.value.trim() || 'Not specified';
+        const service = serviceSelect?.value || 'General Architectural Fabrication';
+        const msg = messageText?.value.trim() || 'I would like to discuss a project.';
+
+        const fullText = `*Inquiry from Website: Needs Group*\n*Name:* ${name}\n*Phone:* ${phone}\n*Service:* ${service}\n*Details:* ${msg}`;
+        
+        // Open the WhatsApp Picker with this prefilled message!
+        if ((window as any).openNeedsWhatsApp) {
+          (window as any).openNeedsWhatsApp(service, fullText);
+        }
+      });
+
+      // Handle standard form submit with visual feedback
+      form?.addEventListener('submit', async (e) => {
+        // If placeholder endpoint is still active, notify gracefully
+        if (form.action.includes('xyzplaceholder')) {
+          e.preventDefault();
+          if (statusMsg) {
+            statusMsg.classList.remove('hidden');
+            statusMsg.className = 'text-xs p-3 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300';
+            statusMsg.innerHTML = 'Thank you! The form endpoint is currently configured in placeholder mode. Click <strong>"Send via WhatsApp"</strong> right below to transmit your details immediately!';
+          }
+        }
+      });
+    })();
+  </script>
+</Layout>

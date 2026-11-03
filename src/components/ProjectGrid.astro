@@ -1,0 +1,142 @@
+---
+import { mediaManifest } from '../data/media';
+import VideoTile from './VideoTile.astro';
+
+interface Props {
+  initialFilter?: string;
+  limit?: number;
+}
+
+const { initialFilter = 'all', limit } = Astro.props;
+
+const categories = [
+  { id: 'all', label: 'All Projects' },
+  { id: 'railings', label: 'Railings' },
+  { id: 'windows', label: 'Windows' },
+  { id: 'canopy', label: 'Glass Canopy' },
+  { id: 'interior', label: 'Interior Fitouts' },
+  { id: 'construction', label: 'Construction' },
+];
+
+const allProjects = limit ? mediaManifest.projects.slice(0, limit) : mediaManifest.projects;
+---
+
+<div class="space-y-8" id="project-filter-container">
+  <!-- Filter Tabs Bar -->
+  <div class="flex items-center justify-start sm:justify-center overflow-x-auto pb-2 scrollbar-none gap-2">
+    {categories.map((cat) => (
+      <button
+        type="button"
+        data-filter-btn={cat.id}
+        class:list={[
+          'project-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold tracking-wide whitespace-nowrap transition-all duration-200 border',
+          cat.id === initialFilter
+            ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-glow font-bold'
+            : 'bg-slate-900/90 text-slate-300 border-slate-800 hover:border-slate-700 hover:text-white',
+        ]}
+      >
+        {cat.label}
+      </button>
+    ))}
+  </div>
+
+  <!-- Projects Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="projects-grid">
+    {allProjects.map((item) => (
+      <div
+        class="project-grid-item"
+        data-category={item.category}
+      >
+        {item.type === 'video' ? (
+          <VideoTile item={item} />
+        ) : (
+          <div
+            class="group relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition-all duration-300 shadow-lg cursor-pointer"
+            data-lightbox-trigger
+            data-type="image"
+            data-image={item.image}
+            data-title={item.title}
+            data-description={item.description}
+            data-location={item.location}
+          >
+            <div class="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+              <img
+                src={item.image}
+                alt={item.alt}
+                width="800"
+                height="500"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-slate-950/30 group-hover:bg-slate-950/10 transition-colors"></div>
+
+              <!-- View Icon Badge on Hover -->
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="w-12 h-12 rounded-full bg-slate-900/90 text-amber-400 border border-amber-500/40 flex items-center justify-center shadow-xl">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Category Tag -->
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur-md border border-slate-700/80 text-[10px] font-bold tracking-wider uppercase text-amber-400">
+                {item.category}
+              </div>
+
+              <!-- Location Tag -->
+              <div class="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-slate-950/80 backdrop-blur-sm text-[11px] text-slate-300 flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span>{item.location}</span>
+              </div>
+            </div>
+
+            <div class="p-5 space-y-1.5">
+              <h3 class="text-base font-bold text-white group-hover:text-amber-400 transition-colors font-heading line-clamp-1">
+                {item.title}
+              </h3>
+              <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  (function initGalleryFilter() {
+    const filterBtns = document.querySelectorAll<HTMLButtonElement>('.project-filter-btn');
+    const items = document.querySelectorAll<HTMLElement>('.project-grid-item');
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const cat = btn.getAttribute('data-filter-btn');
+
+        // Update button active states
+        filterBtns.forEach((b) => {
+          b.classList.remove('bg-amber-500', 'text-slate-950', 'border-amber-400', 'shadow-glow', 'font-bold');
+          b.classList.add('bg-slate-900/90', 'text-slate-300', 'border-slate-800');
+        });
+        btn.classList.add('bg-amber-500', 'text-slate-950', 'border-amber-400', 'shadow-glow', 'font-bold');
+        btn.classList.remove('bg-slate-900/90', 'text-slate-300', 'border-slate-800');
+
+        // Filter items
+        items.forEach((item) => {
+          const itemCat = item.getAttribute('data-category');
+          if (cat === 'all' || itemCat === cat) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  })();
+</script>

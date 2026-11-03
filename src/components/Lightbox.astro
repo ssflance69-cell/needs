@@ -1,0 +1,223 @@
+---
+// Lightbox modal component supporting both high-res photos and video tiles
+---
+
+<div
+  id="global-lightbox"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/95 backdrop-blur-xl p-2 sm:p-6"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Media Preview Lightbox"
+  tabindex="-1"
+>
+  <!-- Close Button -->
+  <button
+    id="lightbox-close"
+    type="button"
+    class="absolute top-4 right-4 z-50 p-2.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400"
+    aria-label="Close lightbox"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <!-- Previous Button -->
+  <button
+    id="lightbox-prev"
+    type="button"
+    class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-all focus:outline-none focus:ring-2 focus:ring-amber-400"
+    aria-label="Previous item"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+  <!-- Next Button -->
+  <button
+    id="lightbox-next"
+    type="button"
+    class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-all focus:outline-none focus:ring-2 focus:ring-amber-400"
+    aria-label="Next item"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+
+  <!-- Main Media Content Container -->
+  <div class="relative w-full max-w-5xl max-h-[85vh] flex flex-col items-center justify-center select-none" id="lightbox-container">
+    
+    <!-- Image View -->
+    <div id="lightbox-image-wrap" class="relative max-w-full max-h-[70vh] hidden">
+      <img
+        id="lightbox-img"
+        src=""
+        alt=""
+        class="max-w-full max-h-[70vh] rounded-xl object-contain shadow-2xl border border-slate-800"
+      />
+    </div>
+
+    <!-- Video View -->
+    <div id="lightbox-video-wrap" class="relative w-full max-w-4xl aspect-video hidden rounded-xl overflow-hidden bg-black border border-slate-800 shadow-2xl">
+      <video
+        id="lightbox-video"
+        controls
+        playsinline
+        class="w-full h-full object-contain"
+      >
+        <source id="lightbox-source-webm" src="" type="video/webm" />
+        <source id="lightbox-source-mp4" src="" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Caption & Info Bar -->
+    <div class="mt-4 w-full text-center px-4 max-w-2xl">
+      <div id="lightbox-location" class="text-xs font-semibold uppercase tracking-wider text-amber-400"></div>
+      <h3 id="lightbox-title" class="text-lg sm:text-xl font-bold text-white font-heading mt-1"></h3>
+      <p id="lightbox-desc" class="text-xs sm:text-sm text-slate-300 mt-1 line-clamp-2"></p>
+      <div class="mt-2 text-[11px] text-slate-500 font-mono" id="lightbox-counter">1 / 1</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function initGlobalLightbox() {
+    const modal = document.getElementById('global-lightbox');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+    const imgWrap = document.getElementById('lightbox-image-wrap');
+    const imgEl = document.getElementById('lightbox-img') as HTMLImageElement;
+    const videoWrap = document.getElementById('lightbox-video-wrap');
+    const videoEl = document.getElementById('lightbox-video') as HTMLVideoElement;
+    const sourceWebm = document.getElementById('lightbox-source-webm') as HTMLSourceElement;
+    const sourceMp4 = document.getElementById('lightbox-source-mp4') as HTMLSourceElement;
+    const titleEl = document.getElementById('lightbox-title');
+    const descEl = document.getElementById('lightbox-desc');
+    const locationEl = document.getElementById('lightbox-location');
+    const counterEl = document.getElementById('lightbox-counter');
+
+    let currentItems: HTMLElement[] = [];
+    let currentIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function renderItem(index: number) {
+      if (!currentItems[index]) return;
+      currentIndex = index;
+      const el = currentItems[index];
+
+      const type = el.getAttribute('data-type') || 'image';
+      const title = el.getAttribute('data-title') || '';
+      const desc = el.getAttribute('data-description') || '';
+      const location = el.getAttribute('data-location') || '';
+
+      if (titleEl) titleEl.textContent = title;
+      if (descEl) descEl.textContent = desc;
+      if (locationEl) locationEl.textContent = location;
+      if (counterEl) counterEl.textContent = `${currentIndex + 1} / ${currentItems.length}`;
+
+      if (type === 'video') {
+        imgWrap?.classList.add('hidden');
+        videoWrap?.classList.remove('hidden');
+
+        const mp4 = el.getAttribute('data-video-mp4') || '';
+        const webm = el.getAttribute('data-video-webm') || '';
+
+        if (sourceWebm) sourceWebm.src = webm;
+        if (sourceMp4) sourceMp4.src = mp4;
+        videoEl.load();
+        videoEl.play().catch(() => {});
+      } else {
+        videoEl.pause();
+        videoWrap?.classList.add('hidden');
+        imgWrap?.classList.remove('hidden');
+
+        const src = el.getAttribute('data-image') || (el.querySelector('img') as HTMLImageElement)?.src || '';
+        if (imgEl) {
+          imgEl.src = src;
+          imgEl.alt = title;
+        }
+      }
+    }
+
+    function openLightbox(clickedEl: HTMLElement) {
+      // Find all visible trigger elements in the current context/gallery
+      const triggers = Array.from(document.querySelectorAll<HTMLElement>('[data-lightbox-trigger]')).filter(
+        (t) => window.getComputedStyle(t).display !== 'none'
+      );
+      currentItems = triggers;
+      const idx = currentItems.indexOf(clickedEl);
+      currentIndex = idx >= 0 ? idx : 0;
+
+      modal?.classList.remove('hidden');
+      modal?.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+
+      renderItem(currentIndex);
+      modal?.focus();
+    }
+
+    function closeLightbox() {
+      videoEl?.pause();
+      modal?.classList.add('hidden');
+      modal?.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    function goNext() {
+      if (currentItems.length === 0) return;
+      const nextIdx = (currentIndex + 1) % currentItems.length;
+      renderItem(nextIdx);
+    }
+
+    function goPrev() {
+      if (currentItems.length === 0) return;
+      const prevIdx = (currentIndex - 1 + currentItems.length) % currentItems.length;
+      renderItem(prevIdx);
+    }
+
+    document.addEventListener('click', (e) => {
+      const trigger = (e.target as HTMLElement).closest<HTMLElement>('[data-lightbox-trigger]');
+      if (trigger) {
+        e.preventDefault();
+        openLightbox(trigger);
+      }
+    });
+
+    closeBtn?.addEventListener('click', closeLightbox);
+    nextBtn?.addEventListener('click', goNext);
+    prevBtn?.addEventListener('click', goPrev);
+
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeLightbox();
+      }
+    });
+
+    // Keyboard controls
+    window.addEventListener('keydown', (e) => {
+      if (modal?.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') goNext();
+      if (e.key === 'ArrowLeft') goPrev();
+    });
+
+    // Mobile touch swipe gestures
+    modal?.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    modal?.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchEndX < touchStartX - 50) {
+        goNext();
+      }
+      if (touchEndX > touchStartX + 50) {
+        goPrev();
+      }
+    }, { passive: true });
+  })();
+</script>

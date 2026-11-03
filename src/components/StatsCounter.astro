@@ -1,0 +1,89 @@
+---
+import { siteConfig } from '../data/site';
+
+const stats = siteConfig.stats;
+---
+
+<section class="relative py-12 bg-slate-900/60 border-y border-slate-800/80">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8" id="stats-counter-section">
+      {stats.map((item) => (
+        <div class="p-6 rounded-2xl bg-slate-950/50 border border-slate-800 text-center space-y-1">
+          <div class="flex items-baseline justify-center">
+            <span
+              class="stat-counter text-4xl sm:text-5xl font-black text-white font-heading"
+              data-target={item.value}
+            >
+              0
+            </span>
+            <span class="text-3xl sm:text-4xl font-extrabold text-amber-400 font-heading">
+              {item.suffix}
+            </span>
+          </div>
+          <div class="text-sm font-semibold text-slate-200">{item.label}</div>
+          <div class="text-xs text-slate-400">{item.sublabel}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function initStatsCounter() {
+    const section = document.getElementById('stats-counter-section');
+    const counters = document.querySelectorAll<HTMLElement>('.stat-counter');
+    if (!section || counters.length === 0) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let animated = false;
+
+    function runAnimation() {
+      if (animated) return;
+      animated = true;
+
+      counters.forEach((counter) => {
+        const target = parseInt(counter.getAttribute('data-target') || '0', 10);
+        if (prefersReducedMotion || isNaN(target)) {
+          counter.textContent = String(target);
+          return;
+        }
+
+        const duration = 1800; // ms
+        const startTime = performance.now();
+
+        function update(currentTime: number) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease out cubic
+          const easeProgress = 1 - Math.pow(1 - progress, 3);
+          const currentVal = Math.floor(easeProgress * target);
+
+          counter.textContent = String(currentVal);
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            counter.textContent = String(target);
+          }
+        }
+
+        requestAnimationFrame(update);
+      });
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            runAnimation();
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(section);
+  })();
+</script>

@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageBanner from '../components/PageBanner.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import CTABanner from '../components/CTABanner.astro';
+import { mediaManifest } from '../data/media';
+
+const bannerVideo = mediaManifest.banners.railings;
+---
+
+<Layout
+  title="Projects Portfolio – Railings, Windows & Glazing in Mangaluru"
+  description="Browse Needs Group's portfolio of 900+ completed projects: frameless glass balustrades, SS 316 staircases, modern windows, glass canopies, and construction across Mangaluru."
+  videoSchema={{
+    name: bannerVideo.title,
+    description: bannerVideo.description,
+    thumbnailUrl: bannerVideo.poster,
+    uploadDate: bannerVideo.uploadDate,
+    contentUrl: bannerVideo.mp4,
+  }}
+>
+  <!-- Page Banner with Background Video -->
+  <PageBanner
+    title="Real Works & Video Showcase Portfolio"
+    subtitle="Filter through photos and video tiles of our 900+ completed railing, window, canopy, and construction installations across Surathkal, Mangaluru, and coastal Karnataka."
+    badge="900+ COMPLETED PROJECTS"
+    video={bannerVideo}
+    breadcrumbs={[{ label: 'Projects' }]}
+    serviceName="General Project Gallery Inquiry"
+  />
+
+  <!-- Main Filterable Gallery Section -->
+  <section class="py-16 sm:py-24 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="max-w-3xl space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+          VERIFIED SITE DELIVERIES
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">
+          Explore by Architectural Discipline
+        </h2>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          Click any photo to zoom in high-definition or click any video tile to launch instant in-browser playback. All projects are fabricated at our Surathkal workshop and erected by our certified riggers.
+        </p>
+      </div>
+
+      <!-- Filterable Project Grid (driven completely by media.ts) -->
+      <ProjectGrid />
+
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <CTABanner
+    title="Inspired by One of Our Installations?"
+    subtitle="Reference any project title above on WhatsApp and we will share exact material specifications, site dimensions, and a comparable estimate in Indian Rupees (₹)."
+    serviceName="Project Gallery Specific Inquiry"
+  />
+</Layout>

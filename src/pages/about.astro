@@ -1,0 +1,189 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageBanner from '../components/PageBanner.astro';
+import CTABanner from '../components/CTABanner.astro';
+import StatsCounter from '../components/StatsCounter.astro';
+import { siteConfig } from '../data/site';
+import { mediaManifest } from '../data/media';
+
+const aboutBannerVideo = mediaManifest.banners.about;
+---
+
+<Layout
+  title="About Us – 15 Years of Precision Fabrication in Mangaluru"
+  description="Discover Needs Group's 15-year heritage in architectural glass, stainless steel, and aluminium fabrication in Surathkal, Mangaluru, Karnataka."
+  videoSchema={{
+    name: aboutBannerVideo.title,
+    description: aboutBannerVideo.description,
+    thumbnailUrl: aboutBannerVideo.poster,
+    uploadDate: aboutBannerVideo.uploadDate,
+    contentUrl: aboutBannerVideo.mp4,
+  }}
+>
+  <!-- Page Banner with Video Background -->
+  <PageBanner
+    title="15 Years of Master Architectural Fabrication"
+    subtitle="Engineered for coastal weather resilience. Precision metal, balustrade, and structural glass craftsmanship rooted in Surathkal, Mangaluru."
+    badge="OUR HERITAGE & CRAFTSMANSHIP"
+    video={aboutBannerVideo}
+    breadcrumbs={[{ label: 'About Us' }]}
+    serviceName="General Needs Group Inquiry"
+  />
+
+  <!-- Stats Counter Band -->
+  <StatsCounter />
+
+  <!-- Company Story & Coastal Philosophy -->
+  <section class="py-20 lg:py-28 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        
+        <div class="space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+            FOUNDED IN SURATHKAL, 2009
+          </div>
+          
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading leading-tight">
+            Built Around Coastal Realities, Engineered for Generations
+          </h2>
+
+          <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              When Needs Group began fabrication in Surathkal in 2009, our founders recognized a critical challenge facing builders and homeowners across Mangaluru, Mangalore, and coastal Karnataka: conventional railings and metal fixtures deteriorated rapidly under humid, saline sea breezes.
+            </p>
+            <p>
+              By standardizing strict material metallurgy—using certified SS 304 and marine-grade SS 316, heavy hot-dip galvanized iron (GI), high-micron anodized architectural aluminium, and multi-laminated toughened safety glass—we established a new benchmark for structural longevity.
+            </p>
+            <p>
+              Over 15 years and more than 900+ completed railing projects, we have expanded our workshop into an end-to-end architectural fabrication hub covering bespoke windows, structural glass canopies, interior dividers, and turnkey construction.
+            </p>
+          </div>
+
+          <div class="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-slate-200">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+              <span>In-House Precision TIG/MIG Welding</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+              <span>Multi-Axis Laser Alignment</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+              <span>100% Rust-Proof Guarantee</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workshop Feature Visual -->
+        <div class="relative space-y-4">
+          <div class="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900 aspect-[4/3]">
+            <img
+              src={mediaManifest.about.workshop.image}
+              alt={mediaManifest.about.workshop.alt}
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <div class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 aspect-[4/3]">
+              <img
+                src={mediaManifest.about.craftsmanship.image}
+                alt={mediaManifest.about.craftsmanship.alt}
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 aspect-[4/3]">
+              <img
+                src={mediaManifest.about.installation.image}
+                alt={mediaManifest.about.installation.alt}
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6-Step Precision Process -->
+  <section class="py-20 lg:py-24 bg-slate-900/40 border-y border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+          THE NEEDS GROUP METHOD
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">
+          Our Seamless 6-Step Execution Process
+        </h2>
+        <p class="text-slate-300 text-sm">
+          Every project, from a residential glass staircase to a commercial canopy, follows a disciplined engineering roadmap.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {siteConfig.processSteps.map((step) => (
+          <div class="glass-card p-8 rounded-2xl relative space-y-4 border border-slate-800">
+            <div class="text-4xl font-black text-amber-500/30 font-heading">
+              {step.step}
+            </div>
+            <h3 class="text-xl font-bold text-white font-heading">
+              {step.title}
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Workshop & Values Grid -->
+  <section class="py-20 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-500/10 text-sky-400 text-xs font-semibold uppercase tracking-wider">
+          QUALITY STANDARDS
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">
+          Engineered Without Compromise
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {siteConfig.values.map((v, i) => (
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+            <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-amber-400 font-bold text-xs">
+              0{i + 1}
+            </div>
+            <h3 class="text-lg font-bold text-white font-heading">{v.title}</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">{v.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <CTABanner
+    title="Work with Surathkal's Leading Fabrication Team"
+    subtitle="Schedule an on-site visit anywhere in Mangaluru or Dakshina Kannada. We bring material samples and precision measurement tools directly to your property."
+    serviceName="General About Inquiry"
+  />
+</Layout>

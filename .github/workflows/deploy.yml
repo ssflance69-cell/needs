@@ -1,0 +1,38 @@
+name: Deploy to Hostinger Shared Hosting via FTP
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Static Production Bundle
+        run: npm run build
+
+      - name: Deploy dist/ to Hostinger public_html via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}       # e.g., ftp.needs.group or your Hostinger server IP
+          username: ${{ secrets.FTP_USERNAME }} # Hostinger FTP user
+          password: ${{ secrets.FTP_PASSWORD }} # Hostinger FTP password
+          port: 21
+          protocol: ftp                         # or ftps if enabled in Hostinger
+          local-dir: ./dist/
+          server-dir: ./public_html/
+          dangerous-clean-slate: false          # set true only if you want remote files purged before upload

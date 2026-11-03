@@ -1,0 +1,264 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import StatsCounter from '../components/StatsCounter.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import VideoTile from '../components/VideoTile.astro';
+import CTABanner from '../components/CTABanner.astro';
+import { siteConfig } from '../data/site';
+import { mediaManifest } from '../data/media';
+
+const featuredServices = siteConfig.services.slice(0, 6);
+const featuredVideos = mediaManifest.featuredVideos;
+const recentProjects = mediaManifest.projects.slice(0, 6);
+---
+
+<Layout
+  title=""
+  description="Premier specialist in architectural glass, steel & aluminium railings, custom windows, glass canopies, interior fabrication, and construction in Surathkal, Mangaluru, Karnataka."
+  videoSchema={{
+    name: mediaManifest.hero.video.title,
+    description: mediaManifest.hero.video.description,
+    thumbnailUrl: mediaManifest.hero.video.poster,
+    uploadDate: mediaManifest.hero.video.uploadDate,
+    contentUrl: mediaManifest.hero.video.mp4,
+  }}
+>
+  <!-- 1. Hero with looping background video -->
+  <Hero />
+
+  <!-- 2. Animated Stats Counters -->
+  <StatsCounter />
+
+  <!-- 3. Key Services Grid -->
+  <section class="py-20 lg:py-28 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-3 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+            PRECISION FABRICATION
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">
+            Architectural Railings, Windows & Glazing Solutions
+          </h2>
+          <p class="text-slate-300 text-base leading-relaxed">
+            From modern coastal homes in Surathkal to commercial landmarks in Mangaluru and Mangalore, we deliver high-tensile metal fabrication and toughened safety glass solutions designed to withstand saline coastal air.
+          </p>
+        </div>
+
+        <a
+          href="/services/"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-900 border border-slate-700 hover:border-amber-500/50 text-slate-200 hover:text-white text-sm font-semibold transition-all shrink-0 group"
+        >
+          <span>View All 11 Services</span>
+          <svg class="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {featuredServices.map((service) => (
+          <ServiceCard service={service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Why Choose Us (Value Pillars) -->
+  <section class="py-20 bg-slate-900/40 border-y border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-800 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+          THE NEEDS GROUP PROMISE
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">
+          Why Discerning Architects & Builders Choose Us
+        </h2>
+        <p class="text-slate-300 text-base">
+          15 years of precision engineering in coastal Karnataka means your railings, windows, and canopies never rust, sag, or fail.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {siteConfig.values.map((val, idx) => (
+          <div class="glass-card p-6 rounded-2xl space-y-3 border border-slate-800">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-bold text-sm">
+              0{idx + 1}
+            </div>
+            <h3 class="text-lg font-bold text-white font-heading">{val.title}</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">{val.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. "See our work in action" Video Showcase -->
+  <section class="py-20 lg:py-28 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-3 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-semibold uppercase tracking-wider">
+            VIDEO SHOWCASE
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">
+            See Our Work in Action
+          </h2>
+          <p class="text-slate-300 text-base leading-relaxed">
+            Take a look at real site installations, TIG welding, glass balustrade alignments, and cantilevered canopy erections across Surathkal and Mangaluru. Click any tile to launch video playback.
+          </p>
+        </div>
+
+        <a
+          href="/projects/"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-900 border border-slate-700 hover:border-amber-500/50 text-slate-200 hover:text-white text-sm font-semibold transition-all shrink-0 group"
+        >
+          <span>Explore All Projects & Media</span>
+          <svg class="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- 4 Video Tiles -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {featuredVideos.map((video) => (
+          <VideoTile item={video} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Recent Projects Gallery Preview -->
+  <section class="py-20 bg-slate-900/30 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+          PORTFOLIO HIGHLIGHTS
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">
+          Recent Railing & Glazing Installations
+        </h2>
+        <p class="text-slate-300 text-sm">
+          A glimpse into our 900+ completed installations across residential villas, commercial complexes, and coastal apartments.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {recentProjects.map((item) => (
+          item.type === 'video' ? (
+            <VideoTile item={item} />
+          ) : (
+            <div
+              class="group relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition-all duration-300 shadow-lg cursor-pointer"
+              data-lightbox-trigger
+              data-type="image"
+              data-image={item.image}
+              data-title={item.title}
+              data-description={item.description}
+              data-location={item.location}
+            >
+              <div class="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  width="800"
+                  height="500"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div class="absolute inset-0 bg-slate-950/30 group-hover:bg-slate-950/10 transition-colors"></div>
+
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur-md border border-slate-700/80 text-[10px] font-bold tracking-wider uppercase text-amber-400">
+                  {item.category}
+                </div>
+
+                <div class="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-slate-950/80 backdrop-blur-sm text-[11px] text-slate-300 flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span>{item.location}</span>
+                </div>
+              </div>
+
+              <div class="p-5 space-y-1">
+                <h3 class="text-base font-bold text-white group-hover:text-amber-400 transition-colors font-heading line-clamp-1">
+                  {item.title}
+                </h3>
+                <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          )
+        ))}
+      </div>
+
+      <div class="text-center pt-4">
+        <a
+          href="/projects/"
+          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-amber-400 text-white font-semibold text-sm transition-all"
+        >
+          <span>Open Full Filterable Gallery</span>
+          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Testimonials -->
+  <section class="py-20 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+          CLIENT EXPERIENCES
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">
+          Trusted Across Coastal Karnataka
+        </h2>
+        <p class="text-slate-300 text-sm">
+          Hear from homeowners, builders, and architects who trusted Needs Group with their precision railing and glass works.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        {siteConfig.testimonials.map((t) => (
+          <div class="glass-card p-6 sm:p-8 rounded-2xl flex flex-col justify-between space-y-4 border border-slate-800">
+            <div class="space-y-3">
+              <!-- Star rating -->
+              <div class="flex items-center gap-1 text-amber-400">
+                {[...Array(t.rating)].map(() => (
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p class="text-sm text-slate-300 italic leading-relaxed">
+                "{t.review}"
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80">
+              <div class="font-bold text-white text-sm">{t.name}</div>
+              <div class="text-xs text-amber-400">{t.project}</div>
+              <div class="text-[11px] text-slate-500 mt-0.5">{t.location}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Final CTA -->
+  <CTABanner
+    title="Plan Your Architectural Railing or Glazing Project Today"
+    subtitle="Connect directly with our senior fabricators in Surathkal, Mangaluru for free site measurement, design recommendations, and transparent estimation."
+    serviceName="General Architectural Railing & Window Project"
+  />
+</Layout>

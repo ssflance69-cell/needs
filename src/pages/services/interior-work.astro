@@ -1,0 +1,129 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageBanner from '../../components/PageBanner.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import { mediaManifest } from '../../data/media';
+
+const bannerVideo = mediaManifest.banners.interiorWork;
+---
+
+<Layout
+  title="Interior Metal & Glass Partitions, Dividers in Mangaluru"
+  description="Bespoke architectural steel & glass room dividers, fluted glass partitions, luxury staircase remodels, and turnkey interior fitouts in Surathkal & Mangaluru."
+  serviceSchema={{
+    name: 'Architectural Interior Metal & Glass Work',
+    description: 'Custom steel and fluted glass interior partitions, acoustic dividers, floating staircases, and metal architectural elements in coastal Karnataka.',
+    serviceType: 'Interior Architectural Fabrication',
+  }}
+  videoSchema={{
+    name: bannerVideo.title,
+    description: bannerVideo.description,
+    thumbnailUrl: bannerVideo.poster,
+    uploadDate: bannerVideo.uploadDate,
+    contentUrl: bannerVideo.mp4,
+  }}
+>
+  <PageBanner
+    title="Architectural Interior Metal & Glass Fitouts"
+    subtitle="Precision-crafted steel grid partitions, fluted privacy glass dividers, acoustic office cubicles, and statement metal staircases for modern coastal homes and corporate spaces."
+    badge="BESPOKE ARCHITECTURAL INTERIORS"
+    video={bannerVideo}
+    breadcrumbs={[
+      { label: 'Services', href: '/services/' },
+      { label: 'Interior Work' },
+    ]}
+    serviceName="Interior Metal & Glass Work"
+  />
+
+  <section class="py-16 sm:py-24 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <!-- Visual (5 Cols) -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900 aspect-[4/3]">
+            <img
+              src="/images/services/interior-work.webp"
+              alt="Modern steel and glass interior room divider fabricated in Mangaluru"
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300">
+            <span class="text-amber-400 font-semibold">Fabrication Highlights:</span> Slim-profile MS & Aluminium Grid Profiles | Fluted, Reeded & Tinted Glass Insets | Concealed Pivot Hinges
+          </div>
+        </div>
+
+        <!-- Content (7 Cols) -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="space-y-2">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+              CONTEMPORARY INTERIORS
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white font-heading">
+              Sleek Metal & Glass Dividers for Modern Open-Plan Spaces
+            </h2>
+            <p class="text-sm font-medium text-amber-400/90">
+              Balancing open-concept natural daylight with acoustic privacy
+            </p>
+          </div>
+
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Needs Group transforms residential living spaces, duplex penthouses, and commercial offices with custom-crafted architectural metal and glass interior elements. From European-inspired black-framed French doors to textured fluted glass partitions and floating staircase stringers, we bring precision engineering directly inside your home.
+          </p>
+
+          <div class="space-y-3">
+            <h3 class="text-xs font-bold text-white uppercase tracking-wider">Interior Fabrication Capabilities</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
+              <div class="p-3 rounded-lg bg-slate-900 border border-slate-800">
+                <span class="text-amber-400 font-semibold block mb-1">Steel & Fluted Glass Dividers:</span>
+                Textured privacy glass encased in slim matte black or brass-coated steel frames for living-dining division.
+              </div>
+              <div class="p-3 rounded-lg bg-slate-900 border border-slate-800">
+                <span class="text-amber-400 font-semibold block mb-1">Sliding Barn & Pocket Doors:</span>
+                Top-hung smooth gliding track doors with soft-close dampers, ideal for master bathrooms and walk-in wardrobes.
+              </div>
+              <div class="p-3 rounded-lg bg-slate-900 border border-slate-800">
+                <span class="text-amber-400 font-semibold block mb-1">Floating Staircase Stringers:</span>
+                Central spine or concealed mono-stringer steel staircases integrated with solid hardwood steps and glass balustrades.
+              </div>
+              <div class="p-3 rounded-lg bg-slate-900 border border-slate-800">
+                <span class="text-amber-400 font-semibold block mb-1">Acoustic Office Cabins:</span>
+                Double-glazed floor-to-ceiling sound-attenuated meeting pods and executive room partitions.
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-2 flex flex-wrap gap-3">
+            <button
+              type="button"
+              data-open-whatsapp
+              data-service="Interior Metal & Glass Partitions"
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs shadow-md transition-all"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+              <span>Consult on Interior Partitions</span>
+            </button>
+            <a
+              href="/contact/#enquiry-form"
+              class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-xs font-semibold hover:border-slate-600 transition-colors"
+            >
+              <span>Book Interior Measurement</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <CTABanner
+    title="Bring European Elegance to Your Mangaluru Interior"
+    subtitle="Custom manufactured in Surathkal to fit your exact ceiling heights and wall recesses without gaps or floor damage."
+    serviceName="Interior Fitout Consultation"
+  />
+</Layout>

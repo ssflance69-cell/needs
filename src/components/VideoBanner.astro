@@ -1,0 +1,143 @@
+---
+import type { MediaVideoSource } from '../data/media';
+
+interface Props {
+  video: MediaVideoSource;
+  isHero?: boolean;
+  minHeightClass?: string;
+  overlayClass?: string;
+}
+
+const {
+  video,
+  isHero = false,
+  minHeightClass = 'min-h-[520px] lg:min-h-[620px]',
+  overlayClass = 'bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/60',
+} = Astro.props;
+---
+
+<div class={`relative w-full overflow-hidden ${minHeightClass} flex items-center bg-slate-950`} data-video-banner>
+  <!-- Background Video Element -->
+  <video
+    class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none transition-opacity duration-1000 opacity-90"
+    autoplay={isHero}
+    loop
+    muted
+    playsinline
+    preload={isHero ? 'metadata' : 'none'}
+    poster={video.poster}
+    data-is-hero={isHero ? 'true' : 'false'}
+    aria-hidden="true"
+  >
+    {isHero ? (
+      <>
+        <source src={video.webm} type="video/webm" />
+        <source src={video.mp4} type="video/mp4" />
+      </>
+    ) : (
+      <>
+        <!-- Lazy loaded via script for non-hero banners -->
+        <source data-src={video.webm} type="video/webm" />
+        <source data-src={video.mp4} type="video/mp4" />
+      </>
+    )}
+  </video>
+
+  <!-- Fallback Poster Image if video is unsupported or failed -->
+  <img
+    src={video.poster}
+    alt=""
+    aria-hidden="true"
+    loading={isHero ? 'eager' : 'lazy'}
+    decoding="async"
+    width="1280"
+    height="720"
+    class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none -scale-100 -scale-y-100 hidden video-poster-fallback"
+  />
+
+  <!-- High-contrast architectural gradient overlay -->
+  <div class={`absolute inset-0 z-10 ${overlayClass}`}></div>
+
+  <!-- Subtle mesh pattern overlay -->
+  <div class="absolute inset-0 z-10 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-40"></div>
+
+  <!-- Content Slot -->
+  <div class="relative z-20 w-full">
+    <slot />
+  </div>
+</div>
+
+<script>
+  (function initVideoBanners() {
+    const banners = document.querySelectorAll<HTMLElement>('[data-video-banner]');
+
+    // Check Data Saver and Reduced Motion
+    const conn = (navigator as any).connection;
+    const isSaveData = conn && conn.saveData === true;
+    const isSlowConn = conn && (conn.effectiveType === '2g' || conn.effectiveType === '3g');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const shouldAutoplay = !isSaveData && !isSlowConn && !prefersReducedMotion;
+
+    banners.forEach((banner) => {
+      const video = banner.querySelector<HTMLVideoElement>('video');
+      const fallbackImg = banner.querySelector<HTMLImageElement>('.video-poster-fallback');
+      if (!video) return;
+
+      if (!shouldAutoplay) {
+        // Respect data saver or reduced motion: pause and let poster show
+        video.pause();
+        return;
+      }
+
+      // Handle video error gracefully
+      video.addEventListener('error', () => {
+        video.classList.add('hidden');
+        if (fallbackImg) fallbackImg.classList.remove('hidden');
+      });
+
+      const isHero = video.getAttribute('data-is-hero') === 'true';
+
+      // Non-hero video lazy loader
+      if (!isHero) {
+        const lazySources = video.querySelectorAll<HTMLSourceElement>('source[data-src]');
+        let loaded = false;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                if (!loaded) {
+                  lazySources.forEach((src) => {
+                    const dataSrc = src.getAttribute('data-src');
+                    if (dataSrc) src.src = dataSrc;
+                  });
+                  video.load();
+                  loaded = true;
+                }
+                video.play().catch(() => {});
+              } else {
+                video.pause();
+              }
+            });
+          },
+          { rootMargin: '100px 0px 100px 0px' }
+        );
+
+        observer.observe(video);
+      } else {
+        // Hero video observer: pause when scrolled out of view to preserve CPU
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              video.play().catch(() => {});
+            } else {
+              video.pause();
+            }
+          });
+        });
+        observer.observe(video);
+      }
+    });
+  })();
+</script>

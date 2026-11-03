@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://needs.group/sitemap-index.xml

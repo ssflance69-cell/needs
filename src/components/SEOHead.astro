@@ -1,0 +1,169 @@
+---
+import { siteConfig } from '../data/site';
+import { mediaManifest } from '../data/media';
+
+interface VideoSchemaItem {
+  name: string;
+  description: string;
+  thumbnailUrl: string;
+  uploadDate?: string;
+  contentUrl?: string;
+}
+
+interface ServiceSchemaItem {
+  name: string;
+  description: string;
+  serviceType: string;
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  serviceSchema?: ServiceSchemaItem;
+  videoSchema?: VideoSchemaItem;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = siteConfig.shortDescription,
+  canonicalUrl = Astro.url.href,
+  ogImage = mediaManifest.ogImage,
+  serviceSchema,
+  videoSchema,
+  noindex = false,
+} = Astro.props;
+
+// Determine clean page title
+const pageTitle = title
+  ? `${title} – Needs Group | Railings, Windows & Construction in Mangaluru`
+  : 'Needs Group – Glass, Steel & Aluminium Railings, Windows & Canopy in Mangaluru, Surathkal';
+
+const fullOgImageUrl = new URL(ogImage, siteConfig.url).href;
+const canonicalHref = new URL(Astro.url.pathname, siteConfig.url).href;
+
+// LocalBusiness JSON-LD Schema
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${siteConfig.url}/#organization`,
+  name: siteConfig.name,
+  legalName: siteConfig.legalName,
+  url: siteConfig.url,
+  logo: `${siteConfig.url}/favicon.svg`,
+  image: fullOgImageUrl,
+  description: siteConfig.longDescription,
+  telephone: siteConfig.whatsappNumbers[0].telNumber,
+  email: siteConfig.email,
+  priceRange: '₹₹',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.address.street,
+    addressLocality: 'Surathkal, Mangaluru',
+    addressRegion: siteConfig.address.state,
+    postalCode: siteConfig.address.pincode,
+    addressCountry: siteConfig.address.country,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: siteConfig.address.coordinates.latitude,
+    longitude: siteConfig.address.coordinates.longitude,
+  },
+  areaServed: siteConfig.serviceAreas.map((area) => ({
+    '@type': 'Place',
+    name: `${area.name}, Karnataka`,
+  })),
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '09:00',
+      closes: '19:00',
+    },
+  ],
+  sameAs: [
+    siteConfig.socialLinks.facebook,
+    siteConfig.socialLinks.instagram,
+    siteConfig.socialLinks.youtube,
+    siteConfig.socialLinks.linkedin,
+  ],
+};
+
+// Optional Service Schema
+const structuredServiceSchema = serviceSchema
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: serviceSchema.name,
+      description: serviceSchema.description,
+      serviceType: serviceSchema.serviceType,
+      provider: {
+        '@type': 'LocalBusiness',
+        name: siteConfig.name,
+        url: siteConfig.url,
+      },
+      areaServed: {
+        '@type': 'AdministrativeArea',
+        name: 'Mangaluru and Coastal Karnataka',
+      },
+    }
+  : null;
+
+// Optional VideoObject Schema
+const structuredVideoSchema = videoSchema
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'VideoObject',
+      name: videoSchema.name,
+      description: videoSchema.description,
+      thumbnailUrl: [new URL(videoSchema.thumbnailUrl, siteConfig.url).href],
+      uploadDate: videoSchema.uploadDate || '2024-01-15T09:00:00+05:30',
+      contentUrl: videoSchema.contentUrl ? new URL(videoSchema.contentUrl, siteConfig.url).href : undefined,
+    }
+  : null;
+---
+
+<!-- Essential Meta Tags -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalHref} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Favicon and Brand Icons -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/favicon.svg" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalHref} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullOgImageUrl} />
+<meta property="og:locale" content={siteConfig.locale} />
+<meta property="og:site_name" content={siteConfig.name} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalHref} />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={fullOgImageUrl} />
+
+<!-- Geo & Local Meta Tags -->
+<meta name="geo.region" content="IN-KA" />
+<meta name="geo.placename" content="Surathkal, Mangaluru" />
+<meta name="geo.position" content={`${siteConfig.address.coordinates.latitude};${siteConfig.address.coordinates.longitude}`} />
+<meta name="ICBM" content={`${siteConfig.address.coordinates.latitude}, ${siteConfig.address.coordinates.longitude}`} />
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+{structuredServiceSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(structuredServiceSchema)} />
+)}
+{structuredVideoSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(structuredVideoSchema)} />
+)}
