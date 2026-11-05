@@ -18,10 +18,10 @@ export default defineConfig({
   ],
   vite: {
     preview: {
-      allowedHosts: true,
+      allowedHosts: ['needs-2ri2.onrender.com', '.onrender.com', 'localhost'],
     },
     server: {
-      allowedHosts: true,
+      allowedHosts: ['needs-2ri2.onrender.com', '.onrender.com', 'localhost'],
     },
   },
 });
