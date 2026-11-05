@@ -67,7 +67,6 @@
         playsinline
         class="w-full h-full object-contain"
       >
-        <source id="lightbox-source-webm" src="" type="video/webm" />
         <source id="lightbox-source-mp4" src="" type="video/mp4" />
       </video>
     </div>
@@ -92,7 +91,6 @@
     const imgEl = document.getElementById('lightbox-img') as HTMLImageElement;
     const videoWrap = document.getElementById('lightbox-video-wrap');
     const videoEl = document.getElementById('lightbox-video') as HTMLVideoElement;
-    const sourceWebm = document.getElementById('lightbox-source-webm') as HTMLSourceElement;
     const sourceMp4 = document.getElementById('lightbox-source-mp4') as HTMLSourceElement;
     const titleEl = document.getElementById('lightbox-title');
     const descEl = document.getElementById('lightbox-desc');
@@ -124,10 +122,7 @@
         videoWrap?.classList.remove('hidden');
 
         const mp4 = el.getAttribute('data-video-mp4') || '';
-        const webm = el.getAttribute('data-video-webm') || '';
-
-        if (sourceWebm) sourceWebm.src = webm;
-        if (sourceMp4) sourceMp4.src = mp4;
+        if (sourceMp4 && mp4) sourceMp4.src = mp4;
         videoEl.load();
         videoEl.play().catch(() => {});
       } else {
