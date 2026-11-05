@@ -16,4 +16,12 @@ export default defineConfig({
     }),
     sitemap(),
   ],
+  vite: {
+    preview: {
+      allowedHosts: true,
+    },
+    server: {
+      allowedHosts: true,
+    },
+  },
 });
