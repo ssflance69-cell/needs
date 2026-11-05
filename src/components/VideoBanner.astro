@@ -43,8 +43,12 @@ const {
   <!-- Directional Architectural Scrim (Readable text on left, rich video on right) -->
   <div class={`absolute inset-0 z-10 ${overlayClass}`}></div>
 
-  <!-- Bottom seamless blend into next content canvas -->
-  <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white via-white/40 to-transparent z-10 pointer-events-none"></div>
+  <!-- Bottom seamless blend (clean dark transition for hero, subtle blend for light sections) -->
+  {isHero ? (
+    <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-zinc-950 to-transparent z-10 pointer-events-none"></div>
+  ) : (
+    <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white via-white/40 to-transparent z-10 pointer-events-none"></div>
+  )}
 
   <!-- Soft Ambient Warm Bronze Spotlight -->
   <div class="absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_75%_35%,rgba(180,83,9,0.18),transparent_65%)] pointer-events-none"></div>

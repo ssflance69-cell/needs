@@ -253,15 +253,24 @@ const recentProjects = mediaManifest.projects.slice(0, 6);
             Precision CNC laser-profiled stainless steel frames in brushed titanium finish, fitted with reeded, ribbed, or privacy architectural glass.
           </p>
         </div>
-        <div class="relative h-44 w-full rounded-2xl overflow-hidden border border-zinc-200 mt-2">
-          <img
+        <div class="relative h-44 w-full rounded-2xl overflow-hidden border border-zinc-200 mt-2 bg-zinc-900 bg-cover bg-center" style="background-image: url('/images/services/interior-banner-poster.webp');">
+          <video
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            src="/images/projects/project-11-interior-partition.webp"
-            alt="Bespoke metal and fluted glass partition"
-            loading="lazy"
-            onerror="this.src='https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80'"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/40 to-transparent"></div>
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="auto"
+            poster="/images/services/interior-banner-poster.webp"
+            aria-hidden="true"
+          >
+            <source src="/videos/services/interior-banner.mp4" type="video/mp4" />
+          </video>
+          <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-2.5 left-2.5 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/10 text-[9px] text-white font-mono shadow-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span class="tracking-wider">INTERIOR FITOUT</span>
+          </div>
         </div>
       </div>
 
@@ -283,15 +292,24 @@ const recentProjects = mediaManifest.projects.slice(0, 6);
             Point-supported glass curtain walls with heavy-duty cast 316 stainless rotules and structural steel backup trusses engineered specifically for coastal wind shears.
           </p>
         </div>
-        <div class="relative h-44 w-full rounded-2xl overflow-hidden border border-zinc-200 mt-2">
-          <img
+        <div class="relative h-44 w-full rounded-2xl overflow-hidden border border-zinc-200 mt-2 bg-zinc-900 bg-cover bg-center" style="background-image: url('/images/services/construction-banner-poster.webp');">
+          <video
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            src="/images/projects/project-12-construction-frame.webp"
-            alt="Structural spider glazing and facade"
-            loading="lazy"
-            onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80'"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/40 to-transparent"></div>
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="auto"
+            poster="/images/services/construction-banner-poster.webp"
+            aria-hidden="true"
+          >
+            <source src="/videos/services/construction-banner.mp4" type="video/mp4" />
+          </video>
+          <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-2.5 left-2.5 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/10 text-[9px] text-white font-mono shadow-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span class="tracking-wider">FACADE MOTION</span>
+          </div>
         </div>
       </div>
     </div>
@@ -435,8 +453,8 @@ const recentProjects = mediaManifest.projects.slice(0, 6);
       >
         <source src="/videos/services/about-workshop.mp4" type="video/mp4" />
       </video>
-      <!-- High-End Architectural Scrim & Vignette -->
-      <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/85 to-zinc-950/50"></div>
+      <!-- High-End Architectural Scrim & Vignette (Ensures 100% Text Legibility) -->
+      <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/95 to-zinc-950/60"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/80"></div>
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(180,83,9,0.22),transparent_70%)]"></div>
     </div>
