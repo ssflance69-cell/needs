@@ -4,7 +4,7 @@
 
 <div
   id="global-lightbox"
-  class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/95 backdrop-blur-xl p-2 sm:p-6"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-zinc-950/95 backdrop-blur-2xl p-2 sm:p-6"
   role="dialog"
   aria-modal="true"
   aria-label="Media Preview Lightbox"
@@ -14,7 +14,7 @@
   <button
     id="lightbox-close"
     type="button"
-    class="absolute top-4 right-4 z-50 p-2.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400"
+    class="absolute top-4 right-4 z-50 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
     aria-label="Close lightbox"
   >
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -26,7 +26,7 @@
   <button
     id="lightbox-prev"
     type="button"
-    class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-all focus:outline-none focus:ring-2 focus:ring-amber-400"
+    class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all focus:outline-none focus:ring-2 focus:ring-amber-500"
     aria-label="Previous item"
   >
     <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -38,7 +38,7 @@
   <button
     id="lightbox-next"
     type="button"
-    class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-all focus:outline-none focus:ring-2 focus:ring-amber-400"
+    class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all focus:outline-none focus:ring-2 focus:ring-amber-500"
     aria-label="Next item"
   >
     <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -55,12 +55,12 @@
         id="lightbox-img"
         src=""
         alt=""
-        class="max-w-full max-h-[70vh] rounded-xl object-contain shadow-2xl border border-slate-800"
+        class="max-w-full max-h-[70vh] rounded-2xl object-contain shadow-2xl border border-white/20"
       />
     </div>
 
     <!-- Video View -->
-    <div id="lightbox-video-wrap" class="relative w-full max-w-4xl aspect-video hidden rounded-xl overflow-hidden bg-black border border-slate-800 shadow-2xl">
+    <div id="lightbox-video-wrap" class="relative w-full max-w-4xl aspect-video hidden rounded-2xl overflow-hidden bg-black border border-white/20 shadow-2xl">
       <video
         id="lightbox-video"
         controls
@@ -74,10 +74,10 @@
 
     <!-- Caption & Info Bar -->
     <div class="mt-4 w-full text-center px-4 max-w-2xl">
-      <div id="lightbox-location" class="text-xs font-semibold uppercase tracking-wider text-amber-400"></div>
+      <div id="lightbox-location" class="text-xs font-semibold uppercase tracking-wider text-amber-400 font-mono"></div>
       <h3 id="lightbox-title" class="text-lg sm:text-xl font-bold text-white font-heading mt-1"></h3>
-      <p id="lightbox-desc" class="text-xs sm:text-sm text-slate-300 mt-1 line-clamp-2"></p>
-      <div class="mt-2 text-[11px] text-slate-500 font-mono" id="lightbox-counter">1 / 1</div>
+      <p id="lightbox-desc" class="text-xs sm:text-sm text-zinc-300 mt-1 line-clamp-2"></p>
+      <div class="mt-2 text-[11px] text-zinc-400 font-mono" id="lightbox-counter">1 / 1</div>
     </div>
   </div>
 </div>
@@ -144,7 +144,6 @@
     }
 
     function openLightbox(clickedEl: HTMLElement) {
-      // Find all visible trigger elements in the current context/gallery
       const triggers = Array.from(document.querySelectorAll<HTMLElement>('[data-lightbox-trigger]')).filter(
         (t) => window.getComputedStyle(t).display !== 'none'
       );
@@ -197,7 +196,6 @@
       }
     });
 
-    // Keyboard controls
     window.addEventListener('keydown', (e) => {
       if (modal?.classList.contains('hidden')) return;
       if (e.key === 'Escape') closeLightbox();
@@ -205,7 +203,6 @@
       if (e.key === 'ArrowLeft') goPrev();
     });
 
-    // Mobile touch swipe gestures
     modal?.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });

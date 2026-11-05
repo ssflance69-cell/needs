@@ -4,24 +4,28 @@ import { siteConfig } from '../data/site';
 const stats = siteConfig.stats;
 ---
 
-<section class="relative py-12 bg-slate-900/60 border-y border-slate-800/80">
+<section class="relative py-12 bg-zinc-50/70 border-y border-zinc-200" id="stats-counter-section">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8" id="stats-counter-section">
-      {stats.map((item) => (
-        <div class="p-6 rounded-2xl bg-slate-950/50 border border-slate-800 text-center space-y-1">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      {stats.map((item, index) => (
+        <div
+          class="stat-card p-6 rounded-2xl bg-white border border-zinc-200 text-center space-y-1 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer group"
+          data-target={item.value}
+          data-delay={index * 150}
+        >
           <div class="flex items-baseline justify-center">
             <span
-              class="stat-counter text-4xl sm:text-5xl font-black text-white font-heading"
+              class="stat-counter text-4xl sm:text-5xl font-black text-zinc-900 font-heading font-mono tabular-nums tracking-tighter"
               data-target={item.value}
             >
               0
             </span>
-            <span class="text-3xl sm:text-4xl font-extrabold text-amber-400 font-heading">
+            <span class="stat-suffix text-3xl sm:text-4xl font-extrabold text-amber-700 font-heading ml-1 transition-transform duration-300 inline-block origin-bottom-left">
               {item.suffix}
             </span>
           </div>
-          <div class="text-sm font-semibold text-slate-200">{item.label}</div>
-          <div class="text-xs text-slate-400">{item.sublabel}</div>
+          <div class="text-sm font-semibold text-zinc-800">{item.label}</div>
+          <div class="text-xs text-zinc-500 font-mono">{item.sublabel}</div>
         </div>
       ))}
     </div>
@@ -31,59 +35,103 @@ const stats = siteConfig.stats;
 <script>
   (function initStatsCounter() {
     const section = document.getElementById('stats-counter-section');
-    const counters = document.querySelectorAll<HTMLElement>('.stat-counter');
-    if (!section || counters.length === 0) return;
+    if (!section) return;
+
+    const cards = section.querySelectorAll<HTMLElement>('.stat-card');
+    if (cards.length === 0) return;
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    let animated = false;
+    function easeOutExpo(x: number): number {
+      return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
+    }
 
-    function runAnimation() {
-      if (animated) return;
-      animated = true;
+    function animateSingleCounter(card: HTMLElement, isReplay = false) {
+      const counter = card.querySelector<HTMLElement>('.stat-counter');
+      const suffix = card.querySelector<HTMLElement>('.stat-suffix');
+      if (!counter) return;
 
-      counters.forEach((counter) => {
-        const target = parseInt(counter.getAttribute('data-target') || '0', 10);
-        if (prefersReducedMotion || isNaN(target)) {
+      const target = parseInt(card.getAttribute('data-target') || '0', 10);
+      if (prefersReducedMotion || isNaN(target)) {
+        counter.textContent = String(target);
+        return;
+      }
+
+      const duration = isReplay ? 800 : 1600;
+      let startTime: number | null = null;
+
+      if (suffix) {
+        suffix.classList.remove('scale-125', 'text-amber-500');
+      }
+
+      function update(currentTime: number) {
+        if (!startTime) startTime = currentTime;
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeProgress = easeOutExpo(progress);
+        const currentVal = Math.floor(easeProgress * target);
+
+        counter.textContent = String(currentVal);
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
           counter.textContent = String(target);
-          return;
-        }
-
-        const duration = 1800; // ms
-        const startTime = performance.now();
-
-        function update(currentTime: number) {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          // Ease out cubic
-          const easeProgress = 1 - Math.pow(1 - progress, 3);
-          const currentVal = Math.floor(easeProgress * target);
-
-          counter.textContent = String(currentVal);
-
-          if (progress < 1) {
-            requestAnimationFrame(update);
-          } else {
-            counter.textContent = String(target);
+          if (suffix) {
+            suffix.classList.add('scale-125', 'text-amber-500');
+            setTimeout(() => {
+              suffix.classList.remove('scale-125', 'text-amber-500');
+            }, 300);
           }
         }
+      }
 
-        requestAnimationFrame(update);
+      requestAnimationFrame(update);
+    }
+
+    let hasRun = false;
+    function runAll() {
+      if (hasRun) return;
+      hasRun = true;
+
+      cards.forEach((card) => {
+        const delay = parseInt(card.getAttribute('data-delay') || '0', 10);
+        setTimeout(() => {
+          animateSingleCounter(card, false);
+        }, delay);
       });
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            runAnimation();
+    cards.forEach((card) => {
+      let cooldown = false;
+      card.addEventListener('click', () => {
+        if (cooldown) return;
+        cooldown = true;
+        animateSingleCounter(card, true);
+        setTimeout(() => { cooldown = false; }, 1000);
+      });
+
+      card.addEventListener('mouseenter', () => {
+        if (cooldown || !hasRun) return;
+        cooldown = true;
+        animateSingleCounter(card, true);
+        setTimeout(() => { cooldown = false; }, 1200);
+      });
+    });
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            runAll();
             observer.disconnect();
           }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    observer.observe(section);
+        },
+        { threshold: 0.2 }
+      );
+      observer.observe(section);
+    } else {
+      runAll();
+    }
   })();
 </script>

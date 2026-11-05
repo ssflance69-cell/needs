@@ -27,28 +27,28 @@ const bannerVideo = mediaManifest.banners.about;
     serviceName="General Contact Inquiry"
   />
 
-  <section class="py-16 sm:py-24 bg-slate-950">
+  <section class="py-16 sm:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
       
       <!-- Direct Contact Channels Cards (Dual WhatsApp & Phone) -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
         <!-- WhatsApp 1 Card -->
-        <div class="p-6 rounded-2xl bg-slate-900 border border-emerald-500/30 flex flex-col justify-between space-y-4 shadow-xl">
+        <div class="p-6 rounded-2xl bg-white border border-zinc-200 flex flex-col justify-between space-y-4 shadow-sm hover:shadow-md transition-all">
           <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-                Sales & Quotes
+              <span class="px-2.5 py-1 rounded-md bg-amber-50 text-amber-900 border border-amber-200 text-xs font-bold uppercase tracking-wider font-mono">
+                Sales &amp; Quotes
               </span>
-              <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+              <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
               </div>
             </div>
-            <h3 class="text-xl font-bold text-white font-heading">{siteConfig.whatsappNumbers[0].label}</h3>
-            <p class="text-xs text-slate-300">
+            <h3 class="text-xl font-bold text-zinc-900 font-heading">{siteConfig.whatsappNumbers[0].label}</h3>
+            <p class="text-xs text-zinc-600">
               {siteConfig.whatsappNumbers[0].description}
             </p>
-            <div class="text-lg font-mono font-bold text-emerald-400">
+            <div class="text-lg font-mono font-bold text-amber-800">
               {siteConfig.whatsappNumbers[0].displayNumber}
             </div>
           </div>
@@ -58,13 +58,13 @@ const bannerVideo = mediaManifest.banners.about;
               href={`https://wa.me/${siteConfig.whatsappNumbers[0].waNumber}?text=${encodeURIComponent("Hi Needs Group, I'd like to get a quote for my project.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex-1 text-center py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs shadow-md transition-all"
+              class="flex-1 text-center py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all hover:brightness-105"
             >
               Open WhatsApp
             </a>
             <a
               href={`tel:${siteConfig.whatsappNumbers[0].telNumber}`}
-              class="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold"
+              class="px-3.5 py-2.5 rounded-xl bg-zinc-50 hover:bg-zinc-100 text-zinc-700 border border-zinc-200 text-xs font-semibold"
               title="Call Line 1"
             >
               Call
@@ -73,21 +73,21 @@ const bannerVideo = mediaManifest.banners.about;
         </div>
 
         <!-- WhatsApp 2 Card -->
-        <div class="p-6 rounded-2xl bg-slate-900 border border-emerald-500/30 flex flex-col justify-between space-y-4 shadow-xl">
+        <div class="p-6 rounded-2xl bg-white border border-zinc-200 flex flex-col justify-between space-y-4 shadow-sm hover:shadow-md transition-all">
           <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-                Technical & Site Support
+              <span class="px-2.5 py-1 rounded-md bg-amber-50 text-amber-900 border border-amber-200 text-xs font-bold uppercase tracking-wider font-mono">
+                Technical &amp; Site Support
               </span>
-              <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+              <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
               </div>
             </div>
-            <h3 class="text-xl font-bold text-white font-heading">{siteConfig.whatsappNumbers[1].label}</h3>
-            <p class="text-xs text-slate-300">
+            <h3 class="text-xl font-bold text-zinc-900 font-heading">{siteConfig.whatsappNumbers[1].label}</h3>
+            <p class="text-xs text-zinc-600">
               {siteConfig.whatsappNumbers[1].description}
             </p>
-            <div class="text-lg font-mono font-bold text-emerald-400">
+            <div class="text-lg font-mono font-bold text-amber-800">
               {siteConfig.whatsappNumbers[1].displayNumber}
             </div>
           </div>
@@ -97,13 +97,13 @@ const bannerVideo = mediaManifest.banners.about;
               href={`https://wa.me/${siteConfig.whatsappNumbers[1].waNumber}?text=${encodeURIComponent("Hi Needs Group, I need technical consultation regarding site measurements.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex-1 text-center py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs shadow-md transition-all"
+              class="flex-1 text-center py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all hover:brightness-105"
             >
               Open WhatsApp
             </a>
             <a
               href={`tel:${siteConfig.whatsappNumbers[1].telNumber}`}
-              class="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold"
+              class="px-3.5 py-2.5 rounded-xl bg-zinc-50 hover:bg-zinc-100 text-zinc-700 border border-zinc-200 text-xs font-semibold"
               title="Call Line 2"
             >
               Call
@@ -112,17 +112,17 @@ const bannerVideo = mediaManifest.banners.about;
         </div>
 
         <!-- Universal Contact Switcher Modal Trigger -->
-        <div class="p-6 rounded-2xl bg-slate-900 border border-amber-500/30 flex flex-col justify-between space-y-4 shadow-xl">
+        <div class="p-6 rounded-2xl bg-white border border-zinc-200 flex flex-col justify-between space-y-4 shadow-sm hover:shadow-md transition-all">
           <div class="space-y-3">
-            <span class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 text-xs font-bold uppercase tracking-wider">
+            <span class="px-2.5 py-1 rounded-md bg-amber-50 text-amber-900 border border-amber-200 text-xs font-bold uppercase tracking-wider font-mono">
               Quick Pickers
             </span>
-            <h3 class="text-xl font-bold text-white font-heading">Choose Direct Route</h3>
-            <p class="text-xs text-slate-300">
+            <h3 class="text-xl font-bold text-zinc-900 font-heading">Choose Direct Route</h3>
+            <p class="text-xs text-zinc-600">
               Trigger our dynamic channel picker to select the ideal contact route with pre-filled context from anywhere on the site.
             </p>
-            <div class="text-xs text-slate-400">
-              Official Email: <a href={`mailto:${siteConfig.email}`} class="text-amber-400 hover:underline">{siteConfig.email}</a>
+            <div class="text-xs text-zinc-500">
+              Official Email: <a href={`mailto:${siteConfig.email}`} class="text-amber-800 hover:underline">{siteConfig.email}</a>
             </div>
           </div>
 
@@ -130,16 +130,16 @@ const bannerVideo = mediaManifest.banners.about;
             <button
               type="button"
               data-open-whatsapp
-              class="flex-1 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all"
+              class="flex-1 py-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 hover:bg-emerald-100 font-semibold text-xs transition-all"
             >
-              WhatsApp Selector
+              WhatsApp
             </button>
             <button
               type="button"
               data-open-call
-              class="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 font-semibold text-xs transition-all"
+              class="flex-1 py-2.5 rounded-xl bg-zinc-50 hover:bg-zinc-100 text-zinc-800 border border-zinc-200 font-semibold text-xs transition-all"
             >
-              Call Selector
+              Direct Call
             </button>
           </div>
         </div>
@@ -150,15 +150,15 @@ const bannerVideo = mediaManifest.banners.about;
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start" id="enquiry-form">
         
         <!-- Online Form (7 Cols) -->
-        <div class="lg:col-span-7 p-8 rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl space-y-6">
+        <div class="lg:col-span-7 p-8 rounded-3xl bg-white border border-zinc-200 shadow-xl space-y-6">
           <div class="space-y-2">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold uppercase tracking-wider font-mono shadow-sm">
               ONLINE ENQUIRY FORM
             </div>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-white font-heading">
-              Request a Free Quote & Site Measurement
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-zinc-900 font-heading">
+              Request a Free Quote &amp; Site Measurement
             </h2>
-            <p class="text-xs sm:text-sm text-slate-400">
+            <p class="text-xs sm:text-sm text-zinc-500">
               Submit your project details via our secure form or immediately transfer your inputs to WhatsApp with one click.
             </p>
           </div>
@@ -178,8 +178,8 @@ const bannerVideo = mediaManifest.banners.about;
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <!-- Name -->
               <div class="space-y-1.5">
-                <label for="form-name" class="text-xs font-semibold text-slate-300">
-                  Your Full Name <span class="text-amber-400">*</span>
+                <label for="form-name" class="text-xs font-semibold text-zinc-700">
+                  Your Full Name <span class="text-amber-700">*</span>
                 </label>
                 <input
                   type="text"
@@ -187,14 +187,14 @@ const bannerVideo = mediaManifest.banners.about;
                   name="name"
                   required
                   placeholder="e.g. Raghavendra Bhat"
-                  class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+                  class="w-full px-4 py-3 rounded-xl bg-zinc-50 border border-zinc-200 text-zinc-900 placeholder-zinc-400 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
                 />
               </div>
 
               <!-- Phone -->
               <div class="space-y-1.5">
-                <label for="form-phone" class="text-xs font-semibold text-slate-300">
-                  Phone / WhatsApp Number <span class="text-amber-400">*</span>
+                <label for="form-phone" class="text-xs font-semibold text-zinc-700">
+                  Phone / WhatsApp Number <span class="text-amber-700">*</span>
                 </label>
                 <input
                   type="tel"
@@ -202,21 +202,21 @@ const bannerVideo = mediaManifest.banners.about;
                   name="phone"
                   required
                   placeholder="+91 9XXXXXXXXX"
-                  class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+                  class="w-full px-4 py-3 rounded-xl bg-zinc-50 border border-zinc-200 text-zinc-900 placeholder-zinc-400 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
                 />
               </div>
             </div>
 
             <!-- Service Dropdown -->
             <div class="space-y-1.5">
-              <label for="form-service" class="text-xs font-semibold text-slate-300">
-                Service Category <span class="text-amber-400">*</span>
+              <label for="form-service" class="text-xs font-semibold text-zinc-700">
+                Service Category <span class="text-amber-700">*</span>
               </label>
               <select
                 id="form-service"
                 name="service"
                 required
-                class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+                class="w-full px-4 py-3 rounded-xl bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
               >
                 <option value="" disabled selected>Select an architectural discipline...</option>
                 {siteConfig.services.map((svc) => (
@@ -227,8 +227,8 @@ const bannerVideo = mediaManifest.banners.about;
 
             <!-- Message -->
             <div class="space-y-1.5">
-              <label for="form-message" class="text-xs font-semibold text-slate-300">
-                Project Scope / Site Details <span class="text-amber-400">*</span>
+              <label for="form-message" class="text-xs font-semibold text-zinc-700">
+                Project Scope / Site Details <span class="text-amber-700">*</span>
               </label>
               <textarea
                 id="form-message"
@@ -236,7 +236,7 @@ const bannerVideo = mediaManifest.banners.about;
                 rows="4"
                 required
                 placeholder="Mention your location (e.g. Surathkal, Mangaluru), approximate running feet, or balcony floor plans..."
-                class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+                class="w-full px-4 py-3 rounded-xl bg-zinc-50 border border-zinc-200 text-zinc-900 placeholder-zinc-400 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
               ></textarea>
             </div>
 
@@ -246,7 +246,7 @@ const bannerVideo = mediaManifest.banners.about;
               <button
                 type="submit"
                 id="form-submit-btn"
-                class="w-full sm:flex-1 py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm shadow-glow transition-all focus:outline-none focus:ring-2 focus:ring-amber-400"
+                class="w-full sm:flex-1 py-3.5 px-6 rounded-full bg-gradient-to-r from-amber-700 via-amber-600 to-amber-800 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-amber-500"
               >
                 Send Official Inquiry
               </button>
@@ -255,9 +255,9 @@ const bannerVideo = mediaManifest.banners.about;
               <button
                 type="button"
                 id="form-whatsapp-btn"
-                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-all focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 hover:bg-emerald-100 font-semibold text-xs uppercase tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500"
               >
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+                <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
                 <span>Send via WhatsApp</span>
               </button>
             </div>
@@ -271,23 +271,22 @@ const bannerVideo = mediaManifest.banners.about;
         <div class="lg:col-span-5 space-y-6">
           
           <!-- Address & Workshop Block -->
-          <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
+          <div class="p-6 rounded-3xl bg-white border border-zinc-200 shadow-md space-y-4">
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+              <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800 shadow-sm">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
               <div>
-                <h3 class="text-base font-bold text-white font-heading">Fabrication Workshop & Office</h3>
-                <p class="text-xs text-amber-400 font-medium">Surathkal, Mangaluru, Karnataka</p>
+                <h3 class="text-base font-bold text-zinc-900 font-heading">Fabrication Workshop &amp; Office</h3>
+                <p class="text-xs text-amber-800 font-medium font-mono">Surathkal, Mangaluru, Karnataka</p>
               </div>
             </div>
 
-            <div class="text-xs text-slate-300 leading-relaxed pl-1 space-y-1">
-              <p class="font-medium text-white">{siteConfig.address.fullFormatted}</p>
-              <p class="text-slate-400 italic">[Street/Landmark & Pincode placeholders to be confirmed with client]</p>
+            <div class="text-xs text-zinc-600 leading-relaxed pl-1 space-y-1">
+              <p class="font-medium text-zinc-800">{siteConfig.address.fullFormatted}</p>
             </div>
 
             <!-- Google Maps Directions Link -->
@@ -296,7 +295,7 @@ const bannerVideo = mediaManifest.banners.about;
                 href={siteConfig.address.googleMapsDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 text-xs font-semibold text-sky-400 hover:text-sky-300 hover:underline"
+                class="inline-flex items-center gap-2 text-xs font-semibold text-amber-800 hover:text-amber-900 hover:underline"
               >
                 <span>Get Directions on Google Maps</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -306,8 +305,8 @@ const bannerVideo = mediaManifest.banners.about;
             </div>
           </div>
 
-          <!-- Google Maps Embed Placeholder -->
-          <div class="rounded-3xl overflow-hidden border border-slate-800 aspect-[16/10] bg-slate-900 shadow-xl relative">
+          <!-- Google Maps Embed -->
+          <div class="rounded-3xl overflow-hidden border border-zinc-200 aspect-[16/10] bg-zinc-100 shadow-md relative">
             <iframe
               src={siteConfig.address.googleMapsEmbedUrl}
               width="100%"
@@ -317,40 +316,36 @@ const bannerVideo = mediaManifest.banners.about;
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               title="Needs Group Location Surathkal Mangaluru"
-              class="w-full h-full grayscale opacity-85 contrast-125"
+              class="w-full h-full contrast-105"
             ></iframe>
-            <div class="absolute bottom-2 left-2 px-2 py-1 rounded bg-slate-950/80 backdrop-blur-sm text-[10px] text-slate-400 pointer-events-none">
+            <div class="absolute bottom-2 left-2 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-sm text-[10px] text-zinc-800 font-mono pointer-events-none border border-zinc-200 shadow-sm">
               Surathkal • Mangaluru Centre
             </div>
           </div>
 
           <!-- Working Hours & Service Areas -->
-          <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
+          <div class="p-6 rounded-3xl bg-white border border-zinc-200 shadow-md space-y-4">
             <div>
-              <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-2">Operating Hours</h4>
-              <div class="space-y-1 text-xs text-slate-300">
+              <h4 class="text-xs font-bold text-zinc-900 uppercase tracking-wider mb-2 font-mono">Operating Hours</h4>
+              <div class="space-y-1 text-xs text-zinc-600">
                 {siteConfig.workingHours.map((wh) => (
-                  <div class="flex justify-between py-1 border-b border-slate-800 last:border-b-0">
-                    <span class="text-slate-400">{wh.days}</span>
-                    <span class="font-medium text-white">{wh.hours}</span>
+                  <div class="flex justify-between py-1 border-b border-zinc-100 last:border-b-0 font-mono">
+                    <span class="text-zinc-500">{wh.days}</span>
+                    <span class="font-medium text-zinc-800">{wh.hours}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             <div class="pt-2">
-              <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-2">Active Service Zones</h4>
+              <h4 class="text-xs font-bold text-zinc-900 uppercase tracking-wider mb-2 font-mono">Active Service Zones</h4>
               <div class="flex flex-wrap gap-1.5">
                 {siteConfig.serviceAreas.map((area) => (
-                  <span class="px-2 py-0.5 rounded text-[11px] bg-slate-950 border border-slate-800 text-slate-300">
+                  <span class="px-2.5 py-0.5 rounded-full text-[11px] bg-zinc-50 border border-zinc-200 text-zinc-700 font-mono">
                     {area.name}
-                    {area.status === 'confirm with client' && (
-                      <span class="text-[9px] text-amber-500/80 ml-1">*</span>
-                    )}
                   </span>
                 ))}
               </div>
-              <p class="text-[10px] text-slate-400 mt-2 italic">*Marked areas: Confirm coverage radius with client</p>
             </div>
           </div>
 
@@ -381,21 +376,19 @@ const bannerVideo = mediaManifest.banners.about;
 
         const fullText = `*Inquiry from Website: Needs Group*\n*Name:* ${name}\n*Phone:* ${phone}\n*Service:* ${service}\n*Details:* ${msg}`;
         
-        // Open the WhatsApp Picker with this prefilled message!
-        if ((window as any).openNeedsWhatsApp) {
-          (window as any).openNeedsWhatsApp(service, fullText);
-        }
+        // Open WhatsApp via URL
+        const targetNumber = '919353154607';
+        window.open(`https://wa.me/${targetNumber}?text=${encodeURIComponent(fullText)}`, '_blank');
       });
 
       // Handle standard form submit with visual feedback
       form?.addEventListener('submit', async (e) => {
-        // If placeholder endpoint is still active, notify gracefully
         if (form.action.includes('xyzplaceholder')) {
           e.preventDefault();
           if (statusMsg) {
             statusMsg.classList.remove('hidden');
-            statusMsg.className = 'text-xs p-3 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300';
-            statusMsg.innerHTML = 'Thank you! The form endpoint is currently configured in placeholder mode. Click <strong>"Send via WhatsApp"</strong> right below to transmit your details immediately!';
+            statusMsg.className = 'text-xs p-3 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 font-mono';
+            statusMsg.innerHTML = 'Thank you! Click <strong>"Send via WhatsApp"</strong> right below to transmit your details immediately to our engineering desk!';
           }
         }
       });

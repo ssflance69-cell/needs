@@ -34,20 +34,20 @@ const aboutBannerVideo = mediaManifest.banners.about;
   <StatsCounter />
 
   <!-- Company Story & Coastal Philosophy -->
-  <section class="py-20 lg:py-28 bg-slate-950">
+  <section class="py-20 lg:py-28 bg-white border-b border-zinc-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         
         <div class="space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold uppercase tracking-wider font-mono shadow-sm">
             FOUNDED IN SURATHKAL, 2009
           </div>
           
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading leading-tight">
-            Built Around Coastal Realities, Engineered for Generations
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-900 font-heading leading-tight">
+            Built Around Coastal Realities, Engineered for <span class="text-gradient-bronze">Generations</span>
           </h2>
 
-          <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+          <div class="space-y-4 text-zinc-600 text-sm sm:text-base leading-relaxed">
             <p>
               When Needs Group began fabrication in Surathkal in 2009, our founders recognized a critical challenge facing builders and homeowners across Mangaluru, Mangalore, and coastal Karnataka: conventional railings and metal fixtures deteriorated rapidly under humid, saline sea breezes.
             </p>
@@ -59,17 +59,17 @@ const aboutBannerVideo = mediaManifest.banners.about;
             </p>
           </div>
 
-          <div class="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-slate-200">
+          <div class="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-zinc-700">
             <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+              <span class="w-2 h-2 rounded-full bg-amber-700"></span>
               <span>In-House Precision TIG/MIG Welding</span>
             </div>
             <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+              <span class="w-2 h-2 rounded-full bg-amber-700"></span>
               <span>Multi-Axis Laser Alignment</span>
             </div>
             <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+              <span class="w-2 h-2 rounded-full bg-amber-700"></span>
               <span>100% Rust-Proof Guarantee</span>
             </div>
           </div>
@@ -77,20 +77,28 @@ const aboutBannerVideo = mediaManifest.banners.about;
 
         <!-- Workshop Feature Visual -->
         <div class="relative space-y-4">
-          <div class="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900 aspect-[4/3]">
-            <img
-              src={mediaManifest.about.workshop.image}
-              alt={mediaManifest.about.workshop.alt}
-              width="800"
-              height="600"
-              loading="lazy"
-              decoding="async"
-              class="w-full h-full object-cover"
-            />
+          <div class="rounded-3xl overflow-hidden border border-zinc-200 shadow-xl bg-zinc-900 aspect-[4/3] relative group bg-cover bg-center" style={`background-image: url('${mediaManifest.about.workshop.image}');`}>
+            <video
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              autoplay
+              loop
+              muted
+              playsinline
+              preload="auto"
+              poster={mediaManifest.about.workshop.image}
+              aria-hidden="true"
+            >
+              <source src="/videos/services/about-workshop.mp4" type="video/mp4" />
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/60 via-transparent to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/10 text-[10px] text-white font-mono shadow-sm">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>LIVE WORKSHOP OPERATION • SURATHKAL</span>
+            </div>
           </div>
           
           <div class="grid grid-cols-2 gap-4">
-            <div class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 aspect-[4/3]">
+            <div class="rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-100 aspect-[4/3] shadow-md">
               <img
                 src={mediaManifest.about.craftsmanship.image}
                 alt={mediaManifest.about.craftsmanship.alt}
@@ -101,7 +109,7 @@ const aboutBannerVideo = mediaManifest.banners.about;
                 class="w-full h-full object-cover"
               />
             </div>
-            <div class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 aspect-[4/3]">
+            <div class="rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-100 aspect-[4/3] shadow-md">
               <img
                 src={mediaManifest.about.installation.image}
                 alt={mediaManifest.about.installation.alt}
@@ -120,31 +128,31 @@ const aboutBannerVideo = mediaManifest.banners.about;
   </section>
 
   <!-- 6-Step Precision Process -->
-  <section class="py-20 lg:py-24 bg-slate-900/40 border-y border-slate-800/80">
+  <section class="py-20 lg:py-24 bg-zinc-50/70 border-b border-zinc-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
       
       <div class="text-center max-w-3xl mx-auto space-y-3">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 text-amber-900 border border-amber-200 text-xs font-semibold uppercase tracking-wider font-mono shadow-sm">
           THE NEEDS GROUP METHOD
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">
-          Our Seamless 6-Step Execution Process
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-900 font-heading">
+          Our Seamless 6-Step <span class="text-gradient-bronze">Execution Process</span>
         </h2>
-        <p class="text-slate-300 text-sm">
+        <p class="text-zinc-600 text-sm">
           Every project, from a residential glass staircase to a commercial canopy, follows a disciplined engineering roadmap.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {siteConfig.processSteps.map((step) => (
-          <div class="glass-card p-8 rounded-2xl relative space-y-4 border border-slate-800">
-            <div class="text-4xl font-black text-amber-500/30 font-heading">
+          <div class="bg-white p-8 rounded-2xl relative space-y-4 border border-zinc-200 hover:border-amber-400 shadow-sm hover:shadow-md transition-all">
+            <div class="text-4xl font-black text-zinc-200 font-heading">
               {step.step}
             </div>
-            <h3 class="text-xl font-bold text-white font-heading">
+            <h3 class="text-xl font-bold text-zinc-900 font-heading">
               {step.title}
             </h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
               {step.description}
             </p>
           </div>
@@ -155,25 +163,25 @@ const aboutBannerVideo = mediaManifest.banners.about;
   </section>
 
   <!-- Workshop & Values Grid -->
-  <section class="py-20 bg-slate-950">
+  <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
       <div class="text-center max-w-2xl mx-auto space-y-3">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-500/10 text-sky-400 text-xs font-semibold uppercase tracking-wider">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold uppercase tracking-wider font-mono shadow-sm">
           QUALITY STANDARDS
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-900 font-heading">
           Engineered Without Compromise
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {siteConfig.values.map((v, i) => (
-          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
-            <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-amber-400 font-bold text-xs">
+          <div class="p-6 rounded-2xl bg-white border border-zinc-200 space-y-3 shadow-sm hover:shadow-md hover:border-amber-300 transition-all">
+            <div class="w-8 h-8 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800 font-bold text-xs font-mono shadow-sm">
               0{i + 1}
             </div>
-            <h3 class="text-lg font-bold text-white font-heading">{v.title}</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">{v.description}</p>
+            <h3 class="text-lg font-bold text-zinc-900 font-heading">{v.title}</h3>
+            <p class="text-xs text-zinc-500 leading-relaxed">{v.description}</p>
           </div>
         ))}
       </div>

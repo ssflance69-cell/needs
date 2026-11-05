@@ -43,12 +43,23 @@ const {
       noindex={noindex}
     />
   </head>
-  <body class="min-h-screen bg-slate-950 text-slate-100 flex flex-col antialiased selection:bg-amber-500 selection:text-slate-950">
+  <body class="min-h-screen bg-white text-zinc-900 flex flex-col antialiased selection:bg-amber-100 selection:text-amber-900 relative overflow-x-hidden">
+    <!-- Schüco Architectural Studio Atmosphere & Warm Bronze Blooms -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      <!-- Soft ambient champagne & titanium reflections -->
+      <div class="absolute -top-[10%] left-1/4 w-[850px] h-[850px] bg-amber-100/35 rounded-full blur-[160px]"></div>
+      <div class="absolute top-[35%] -right-[15%] w-[800px] h-[800px] bg-orange-50/40 rounded-full blur-[170px]"></div>
+      <div class="absolute bottom-[5%] -left-[10%] w-[900px] h-[900px] bg-stone-100/50 rounded-full blur-[180px]"></div>
+      
+      <!-- Architectural Precision Grid -->
+      <div class="absolute inset-0 bg-tactical-grid opacity-50"></div>
+    </div>
+
     <!-- Main Header -->
     <Header currentPath={Astro.url.pathname} />
 
     <!-- Page Body Slot -->
-    <main class="flex-1">
+    <main class="flex-1 relative z-10">
       <slot />
     </main>
 
