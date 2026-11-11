@@ -30,7 +30,7 @@ const allProjects = limit ? mediaManifest.projects.slice(0, limit) : mediaManife
         type="button"
         data-filter-btn={cat.id}
         class:list={[
-          'project-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wide whitespace-nowrap transition-all duration-200 border font-mono shadow-sm',
+          'project-filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wide whitespace-nowrap transition-all duration-200 border shadow-sm',
           cat.id === initialFilter
             ? 'bg-amber-700 text-white border-amber-700 shadow-md font-bold'
             : 'bg-white text-zinc-600 border-zinc-200 hover:border-amber-300 hover:text-zinc-900',
@@ -69,18 +69,18 @@ const allProjects = limit ? mediaManifest.projects.slice(0, limit) : mediaManife
 
               <!-- View Icon Badge on Hover -->
               <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div class="w-12 h-12 rounded-full bg-white/95 text-amber-800 border border-amber-300 flex items-center justify-center shadow-lg font-mono text-xs font-bold">
+                <div class="w-12 h-12 rounded-full bg-white/95 text-amber-800 border border-amber-300 flex items-center justify-center shadow-lg text-xs font-bold">
                   View
                 </div>
               </div>
 
               <!-- Category Tag -->
-              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-zinc-200 text-[10px] font-bold tracking-wider uppercase text-amber-900 font-mono shadow-sm">
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-zinc-200 text-[10px] font-bold tracking-wider uppercase text-amber-900 shadow-sm">
                 {item.category}
               </div>
 
               <!-- Location Tag -->
-              <div class="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-black/60 backdrop-blur-sm text-[11px] text-white flex items-center gap-1.5 font-mono">
+              <div class="absolute bottom-3 left-3 px-2.5 py-0.5 rounded bg-black/60 backdrop-blur-sm text-[11px] text-white flex items-center gap-1.5">
                 <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />

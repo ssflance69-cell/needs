@@ -17,7 +17,7 @@ const currentYear = new Date().getFullYear();
             </svg>
           </div>
           <div>
-            <div class="text-[10px] uppercase tracking-widest text-zinc-400 font-mono font-bold">Fabrication Facility</div>
+            <div class="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">Fabrication Facility</div>
             <div class="text-sm font-semibold text-white">Surathkal, Mangaluru, Karnataka</div>
           </div>
         </div>
@@ -29,7 +29,7 @@ const currentYear = new Date().getFullYear();
             </svg>
           </div>
           <div>
-            <div class="text-[10px] uppercase tracking-widest text-zinc-400 font-mono font-bold">Proven Track Record</div>
+            <div class="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">Proven Track Record</div>
             <div class="text-sm font-semibold text-white">15 Years • 900+ Completed Installations</div>
           </div>
         </div>
@@ -41,7 +41,7 @@ const currentYear = new Date().getFullYear();
             </svg>
           </div>
           <div>
-            <div class="text-[10px] uppercase tracking-widest text-zinc-400 font-mono font-bold">Engineering Desk</div>
+            <div class="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">Engineering Desk</div>
             <div class="text-sm font-semibold text-white">Dual WhatsApp &amp; Technical Support</div>
           </div>
         </div>
@@ -56,7 +56,7 @@ const currentYear = new Date().getFullYear();
       <!-- Company Overview (Col 1 & 2) -->
       <div class="lg:col-span-2 space-y-5">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-amber-500 font-mono font-bold shadow-inner">
+          <div class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-amber-500 font-bold shadow-inner">
             NG
           </div>
           <span class="text-xl font-bold text-white font-heading">{siteConfig.name}</span>
@@ -68,8 +68,8 @@ const currentYear = new Date().getFullYear();
 
         <!-- Material Certifications -->
         <div class="pt-2">
-          <div class="text-[10px] font-bold uppercase tracking-widest text-amber-400 font-mono mb-2">Technical Certifications</div>
-          <div class="flex flex-wrap gap-2 text-[10px] font-mono text-zinc-300">
+          <div class="text-[10px] font-semibold uppercase tracking-widest text-amber-400 mb-2">Technical Certifications</div>
+          <div class="flex flex-wrap gap-2 text-xs text-zinc-300">
             <span class="px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-amber-200">AIS Certified Glazing</span>
             <span class="px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-amber-200">Saint-Gobain Partner</span>
             <span class="px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-amber-200">SS 316 Marine Grade</span>
@@ -114,25 +114,25 @@ const currentYear = new Date().getFullYear();
         
         <div class="space-y-2 text-xs text-zinc-400">
           <div class="flex items-start gap-2">
-            <span class="text-amber-400 font-bold font-mono">Office:</span>
+            <span class="text-amber-300 font-semibold">Office:</span>
             <span class="text-zinc-300">{siteConfig.address.fullFormatted}</span>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-amber-400 font-bold font-mono">Email:</span>
+            <span class="text-amber-300 font-semibold">Email:</span>
             <a href={`mailto:${siteConfig.email}`} class="text-white hover:text-amber-400 underline">{siteConfig.email}</a>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-amber-400 font-bold font-mono">WhatsApp:</span>
+            <span class="text-amber-300 font-semibold">WhatsApp:</span>
             <span class="text-zinc-300">+91 93531 54607 / +91 84312 84752</span>
           </div>
         </div>
 
         <!-- Service Areas Pill List -->
         <div class="pt-2">
-          <div class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 font-mono mb-2">Service Coverage (Coastal Karnataka):</div>
+          <div class="text-[10px] font-semibold uppercase tracking-widest text-zinc-400 mb-2">Service Coverage (Coastal Karnataka):</div>
           <div class="flex flex-wrap gap-1.5">
             {siteConfig.serviceAreas.map((area) => (
-              <span class="px-2.5 py-0.5 rounded-full text-[10px] bg-zinc-900 border border-zinc-800 text-zinc-300 font-mono">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] bg-zinc-900 border border-zinc-800 text-zinc-300">
                 {area.name}
               </span>
             ))}
@@ -149,11 +149,11 @@ const currentYear = new Date().getFullYear();
         </div>
         <div class="text-zinc-800 hidden sm:inline">•</div>
         <div>
-          GSTIN: <span class="text-amber-400 font-mono">{siteConfig.gstin}</span>
+          GSTIN: <span class="text-amber-300 font-medium">{siteConfig.gstin}</span>
         </div>
       </div>
 
-      <div class="text-center md:text-right text-[11px] text-zinc-500 font-mono">
+      <div class="text-center md:text-right text-xs text-zinc-500">
         Fabricated with precision in Surathkal, Mangaluru, Karnataka, India
       </div>
     </div>

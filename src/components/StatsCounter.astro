@@ -15,7 +15,7 @@ const stats = siteConfig.stats;
         >
           <div class="flex items-baseline justify-center">
             <span
-              class="stat-counter text-4xl sm:text-5xl font-black text-zinc-900 font-heading font-mono tabular-nums tracking-tighter"
+              class="stat-counter text-4xl sm:text-5xl font-black text-zinc-900 font-heading tabular-nums tracking-tight"
               data-target={item.value}
             >
               0
@@ -25,7 +25,7 @@ const stats = siteConfig.stats;
             </span>
           </div>
           <div class="text-sm font-semibold text-zinc-800">{item.label}</div>
-          <div class="text-xs text-zinc-500 font-mono">{item.sublabel}</div>
+          <div class="text-xs text-zinc-500">{item.sublabel}</div>
         </div>
       ))}
     </div>

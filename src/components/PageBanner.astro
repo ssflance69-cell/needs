@@ -34,7 +34,7 @@ const {
         <!-- Breadcrumb navigation -->
         {breadcrumbs.length > 0 && (
           <nav aria-label="Breadcrumb">
-            <ol class="flex flex-wrap items-center gap-2 text-xs text-zinc-500 font-mono">
+            <ol class="flex flex-wrap items-center gap-2 text-xs text-zinc-500">
               <li>
                 <a href="/" class="hover:text-amber-800 transition-colors">Home</a>
               </li>
@@ -57,8 +57,8 @@ const {
         )}
 
         <!-- Banner Badge -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold tracking-widest uppercase shadow-xs font-mono">
-          <span class="w-2 h-2 rounded-full bg-amber-600 animate-pulse"></span>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold tracking-wider uppercase shadow-xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
           {badge}
         </div>
 
@@ -120,13 +120,10 @@ const {
 
           <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent pointer-events-none"></div>
 
-          <!-- Live Telemetry Badge -->
-          <div class="absolute bottom-3 left-3 flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/10 text-[10px] text-white font-mono shadow-sm pointer-events-none">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <span class="font-medium tracking-wider uppercase text-zinc-200">LIVE MOTION • 1080P SPEC</span>
+          <!-- Video Caption Pill -->
+          <div class="absolute bottom-3 left-3 flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/10 text-xs text-white shadow-sm pointer-events-none">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span class="font-medium tracking-wide uppercase text-zinc-200">Workshop Fabrication</span>
           </div>
 
           <!-- Video Lightbox / Expand Button -->
