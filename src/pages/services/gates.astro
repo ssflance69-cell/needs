@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageBanner from '../../components/PageBanner.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import { mediaManifest } from '../../data/media';
+
+const bannerVideo = mediaManifest.banners.gates;
+
+const gateTypes = [
+  {
+    id: 'ss-gates',
+    name: 'Stainless Steel Entrance Gates (SS 304 & SS 316)',
+    subtitle: 'Premium rustproof driveway and pedestrian gates with satin brush or mirror finishes',
+    image: '/images/services/gates.webp',
+    alt: 'Custom stainless steel entrance gate on an Indian residential house in Mangaluru',
+    description:
+      'Engineered specifically for coastal estates and luxury villas exposed to salty coastal air. Fabricated from certified Grade 304 or marine-grade 316 stainless steel hollow sections, solid bars, and modern horizontal slats. Seamless TIG welding and electro-polished surfaces ensure zero pitting and an immaculate modern appearance for decades.',
+    benefits: [
+      '100% rust-free performance under extreme coastal salinity and monsoon rains',
+      'High structural strength resisting wind shear and unauthorized vehicle impact',
+      'Available with motorized sliding gear racks or heavy-duty ball-bearing pivot hinges',
+      'Custom laser-cut ornamental or minimalist architectural louver designs',
+    ],
+    bestUseCases: [
+      'Seaside villas, beach houses, and luxury residential compounds in Surathkal & Mangaluru',
+      'Commercial corporate office perimeters requiring prestige entrance statements',
+      'Automated remote-controlled main driveway entrances',
+    ],
+    specs: 'SS 304 / SS 316 | 2.0mm to 3.5mm wall thickness | Satin brush / Mirror buffed',
+  },
+  {
+    id: 'gi-gates',
+    name: 'Galvanized Iron Gates (GI Sliding & Swing Gates)',
+    subtitle: 'Heavy-duty galvanized compound gates with multi-layer thermoset powder coating',
+    image: '/images/projects/project-gates-01.webp',
+    alt: 'Hot-dip galvanized iron compound gate with industrial powder coat on Indian villa driveway',
+    description:
+      'Galvanized Iron (GI) entrance gates provide maximum impact security and rigidity at an accessible cost. Fabricated using high-tensile hollow sections hot-dip galvanized or zinc-passivated to block rust. Finished with electrostatic architectural thermoset powder coating in matte charcoal, graphite, jet black, or bronze.',
+    benefits: [
+      'Heavy structural mass providing robust boundary security and anti-ram resistance',
+      'Hot-dip zinc coating protects interior and exterior metal against tropical rust',
+      'Easily motorized with standard underground or articulated gate openers',
+      'Flexible styling from contemporary horizontal slats to classical ornate motifs',
+    ],
+    bestUseCases: [
+      'Residential compound perimeters, independent houses, and gated communities',
+      'Industrial warehouse boundaries, factory truck entrances in Baikampady',
+      'Commercial plots, parking facilities, and agricultural estates',
+    ],
+    specs: 'Hot-dip GI hollow section | Zinc primer | 80+ micron UV-resistant powder coat',
+  },
+];
+---
+
+<Layout
+  title="Stainless Steel & GI Entrance Gates in Mangaluru & Surathkal"
+  description="Custom fabricated stainless steel (SS), galvanized iron (GI), and motorized sliding compound gates engineered for coastal weather in Mangaluru."
+  serviceSchema={{
+    name: 'Architectural Gates Fabrication & Automation',
+    description: 'Custom stainless steel and GI entrance gates, sliding gates, and motorized systems in Mangaluru.',
+    serviceType: 'Metal Gates Fabrication',
+  }}
+  videoSchema={{
+    name: bannerVideo.title,
+    description: bannerVideo.description,
+    thumbnailUrl: bannerVideo.poster,
+    uploadDate: bannerVideo.uploadDate,
+    contentUrl: bannerVideo.mp4,
+  }}
+>
+  <!-- Page Banner -->
+  <PageBanner
+    title="SS, GI & Modern Architectural Entrance Gates"
+    subtitle="Precision engineered for security, coastal corrosion resistance, and effortless automated operation. Fabricated from certified SS 304/316 and hot-dip GI at our Surathkal workshop."
+    badge="CUSTOM ENTRANCE GATES"
+    video={bannerVideo}
+    breadcrumbs={[
+      { label: 'Services', href: '/services/' },
+      { label: 'Gates' },
+    ]}
+    serviceName="Architectural Gates"
+  />
+
+  <!-- Main Content: Gate Varieties -->
+  <section class="py-16 sm:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+      
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 text-amber-900 border border-amber-200 text-xs font-semibold uppercase tracking-wider font-mono shadow-sm">
+          COASTAL DURABILITY &amp; SECURITY
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-900 font-heading">
+          Engineered for <span class="text-gradient-bronze">Coastal Weather &amp; Enduring Elegance</span>
+        </h2>
+        <p class="text-zinc-600 text-base leading-relaxed">
+          Your compound gate is both the primary security barrier and the first architectural statement of your property. In coastal Mangaluru and Surathkal, gates face heavy monsoon rains and saline breezes that corrode standard steel within seasons. Needs Group uses genuine SS 304/316, heavy-gauge hot-dip GI, and high-performance powder coatings for decades of effortless operation.
+        </p>
+      </div>
+
+      <!-- Gate Types List -->
+      <div class="space-y-16">
+        {gateTypes.map((gate, idx) => (
+          <div
+            id={gate.id}
+            class="scroll-mt-28 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center p-6 sm:p-8 rounded-3xl bg-zinc-50 border border-zinc-200 shadow-sm"
+          >
+            <!-- Visual Card (5 Cols) -->
+            <div class:list={['lg:col-span-5 space-y-4', idx % 2 === 1 ? 'lg:order-2' : '']}>
+              <div class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-100 shadow-md">
+                <img
+                  src={gate.image}
+                  alt={gate.alt}
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-3.5 rounded-xl bg-white border border-zinc-200 text-xs text-zinc-700 font-mono shadow-sm">
+                <span class="text-amber-800 font-bold">Specifications:</span> {gate.specs}
+              </div>
+            </div>
+
+            <!-- Content Details (7 Cols) -->
+            <div class:list={['lg:col-span-7 space-y-5', idx % 2 === 1 ? 'lg:order-1' : '']}>
+              <div class="space-y-2">
+                <h3 class="text-2xl sm:text-3xl font-bold text-zinc-900 font-heading">
+                  {gate.name}
+                </h3>
+                <p class="text-sm font-semibold text-amber-800 font-mono">
+                  {gate.subtitle}
+                </p>
+              </div>
+
+              <p class="text-zinc-600 text-sm leading-relaxed">
+                {gate.description}
+              </p>
+
+              <!-- Key Benefits Checklist -->
+              <div class="space-y-2.5">
+                <div class="text-xs font-bold text-zinc-900 uppercase tracking-wider font-mono">Key Advantages</div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-zinc-700">
+                  {gate.benefits.map((benefit) => (
+                    <div class="flex items-start gap-2">
+                      <span class="text-emerald-600 font-bold">✓</span>
+                      <span>{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Best Use Cases -->
+              <div class="pt-2 border-t border-zinc-200 space-y-1.5">
+                <div class="text-xs font-bold text-zinc-500 uppercase tracking-wider font-mono">Recommended Applications:</div>
+                <ul class="text-xs text-zinc-600 list-disc list-inside space-y-1">
+                  {gate.bestUseCases.map((useCase) => (
+                    <li>{useCase}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="pt-4 flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  data-open-whatsapp
+                  data-service={gate.name}
+                  class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-amber-700 via-amber-600 to-amber-800 hover:scale-[1.02] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+                  <span>Get Quote for {gate.name}</span>
+                </button>
+                <a
+                  href="/contact/#enquiry-form"
+                  class="inline-flex items-center gap-1.5 px-5 py-3 rounded-full bg-white border border-zinc-200 text-zinc-800 text-xs font-semibold hover:border-amber-400 uppercase tracking-wider transition-colors shadow-sm"
+                >
+                  <span>Book Site Measurement</span>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <CTABanner
+    title="Need a Custom Entrance Gate Built to Last?"
+    subtitle="Contact Needs Group for custom designs, automated sliding tracks, and on-site laser measurements across Surathkal and Mangaluru."
+    serviceName="Gates Fabrication Consultation"
+  />
+</Layout>
+

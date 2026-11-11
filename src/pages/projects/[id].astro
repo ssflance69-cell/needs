@@ -1,0 +1,412 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageBanner from '../../components/PageBanner.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import { mediaManifest, type ProjectMediaItem } from '../../data/media';
+import { siteConfig } from '../../data/site';
+
+export async function getStaticPaths() {
+  return mediaManifest.projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: ProjectMediaItem;
+}
+
+const { project } = Astro.props;
+
+// Category metadata and features dictionary
+const categoryDetails: Record<string, { label: string; features: string[]; specs: Record<string, string> }> = {
+  railings: {
+    label: 'Architectural Railings',
+    features: [
+      'Certified SS 304 / Marine-Grade SS 316 and Hot-Dip Galvanized Iron (GI)',
+      'Precision argon TIG welding with seamless, invisible joint grinding',
+      'Engineered for high coastal wind-loads on open balconies and terraces',
+      'Multi-coat polyurethane protective sealer for hardwood teak handrails',
+      '12mm toughened or PVB laminated safety glass tested for heavy human impact',
+    ],
+    specs: {
+      'Primary Material': 'Marine-grade SS 316 / SS 304 / Hot-Dip GI / Teak',
+      'Wall Thickness': '1.5mm to 3.0mm structural hollow tubes',
+      'Mounting Hardware': 'SS 316 Anchor fasteners & concealed base shoe channels',
+      'Coating / Finish': 'Satin hairline brush / 80-micron powder coat',
+      'Location': project.location,
+      'Client Discipline': `${project.clientType} Balustrades`,
+      'Warranty Handover': 'Structural integrity & corrosion guarantee',
+    },
+  },
+  windows: {
+    label: 'Windows & Security Grills',
+    features: [
+      'Heavy-duty cold-rolled steel and galvanized iron (GI) security profiles',
+      'Multi-track European sliding rollers with smooth whisper-quiet gliding',
+      'Integrated stainless steel anti-mosquito mesh and safety interlocks',
+      'Continuous EPDM acoustic weatherstripping against monsoon rainwater seepage',
+      'Zinc-passivated chromate conversion coating resisting coastal saline air',
+    ],
+    specs: {
+      'Profile System': 'Architectural Alloy 6063-T6 / Hot-Dip GI / Heavy MS bars',
+      'Security Core': '12mm / 16mm solid welded square security bars',
+      'Glass Type': '5mm–12mm Toughened or double-glazed acoustic glass',
+      'Surface Finish': '25-micron Anodized / Thermoset architectural powder coat',
+      'Location': project.location,
+      'Client Discipline': `${project.clientType} Window Systems`,
+      'Weather Seal': 'Continuous rain-baffle & dual EPDM acoustic gaskets',
+    },
+  },
+  canopy: {
+    label: 'Architectural Glass Canopy',
+    features: [
+      'Multi-layer PVB / SentryGlas laminated architectural safety glass',
+      'Solid investment cast SS 316 articulated spider fittings and routels',
+      'Heavy-duty cantilevered steel I-beam or tie-rod suspended support truss',
+      'Engineered slope geometry with concealed perimeter monsoon drainage channels',
+      'Full protection against harsh ultraviolet rays and coastal rainfall',
+    ],
+    specs: {
+      'Glass Specification': '13.52mm / 17.52mm Laminated Toughened Safety Glass',
+      'Spider Brackets': 'Marine-grade solid cast SS 316 with articulating routels',
+      'Structural Framing': 'Heavy MS structural hollow sections & I-beams',
+      'Wind Load Rating': 'Zone III coastal wind pressures certified',
+      'Location': project.location,
+      'Client Discipline': `${project.clientType} Entrance Glazing`,
+      'Water Drainage': 'Integrated slope runoff & concealed perimeter gutters',
+    },
+  },
+  gates: {
+    label: 'Architectural Compound Gates',
+    features: [
+      'Heavy-gauge hot-dip galvanized iron (GI) box structural perimeter frame',
+      'Marine-grade SS 304 horizontal louvers, slats, or CNC laser-cut decorative panels',
+      'Smooth heavy-duty V-groove floor track rollers with sealed ball bearings',
+      'Engineered for manual push or automated sliding/swing motor gear-racks',
+      'Zinc-phosphate primer followed by 80-micron UV-stabilized electrostatic powder coat',
+    ],
+    specs: {
+      'Frame Construction': 'Heavy GI rectangular box sections (60x40 / 80x40mm)',
+      'Infill Materials': 'Grade 304 Stainless Steel slats & CNC laser-cut sheets',
+      'Track Hardware': 'High-tensile steel ground track with sealed bearing wheels',
+      'Surface Treatment': 'Hot-dip galvanizing + Anti-corrosive architectural coat',
+      'Location': project.location,
+      'Client Discipline': `${project.clientType} Compound Gate`,
+      'Automation Ready': 'Pre-drilled mounting plates for electric motor drive',
+    },
+  },
+  interior: {
+    label: 'Interior Metal & Glass Partitions',
+    features: [
+      'Slim architectural metal sightlines creating modern open-plan zone division',
+      'Vertical fluted (reeded) textured privacy glass allowing natural daylight flow',
+      'Custom floor-to-ceiling structural anchoring with concealed expansion bolts',
+      'Vibration-damped acoustic rubber perimeter glazing beads',
+      'Scratch-resistant matte jet black electrostatic architectural finish',
+    ],
+    specs: {
+      'Frame Material': 'Cold-rolled precision steel tube grid framing',
+      'Glass Type': '8mm / 10mm Toughened fluted reeded privacy glass',
+      'Color Finish': 'Matte jet black electrostatic architectural coating',
+      'Mounting': 'Concealed ceiling, wall, and floor anchor fasteners',
+      'Location': project.location,
+      'Client Discipline': `${project.clientType} Interior Partition`,
+      'Acoustic Damping': 'Internal rubber channel isolators',
+    },
+  },
+  construction: {
+    label: 'Turnkey Structural Construction',
+    features: [
+      'Certified structural steel columns, beams, and composite metal decking',
+      'Precision anchor bolt foundation layout surveyed with digital laser levels',
+      'Stick welding and Grade 8.8 high-tensile bolted moment connections',
+      'Full compliance with Indian standard building codes for coastal wind loads',
+      'Turnkey civil execution from foundation footing to roof elevation handover',
+    ],
+    specs: {
+      'Steel Sections': 'Standard ISMB / ISMC / SHS heavy rolled structural sections',
+      'Bolting Grade': 'High-tensile Grade 8.8 structural bolts',
+      'Foundation Anchors': 'Heavy mechanical & chemical resin anchors',
+      'Rustproofing': 'Zinc chromate red oxide primer + Epoxy topcoat',
+      'Location': project.location,
+      'Client Discipline': `${project.clientType} Structural Construction`,
+      'Survey Method': 'Digital total-station laser alignment',
+    },
+  },
+};
+
+const categoryInfo = categoryDetails[project.category] || categoryDetails.railings;
+
+// Related projects in the same category or other categories
+const relatedProjects = mediaManifest.projects
+  .filter((p) => p.id !== project.id)
+  .slice(0, 3);
+
+const bannerVideo = mediaManifest.banners.railings;
+const waInquiryText = encodeURIComponent(
+  `Hi Needs Group, I'm viewing your project "${project.title}" (${project.location}) on your website. I would like to get a quotation and discuss site measurement for a similar requirement.`
+);
+---
+
+<Layout
+  title={`${project.title} – Needs Group Project Portfolio`}
+  description={`${project.title} completed in ${project.location} by Needs Group. Explore technical specifications, material grading, features, and site photos.`}
+  videoSchema={
+    project.type === 'video' && project.videoSources
+      ? {
+          name: project.title,
+          description: project.description,
+          thumbnailUrl: project.image,
+          contentUrl: project.videoSources.mp4,
+          uploadDate: `${project.completionYear}-01-15`,
+        }
+      : undefined
+  }
+>
+  <!-- Page Banner -->
+  <PageBanner
+    title={project.title}
+    subtitle={`${categoryInfo.label} fabricated and installed on-site in ${project.location}. Completed in ${project.completionYear} for ${project.clientType} client.`}
+    badge={`PROJECT DELIVERED • ${project.completionYear}`}
+    video={bannerVideo}
+    breadcrumbs={[
+      { label: 'Projects', href: '/projects/' },
+      { label: project.title },
+    ]}
+    serviceName={project.title}
+  />
+
+  <!-- Main Project Detail Content -->
+  <article class="py-16 sm:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+      <!-- Top Back Link & Meta Pill Bar -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-200">
+        <a
+          href="/projects/"
+          class="inline-flex items-center gap-2 text-xs font-bold text-amber-900 hover:text-amber-700 font-mono transition-colors uppercase tracking-wider"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          <span>Back to All Projects</span>
+        </a>
+
+        <div class="flex flex-wrap items-center gap-2 font-mono text-xs">
+          <span class="px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200 font-semibold uppercase">
+            {categoryInfo.label}
+          </span>
+          <span class="px-3 py-1 rounded-full bg-zinc-100 text-zinc-700 border border-zinc-200">
+            {project.clientType}
+          </span>
+          <span class="px-3 py-1 rounded-full bg-zinc-100 text-zinc-700 border border-zinc-200">
+            Year {project.completionYear}
+          </span>
+          <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold">
+            ✓ Verified On-Site Installation
+          </span>
+        </div>
+      </div>
+
+      <!-- Main Showcase Grid: Left Media Player / Right Key Highlights -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+
+        <!-- Left Column: Big Media Display (7 Cols) -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="rounded-3xl overflow-hidden border border-zinc-200 bg-zinc-950 shadow-2xl relative aspect-[16/10]">
+            {project.type === 'video' && project.videoSources ? (
+              <video
+                controls
+                autoplay
+                muted
+                loop
+                playsinline
+                poster={project.image}
+                class="w-full h-full object-cover"
+              >
+                <source src={project.videoSources.mp4} type="video/mp4" />
+                <source src={project.videoSources.webm} type="video/webm" />
+                Your browser does not support HTML5 video playback.
+              </video>
+            ) : (
+              <img
+                src={project.image}
+                alt={project.alt}
+                width="1200"
+                height="750"
+                loading="eager"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+            )}
+          </div>
+
+          <!-- Location Badge Banner -->
+          <div class="p-4 rounded-2xl bg-zinc-50 border border-zinc-200 flex items-center justify-between gap-4 text-xs font-mono">
+            <div class="flex items-center gap-2 text-zinc-700">
+              <svg class="w-4 h-4 text-amber-700 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span><strong>Site Location:</strong> {project.location}</span>
+            </div>
+            <span class="text-zinc-500 hidden sm:inline">Fabricated at Surathkal Workshop</span>
+          </div>
+
+          <!-- Project Overview -->
+          <div class="space-y-4 pt-2">
+            <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 font-heading">
+              Project Overview &amp; Site Context
+            </h2>
+            <p class="text-zinc-600 text-sm sm:text-base leading-relaxed">
+              {project.description}
+            </p>
+            <p class="text-zinc-600 text-sm sm:text-base leading-relaxed">
+              Engineered and fabricated specifically for the coastal environment of Mangaluru and Surathkal, where intense salinity and heavy monsoon humidity can deteriorate ordinary metal fixtures within months. Every joint was executed by certified welders, surveyed with digital laser alignment, and securely anchored into masonry.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Column: Specs, Features & Consultation Card (5 Cols) -->
+        <div class="lg:col-span-5 space-y-8">
+
+          <!-- Direct Quote & WhatsApp CTA Card -->
+          <div class="p-6 sm:p-8 rounded-3xl bg-zinc-900 text-white shadow-xl space-y-6">
+            <div class="space-y-2">
+              <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold font-mono uppercase tracking-wider">
+                GET EXACT ESTIMATE
+              </span>
+              <h3 class="text-xl sm:text-2xl font-bold font-heading">
+                Interested in this Design?
+              </h3>
+              <p class="text-xs text-zinc-400 leading-relaxed">
+                Send a quick message on WhatsApp referencing this project to receive material grades, laser site measurements, and a transparent quote in Indian Rupees (₹).
+              </p>
+            </div>
+
+            <div class="space-y-3 pt-2">
+              <a
+                href={`https://wa.me/919353154607?text=${waInquiryText}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full flex items-center justify-center gap-2.5 py-3.5 px-6 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+                <span>Quote on WhatsApp</span>
+              </a>
+
+              <a
+                href="/contact/#enquiry-form"
+                class="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 font-semibold text-xs uppercase tracking-wider transition-all"
+              >
+                <span>Book Site Measurement</span>
+              </a>
+            </div>
+
+            <div class="pt-2 border-t border-zinc-800 text-[11px] text-zinc-400 flex items-center justify-between font-mono">
+              <span>Direct Support:</span>
+              <a href="tel:+919353154607" class="text-amber-400 hover:underline">+91 93531 54607</a>
+            </div>
+          </div>
+
+          <!-- Technical Specifications Table -->
+          <div class="p-6 sm:p-8 rounded-3xl bg-zinc-50 border border-zinc-200 shadow-sm space-y-4">
+            <h3 class="text-lg font-bold text-zinc-900 font-heading">
+              Technical Specifications
+            </h3>
+
+            <div class="divide-y divide-zinc-200 text-xs font-mono">
+              {Object.entries(categoryInfo.specs).map(([label, value]) => (
+                <div class="py-2.5 flex items-start justify-between gap-3">
+                  <span class="text-zinc-500 font-semibold shrink-0">{label}:</span>
+                  <span class="text-zinc-900 text-right">{value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Key Engineering Features Checklist -->
+          <div class="p-6 sm:p-8 rounded-3xl bg-white border border-zinc-200 shadow-sm space-y-4">
+            <h3 class="text-lg font-bold text-zinc-900 font-heading">
+              Key Engineering Features
+            </h3>
+
+            <ul class="space-y-3 text-xs text-zinc-700">
+              {categoryInfo.features.map((feat) => (
+                <li class="flex items-start gap-2.5">
+                  <span class="w-4 h-4 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5 font-bold">
+                    ✓
+                  </span>
+                  <span class="leading-relaxed">{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Related Projects Section -->
+      <section class="pt-12 border-t border-zinc-200 space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold text-amber-800 uppercase tracking-widest font-mono">MORE DELIVERIES</span>
+            <h2 class="text-2xl font-bold text-zinc-900 font-heading">Explore Similar Installations</h2>
+          </div>
+          <a
+            href="/projects/"
+            class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-900 hover:text-amber-700 font-mono uppercase tracking-wider"
+          >
+            <span>View All Projects</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {relatedProjects.map((rel) => (
+            <a
+              href={`/projects/${rel.id}/`}
+              class="group rounded-2xl overflow-hidden bg-white border border-zinc-200 hover:border-amber-500/70 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+            >
+              <div class="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100">
+                <img
+                  src={rel.image}
+                  alt={rel.alt}
+                  width="600"
+                  height="375"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-white/90 text-[10px] font-bold font-mono uppercase text-amber-900">
+                  {rel.category}
+                </div>
+              </div>
+              <div class="p-4 space-y-1 flex-1 flex flex-col justify-between">
+                <h4 class="text-sm font-bold text-zinc-900 group-hover:text-amber-800 transition-colors font-heading line-clamp-1">
+                  {rel.title}
+                </h4>
+                <p class="text-xs text-zinc-500 font-mono">
+                  {rel.location}
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  </article>
+
+  <!-- Final CTA -->
+  <CTABanner
+    title="Ready to Start Your Architectural Project?"
+    subtitle="Reach out with your building plans, balcony dimensions, or site location in Surathkal, Mangaluru, or coastal Karnataka."
+    serviceName={project.title}
+  />
+</Layout>
+

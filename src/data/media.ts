@@ -11,7 +11,7 @@ export interface MediaVideoSource {
 export interface ProjectMediaItem {
   id: string;
   title: string;
-  category: 'railings' | 'windows' | 'canopy' | 'interior' | 'construction';
+  category: 'railings' | 'windows' | 'canopy' | 'gates' | 'interior' | 'construction';
   type: 'image' | 'video';
   image: string; // Used as image or video poster
   videoSources?: {
@@ -36,6 +36,7 @@ export interface MediaManifest {
     railings: MediaVideoSource;
     windows: MediaVideoSource;
     glassCanopy: MediaVideoSource;
+    gates: MediaVideoSource;
     interiorWork: MediaVideoSource;
     construction: MediaVideoSource;
   };
@@ -104,6 +105,15 @@ export const mediaManifest: MediaManifest = {
       duration: 'PT0M10S',
       uploadDate: '2024-01-15',
     },
+    gates: {
+      mp4: '/videos/services/railings-banner.mp4',
+      webm: '/videos/services/railings-banner.webm',
+      poster: '/images/services/gates.webp',
+      title: 'Architectural SS & GI Entrance Gates',
+      description: 'Custom motorized and manual sliding and swing entrance gates built for coastal homes across Mangaluru.',
+      duration: 'PT0M10S',
+      uploadDate: '2024-01-15',
+    },
     interiorWork: {
       mp4: '/videos/services/interior-banner.mp4',
       webm: '/videos/services/interior-banner.webm',
@@ -169,6 +179,11 @@ export const mediaManifest: MediaManifest = {
       image: '/images/services/glass-canopy.webp',
       alt: 'Architectural structural glass canopy over entrance in Surathkal, Mangaluru',
       caption: 'Sleek laminated glass canopies with SS 316 spider brackets.',
+    },
+    'gates': {
+      image: '/images/services/gates.webp',
+      alt: 'Custom stainless steel and GI architectural entrance gates fabricated in Surathkal, Mangaluru',
+      caption: 'Heavy-duty motorized and manual SS and GI entrance gates built for coastal longevity.',
     },
     'interior-work': {
       image: '/images/services/interior-work.webp',
@@ -422,6 +437,18 @@ export const mediaManifest: MediaManifest = {
       description: 'Heavy structural steel columns, composite decking, and precision foundation anchoring for a commercial retail showroom.',
       clientType: 'Commercial',
       completionYear: '2023',
+    },
+    {
+      id: 'proj-13-gates',
+      title: 'Modern SS & GI Compound Entrance Gate',
+      category: 'gates',
+      type: 'image',
+      image: '/images/projects/project-gates-01.webp',
+      alt: 'Custom stainless steel and galvanized iron motorized sliding gate in Surathkal',
+      location: 'Surathkal Beach Road, Mangaluru',
+      description: 'Marine-grade SS 304 horizontal louvers integrated into a heavy hot-dip GI box frame with smooth sliding automation.',
+      clientType: 'Residential',
+      completionYear: '2024',
     },
   ],
 };

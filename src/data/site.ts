@@ -18,8 +18,9 @@ export interface ServiceItem {
   id: string;
   name: string;
   slug: string;
+  sectionId?: string;
   shortDescription: string;
-  category: 'railings' | 'windows' | 'canopy' | 'interior' | 'construction';
+  category: 'railings' | 'windows' | 'canopy' | 'gates' | 'interior' | 'construction';
   detailUrl: string;
   iconName: string;
   heroImage: string;
@@ -225,6 +226,17 @@ export const siteConfig = {
       detailUrl: '/services/glass-canopy/',
       iconName: 'canopy',
       heroImage: '/images/services/glass-canopy.webp',
+    },
+    {
+      id: 'gates',
+      name: 'Architectural Gates (SS & GI)',
+      slug: 'gates',
+      sectionId: 'gates',
+      category: 'gates',
+      shortDescription: 'Custom stainless steel and galvanized iron sliding and swing compound entrance gates with automated remote-controlled tracks.',
+      detailUrl: '/services/gates/',
+      iconName: 'gates',
+      heroImage: '/images/services/gates.webp',
     },
     {
       id: 'interior-work',
