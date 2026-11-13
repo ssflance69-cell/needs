@@ -43,9 +43,9 @@
     box-shadow: 0 20px 40px -12px rgba(180, 83, 9, 0.14), 0 8px 16px -4px rgba(24, 24, 27, 0.04);
   }
 
-  /* Brushed Bronze & Radiant Amber Architectural Gradients */
-  .text-gradient-bronze, .text-gradient-amber, .text-gradient-cyan, .text-gradient-ice, .text-gradient-azure {
-    background: linear-gradient(135deg, #fef3c7 0%, #f59e0b 45%, #d97706 100%);
+  /* Architectural Emerald Green & Jade Gradients */
+  .text-gradient-emerald, .text-gradient-green, .text-gradient-bronze, .text-gradient-amber, .text-gradient-cyan, .text-gradient-ice, .text-gradient-azure {
+    background: linear-gradient(135deg, #a7f3d0 0%, #34d399 45%, #059669 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
