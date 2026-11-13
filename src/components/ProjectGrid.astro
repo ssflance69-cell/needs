@@ -41,8 +41,8 @@ const allProjects = limit ? mediaManifest.projects.slice(0, limit) : mediaManife
     ))}
   </div>
 
-  <!-- Projects Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="projects-grid">
+  <!-- Projects Grid (2 per row on mobile, 3 on desktop) -->
+  <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8" id="projects-grid">
     {allProjects.map((item) => (
       <div
         class="project-grid-item"
@@ -53,9 +53,9 @@ const allProjects = limit ? mediaManifest.projects.slice(0, limit) : mediaManife
         ) : (
           <a
             href={`/projects/${item.id}/`}
-            class="group block relative rounded-2xl overflow-hidden bg-white border border-zinc-200 hover:border-amber-500/70 transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer"
+            class="group block relative rounded-2xl overflow-hidden bg-white border border-zinc-200 hover:border-amber-500/70 transition-all duration-300 shadow-xs sm:shadow-sm hover:shadow-xl cursor-pointer"
           >
-            <div class="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100">
+            <div class="relative aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden bg-zinc-100">
               <img
                 src={item.image}
                 alt={item.alt}
@@ -69,31 +69,31 @@ const allProjects = limit ? mediaManifest.projects.slice(0, limit) : mediaManife
 
               <!-- View Icon Badge on Hover -->
               <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div class="w-12 h-12 rounded-full bg-white/95 text-amber-800 border border-amber-300 flex items-center justify-center shadow-lg text-xs font-bold">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 text-amber-800 border border-amber-300 flex items-center justify-center shadow-lg text-[11px] sm:text-xs font-bold">
                   View
                 </div>
               </div>
 
               <!-- Category Tag -->
-              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-zinc-200 text-[10px] font-bold tracking-wider uppercase text-amber-900 shadow-sm">
+              <div class="absolute top-2 left-2 sm:top-3 sm:left-3 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md bg-white/90 backdrop-blur-md border border-zinc-200 text-[8px] sm:text-[10px] font-bold tracking-wider uppercase text-amber-900 shadow-xs sm:shadow-sm">
                 {item.category}
               </div>
 
               <!-- Location Tag -->
-              <div class="absolute bottom-3 left-3 px-2.5 py-0.5 rounded bg-black/60 backdrop-blur-sm text-[11px] text-white flex items-center gap-1.5">
-                <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <div class="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 px-2 py-0.5 rounded bg-black/60 backdrop-blur-sm text-[9px] sm:text-[11px] text-white flex items-center gap-1 sm:gap-1.5">
+                <svg class="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-amber-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>{item.location}</span>
+                <span class="truncate max-w-[85px] sm:max-w-none">{item.location}</span>
               </div>
             </div>
 
-            <div class="p-5 space-y-1.5">
-              <h3 class="text-base font-bold text-zinc-900 group-hover:text-amber-800 transition-colors font-heading line-clamp-1">
+            <div class="p-2.5 sm:p-5 space-y-1 sm:space-y-1.5">
+              <h3 class="text-xs sm:text-base font-bold text-zinc-900 group-hover:text-amber-800 transition-colors font-heading line-clamp-1">
                 {item.title}
               </h3>
-              <p class="text-xs text-zinc-600 line-clamp-2 leading-relaxed">
+              <p class="text-[10px] sm:text-xs text-zinc-600 line-clamp-2 leading-relaxed">
                 {item.description}
               </p>
             </div>
