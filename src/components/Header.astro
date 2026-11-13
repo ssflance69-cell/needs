@@ -39,20 +39,16 @@ const isLinkActive = (href: string) => {
     <div class="flex items-center justify-between">
       
       <!-- Brand Logo Anchor -->
-      <a href="/" class="flex items-center gap-3 group focus:outline-none rounded-lg p-1 transition-transform duration-150 active:scale-[0.98]">
-        <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 flex items-center justify-center shadow-sm group-hover:border-amber-400 group-hover:shadow-[0_0_15px_rgba(180,83,9,0.25)] transition-all duration-300">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-          </svg>
-        </div>
-        <div class="flex flex-col">
-          <span class="text-base sm:text-lg font-bold tracking-tight text-zinc-900 font-heading group-hover:text-amber-800 transition-colors leading-tight">
-            {siteConfig.name}
-          </span>
-          <span class="text-[9px] sm:text-[10px] font-semibold tracking-widest uppercase text-amber-800 mt-0.5">
-            Architectural Metal &amp; Glazing
-          </span>
-        </div>
+      <a href="/" class="flex items-center gap-2 group focus:outline-none rounded-lg p-0.5 transition-transform duration-150 active:scale-[0.98]">
+        <img
+          src="/images/logo/needs-logo-dark.png"
+          alt="Needs Group – Architectural Metal & Glazing"
+          width="180"
+          height="42"
+          class="h-8 sm:h-9 md:h-10 w-auto object-contain transition-opacity group-hover:opacity-90"
+          loading="eager"
+          decoding="async"
+        />
       </a>
 
       <!-- Desktop Navigation Links -->
