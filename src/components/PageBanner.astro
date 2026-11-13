@@ -24,34 +24,6 @@ const {
 } = Astro.props;
 ---
 
-<!-- Dedicated Clean Breadcrumb Bar (Standard Live Architecture & Corporate Website Pattern) -->
-{breadcrumbs.length > 0 && (
-  <nav aria-label="Breadcrumb" class="bg-zinc-100 border-b border-zinc-200/90 py-2 sm:py-2.5 text-xs text-zinc-500 relative z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <ol class="flex items-center gap-2">
-        <li>
-          <a href="/" class="hover:text-amber-800 transition-colors">Home</a>
-        </li>
-        {breadcrumbs.map((crumb) => (
-          <li class="flex items-center gap-2">
-            <span class="text-zinc-400">/</span>
-            {crumb.href ? (
-              <a href={crumb.href} class="hover:text-amber-800 transition-colors">
-                {crumb.label}
-              </a>
-            ) : (
-              <span class="text-zinc-800 font-medium" aria-current="page">
-                {crumb.label}
-              </span>
-            )}
-          </li>
-        ))}
-      </ol>
-    </div>
-  </nav>
-)}
-
-<!-- Clean, Compact Page Header Strip (Zero AI Pill Badges) -->
 <section class="relative w-full overflow-hidden bg-zinc-950 text-white border-b border-zinc-800">
   <!-- Subtle Ambient Background -->
   <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
@@ -74,9 +46,34 @@ const {
 
   <!-- Compact Content Strip -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-7 relative z-10 w-full">
+    <!-- Clean, understated Breadcrumbs (Zero overlap, perfectly aligned on left above title) -->
+    {breadcrumbs.length > 0 && (
+      <nav aria-label="Breadcrumb" class="mb-2">
+        <ol class="flex items-center gap-1.5 text-xs text-zinc-400">
+          <li>
+            <a href="/" class="hover:text-white transition-colors">Home</a>
+          </li>
+          {breadcrumbs.map((crumb) => (
+            <li class="flex items-center gap-1.5">
+              <span class="text-zinc-600">/</span>
+              {crumb.href ? (
+                <a href={crumb.href} class="hover:text-white transition-colors">
+                  {crumb.label}
+                </a>
+              ) : (
+                <span class="text-zinc-300 font-medium" aria-current="page">
+                  {crumb.label}
+                </span>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )}
+
     <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
       <div class="space-y-1.5 max-w-3xl">
-        <!-- Main Heading -->
+        <!-- Main Heading directly under breadcrumbs (No AI pill badges in between) -->
         <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight font-heading leading-tight">
           {title}
         </h1>
