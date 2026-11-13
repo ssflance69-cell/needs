@@ -35,30 +35,47 @@ const bannerVideo = mediaManifest.banners.interiorWork;
     serviceName="Interior Metal & Glass Work"
   />
 
-  <section class="py-16 sm:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+  <section class="py-10 sm:py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-        <!-- Visual (5 Cols) -->
-        <div class="lg:col-span-5 space-y-4">
-          <div class="rounded-2xl overflow-hidden border border-zinc-200 shadow-xl bg-zinc-100 aspect-[4/3]">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <!-- Visual (7 Cols) - Prominent Hero Project Photo -->
+        <div class="lg:col-span-7 space-y-3">
+          <div class="relative rounded-2xl overflow-hidden border border-zinc-200 shadow-xl bg-zinc-100 aspect-[16/10] group">
             <img
               src="/images/services/interior-work.webp"
               alt="Modern steel and glass interior room divider fabricated in Mangaluru"
-              width="800"
-              height="600"
-              loading="lazy"
+              width="1200"
+              height="750"
+              loading="eager"
               decoding="async"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
+            <!-- Lightbox Zoom Trigger -->
+            <button
+              type="button"
+              data-lightbox-trigger
+              data-type="image"
+              data-image="/images/services/interior-work.webp"
+              data-title="Steel & Fluted Glass Room Divider"
+              data-description="Custom-built black metal fluted glass partition wall in Mangaluru apartment."
+              data-location="Surathkal & Mangaluru Installation"
+              class="absolute top-3 right-3 p-2.5 rounded-xl bg-zinc-950/70 hover:bg-zinc-950/90 text-white border border-white/20 backdrop-blur-md transition-all shadow-md"
+              title="Expand Full Photo"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+              </svg>
+            </button>
           </div>
-          <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-700 shadow-sm">
-            <span class="text-amber-800 font-bold">Fabrication Highlights:</span> Slim-profile MS &amp; Aluminium Grid Profiles | Fluted, Reeded &amp; Tinted Glass Insets | Concealed Pivot Hinges
+          <div class="p-3.5 rounded-xl bg-white border border-zinc-200 text-xs text-zinc-700 shadow-sm flex items-center justify-between">
+            <div><span class="text-amber-800 font-bold">Fabrication:</span> Matte Black Steel Grid | Fluted Glass Insets | Pivot Hinges</div>
+            <span class="text-zinc-400 text-[11px] hidden sm:inline">Mangaluru Interior</span>
           </div>
         </div>
 
-        <!-- Content (7 Cols) -->
-        <div class="lg:col-span-7 space-y-6">
+        <!-- Content (5 Cols) -->
+        <div class="lg:col-span-5 space-y-5">
           <div class="space-y-2">
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold uppercase tracking-wider shadow-sm">
               Contemporary Interiors
