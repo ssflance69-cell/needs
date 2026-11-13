@@ -2,18 +2,81 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import StatsCounter from '../components/StatsCounter.astro';
-import VideoTile from '../components/VideoTile.astro';
 import CTABanner from '../components/CTABanner.astro';
 import { siteConfig } from '../data/site';
 import { mediaManifest } from '../data/media';
 
-const featuredVideos = mediaManifest.featuredVideos;
-const recentProjects = mediaManifest.projects.slice(0, 6);
+// 6 Core Architectural Disciplines (Direct Switches to Dedicated Subpages)
+const disciplines = [
+  {
+    title: 'Architectural Railings',
+    tagline: 'Glass, Stainless Steel, GI, Aluminium & Wood Systems',
+    description: 'Engineered with 12mm–17.52mm toughened safety glass and marine-grade SS 316 spigots or concealed aluminum bottom shoes.',
+    href: '/services/railings/',
+    image: '/images/services/glass-railing.webp',
+    alt: 'Architectural Glass and Steel Railing Installation Mangaluru',
+    badge: '5 Systems Available',
+    specs: ['17.52mm Laminated Glass', 'SS 316 Marine Hardware', 'Zero Coastal Rust'],
+  },
+  {
+    title: 'Entrance Gates',
+    tagline: 'SS 304/316 & Heavy-Gauge Hot-Dip GI Compound Gates',
+    description: 'Precision engineered for high security, coastal rust resistance, and automated sliding or swing operation for luxury villas.',
+    href: '/services/gates/',
+    image: '/images/services/gates.webp',
+    alt: 'Custom Stainless Steel and Architectural Entrance Gate Mangaluru',
+    badge: 'Custom Fabricated',
+    specs: ['Motorized Automation', 'CNC Laser-Cut Louvers', 'Monsoon-Proof Finish'],
+  },
+  {
+    title: 'Windows & Security Grills',
+    tagline: 'Aluminium Sliding, Casement & Heavy-Duty Security Grills',
+    description: 'Ultra-narrow sightline thermally broken frames with acoustic compression seals, paired with anti-corrosion GI/SS grills.',
+    href: '/services/windows/',
+    image: '/images/services/aluminium-window.webp',
+    alt: 'Aluminium Sliding Windows and Security Grills Mangaluru',
+    badge: 'Acoustic & Security',
+    specs: ['Acoustic Double-Glazing', 'Anti-Corrosion GI & SS Grills', 'Multi-Point Locking'],
+  },
+  {
+    title: 'Glass Canopies & Pergolas',
+    tagline: 'Cantilevered Steel Framework & Spider-Glazed Shields',
+    description: 'Heavy-duty structural steel frames paired with high-tensile spider fittings and laminated glass engineered for coastal monsoon gusts.',
+    href: '/services/glass-canopy/',
+    image: '/images/services/glass-canopy.webp',
+    alt: 'Laminated Toughened Glass Canopy Mangaluru Villa',
+    badge: 'Monsoon-Rated',
+    specs: ['SentryGlas Lamination', 'Cast 316 Spider Fittings', 'Cyclonic Wind Tested'],
+  },
+  {
+    title: 'Interior Partitions & Metalwork',
+    tagline: 'Fluted Glass Screens, Brass PVD Frames & Custom Railings',
+    description: 'Precision laser-profiled stainless steel frames in brushed titanium or brass finish, fitted with reeded or acoustic glass.',
+    href: '/services/interior-work/',
+    image: '/images/services/interior-work.webp',
+    alt: 'Fluted Glass Metal Interior Partition Mangaluru',
+    badge: 'Bespoke Interiors',
+    specs: ['Fluted & Ribbed Glass', 'PVD Titanium Brass / Black', 'Acoustic Privacy'],
+  },
+  {
+    title: 'Commercial Glazing & Façades',
+    tagline: 'Curtain Walls, Point-Supported Spider Glazing & Structures',
+    description: 'Point-supported glass curtain walls with heavy cast 316 stainless rotules and structural steel backup trusses.',
+    href: '/services/construction/',
+    image: '/images/services/construction.webp',
+    alt: 'Commercial Structural Glazing and Metal Construction Mangaluru',
+    badge: 'Structural Engineering',
+    specs: ['Curtain Wall Glazing', 'Heavy Structural Steel', 'IS Safety Compliant'],
+  },
+];
+
+// Curated 3 Signature Projects for instant visual proof without endless scroll
+const curatedProjects = mediaManifest.projects.slice(0, 3);
 ---
 
 <Layout
   title="Needs Group | Architectural Glass & Stainless Steel Fabrication Mangaluru"
-  description="Premier specialist in architectural glass, steel & aluminium railings, custom windows, glass canopies, interior fabrication, and construction in Surathkal, Mangaluru, Karnataka."
+  description="Premier specialist in architectural glass, steel & aluminium railings, custom entrance gates, windows, glass canopies, interior fabrication, and construction in Surathkal, Mangaluru, Karnataka."
   videoSchema={{
     name: mediaManifest.hero.video.title,
     description: mediaManifest.hero.video.description,
@@ -22,404 +85,126 @@ const recentProjects = mediaManifest.projects.slice(0, 6);
     contentUrl: mediaManifest.hero.video.mp4,
   }}
 >
-  <!-- 1. Hero with modern architectural styling -->
+  <!-- 1. Hero with modern architectural styling & instant CTAs -->
   <Hero />
 
-  <!-- 2. Core Architectural Capabilities (Dynamic Bento Grid) -->
-  <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="capabilities">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-      <div class="space-y-3 max-w-2xl">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold tracking-wider uppercase shadow-sm">
-          CORE FABRICATION SERVICES
+  <!-- 2. Core Architectural Disciplines (Compact 6-Card Category Grid) -->
+  <section class="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="capabilities">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-5">
+      <div class="space-y-2.5 max-w-2xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold tracking-wider uppercase shadow-xs">
+          EXPLORE BY DISCIPLINE
         </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight font-heading">
-          Engineered for Coastal Resilience &amp; <span class="text-gradient-bronze">Precision Architecture</span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 tracking-tight font-heading">
+          Precision Fabrication &amp; <span class="text-gradient-bronze">Glazing Disciplines</span>
         </h2>
-        <p class="text-zinc-600 text-sm sm:text-base leading-relaxed">
-          Custom monolithic architectural glazing, marine-grade stainless hardware, and precision fabrication designed to endure saline coastal microclimates across Mangaluru, Udupi &amp; Surathkal.
+        <p class="text-zinc-600 text-xs sm:text-sm leading-relaxed">
+          Direct fabrication from our Surathkal workshop. Select any discipline below to view models, material specifications, and real site installations.
         </p>
       </div>
 
-      <a
-        href="/services/"
-        class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white border border-zinc-200 hover:border-amber-400 text-zinc-800 hover:text-amber-800 text-xs font-bold uppercase tracking-wider transition-all shrink-0 group shadow-sm hover:shadow-md"
-      >
-        <span>View All Services</span>
-        <svg class="w-4 h-4 text-amber-700 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
-      </a>
-    </div>
-
-    <!-- Official 10-Service Quick Overview (Matches Client Trade Directory) -->
-    <div class="mb-10 p-5 rounded-2xl bg-zinc-50/80 border border-zinc-200/90 shadow-sm">
-      <div class="flex items-center justify-between mb-3.5">
-        <span class="text-xs font-semibold uppercase tracking-wider text-amber-900 flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-          Direct Fabrication Spectrum • 15 Years Experience
-        </span>
-        <span class="text-xs text-zinc-500 hidden sm:inline">
-          Mangaluru, Surathkal &amp; Coastal Karnataka
-        </span>
-      </div>
-      <div class="flex flex-wrap gap-2">
-        <!-- Railings (5 varieties) -->
-        <a href="/services/railings/#steel-railing" class="px-3 py-1.5 rounded-xl bg-white border border-zinc-200 hover:border-amber-400 hover:text-amber-900 text-xs font-medium text-zinc-700 transition-all shadow-xs flex items-center gap-1.5 hover:shadow-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span> Steel Railing
-        </a>
-        <a href="/services/railings/#gi-railing" class="px-3 py-1.5 rounded-xl bg-white border border-zinc-200 hover:border-amber-400 hover:text-amber-900 text-xs font-medium text-zinc-700 transition-all shadow-xs flex items-center gap-1.5 hover:shadow-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span> GI Railing
-        </a>
-        <a href="/services/railings/#glass-railing" class="px-3 py-1.5 rounded-xl bg-white border border-zinc-200 hover:border-amber-400 hover:text-amber-900 text-xs font-medium text-zinc-700 transition-all shadow-xs flex items-center gap-1.5 hover:shadow-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span> Glass Railing
-        </a>
-        <a href="/services/railings/#wood-railing" class="px-3 py-1.5 rounded-xl bg-white border border-zinc-200 hover:border-amber-400 hover:text-amber-900 text-xs font-medium text-zinc-700 transition-all shadow-xs flex items-center gap-1.5 hover:shadow-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span> Wood Railing
-        </a>
-        <a href="/services/railings/#aluminium-railing" class="px-3 py-1.5 rounded-xl bg-white border border-zinc-200 hover:border-amber-400 hover:text-amber-900 text-xs font-medium text-zinc-700 transition-all shadow-xs flex items-center gap-1.5 hover:shadow-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span> Aluminum Railing
-        </a>
-
-        <!-- Windows (3 varieties) -->
-        <a href="/services/windows/#steel-window" class="px-3 py-1.5 rounded-xl bg-white border border-zinc-200 hover:border-amber-400 hover:text-amber-900 text-xs font-medium text-zinc-700 transition-all shadow-xs flex items-center gap-1.5 hover:shadow-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Steel Window
-        </a>
-        <a href="/services/windows/#gi-window" class="px-3 py-1.5 rounded-xl bg-white border border-zinc-200 hover:border-amber-400 hover:text-amber-900 text-xs font-medium text-zinc-700 transition-all shadow-xs flex items-center gap-1.5 hover:shadow-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> GI Window
-        </a>
-        <a href="/services/windows/#aluminium-window" class="px-3 py-1.5 rounded-xl bg-white border border-zinc-200 hover:border-amber-400 hover:text-amber-900 text-xs font-medium text-zinc-700 transition-all shadow-xs flex items-center gap-1.5 hover:shadow-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Aluminum Window
-        </a>
-
-        <!-- Architectural Specialties -->
-        <a href="/services/glass-canopy/" class="px-3 py-1.5 rounded-xl bg-white border border-zinc-200 hover:border-amber-400 hover:text-amber-900 text-xs font-medium text-zinc-700 transition-all shadow-xs flex items-center gap-1.5 hover:shadow-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Glass Canopy
-        </a>
-        <a href="/services/interior-work/" class="px-3 py-1.5 rounded-xl bg-white border border-zinc-200 hover:border-amber-400 hover:text-amber-900 text-xs font-medium text-zinc-700 transition-all shadow-xs flex items-center gap-1.5 hover:shadow-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Interior Work
-        </a>
-        <a href="/services/construction/" class="px-3 py-1.5 rounded-xl bg-white border border-zinc-200 hover:border-amber-400 hover:text-amber-900 text-xs font-medium text-zinc-700 transition-all shadow-xs flex items-center gap-1.5 hover:shadow-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Construction
+      <div class="flex items-center gap-3 shrink-0">
+        <a
+          href="/services/"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-zinc-200 hover:border-amber-400 text-zinc-800 hover:text-amber-800 text-xs font-bold uppercase tracking-wider transition-all shadow-xs hover:shadow-sm"
+        >
+          <span>All Services Directory</span>
+          <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
         </a>
       </div>
     </div>
 
-    <!-- Bento Grid (Asymmetrical 12-Column Layout) -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-      <!-- Bento Card 1 (Span 8: Large Primary Feature) -->
-      <div class="md:col-span-8 rounded-3xl bg-white border border-zinc-200 p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group hover:border-amber-500/70 transition-all duration-300 shadow-sm hover:shadow-xl">
-        <div class="absolute -right-20 -top-20 w-80 h-80 bg-amber-100/40 rounded-full blur-3xl pointer-events-none group-hover:bg-amber-200/40 transition-colors"></div>
-        <div class="relative z-10">
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-xs font-semibold text-amber-900 uppercase tracking-wider px-3 py-1 rounded-full bg-amber-50 border border-amber-200">
-              SERVICE 01
-            </span>
-            <span class="text-xs text-amber-800 tracking-wider font-semibold">
-              TOLERANCE ±0.5mm
-            </span>
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-bold text-zinc-900 font-heading mb-3 group-hover:text-amber-800 transition-colors">
-            <a href="/services/railings/">Frameless &amp; Modular Glass Railings</a>
-          </h3>
-          <p class="text-sm text-zinc-600 max-w-xl mb-5 leading-relaxed">
-            Engineered with 12mm to 17.52mm laminated toughened safety glass and marine-grade SS 316 spigots or concealed aluminum bottom-shoe channels. Complete with integrated low-voltage warm LED lighting and PVD titanium brass finishes.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-6">
-            <span class="px-3 py-1 rounded-full bg-zinc-50 border border-zinc-200 text-xs text-zinc-700">17.52mm PVB Laminated</span>
-            <span class="px-3 py-1 rounded-full bg-zinc-50 border border-zinc-200 text-xs text-zinc-700">SS 316 Marine Spigots</span>
-            <span class="px-3 py-1 rounded-full bg-zinc-50 border border-zinc-200 text-xs text-zinc-700">Base Shoe Channel</span>
-            <span class="px-3 py-1 rounded-full bg-zinc-50 border border-zinc-200 text-xs text-zinc-700">Recessed Warm LED</span>
-          </div>
-        </div>
+    <!-- Quick Pill Switches -->
+    <div class="flex flex-wrap gap-2 mb-8">
+      {disciplines.map((d) => (
+        <a
+          href={d.href}
+          class="px-3.5 py-1.5 rounded-full bg-zinc-50 hover:bg-amber-50 border border-zinc-200 hover:border-amber-300 text-zinc-700 hover:text-amber-900 text-xs font-medium transition-all shadow-2xs hover:shadow-xs flex items-center gap-1.5"
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+          <span>{d.title}</span>
+        </a>
+      ))}
+    </div>
 
-        <div class="relative z-10 h-64 sm:h-72 w-full rounded-2xl overflow-hidden border border-zinc-200 group mt-2 bg-zinc-900 bg-cover bg-center" style="background-image: url('/images/services/railings-banner-poster.webp');">
-          <video
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            autoplay
-            loop
-            muted
-            playsinline
-            preload="auto"
-            poster="/images/services/railings-banner-poster.webp"
-            aria-hidden="true"
-          >
-            <source src="/videos/services/railings-banner.mp4" type="video/mp4" />
-          </video>
-          <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent"></div>
-        </div>
-      </div>
+    <!-- 6-Card Category Matrix (3 Cols on Desktop, 2 on Tablet, 1 on Mobile) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+      {disciplines.map((discipline) => (
+        <div class="group rounded-3xl bg-white border border-zinc-200 hover:border-amber-400/80 transition-all duration-300 shadow-sm hover:shadow-xl overflow-hidden flex flex-col justify-between">
+          <!-- Card Image Container -->
+          <a href={discipline.href} class="block relative aspect-[16/10] overflow-hidden bg-zinc-100">
+            <img
+              src={discipline.image}
+              alt={discipline.alt}
+              width="600"
+              height="375"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/60 via-transparent to-transparent"></div>
 
-      <!-- Bento Card 2 (Span 4: Steel & Glass Canopies) -->
-      <div class="md:col-span-4 rounded-3xl bg-white border border-zinc-200 p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group hover:border-amber-500/70 transition-all duration-300 shadow-sm hover:shadow-xl">
-        <div class="relative z-10">
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-xs font-semibold text-amber-900 uppercase tracking-wider px-3 py-1 rounded-full bg-amber-50 border border-amber-200">
-              SERVICE 02
-            </span>
-            <span class="text-xs text-amber-800 tracking-wider font-semibold">
-              MONSOON-RATED
-            </span>
+            <!-- Discipline Badge -->
+            <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-zinc-200 text-[10px] font-bold tracking-widest uppercase text-amber-900 shadow-xs">
+              {discipline.badge}
+            </div>
+          </a>
+
+          <!-- Content Body -->
+          <div class="p-5 sm:p-6 flex flex-col justify-between flex-1 space-y-4">
+            <div class="space-y-2">
+              <h3 class="text-lg sm:text-xl font-bold text-zinc-900 font-heading group-hover:text-amber-800 transition-colors">
+                <a href={discipline.href} class="hover:underline decoration-amber-500/50">
+                  {discipline.title}
+                </a>
+              </h3>
+              <p class="text-xs text-amber-900 font-semibold line-clamp-1">
+                {discipline.tagline}
+              </p>
+              <p class="text-xs text-zinc-500 line-clamp-2 leading-relaxed">
+                {discipline.description}
+              </p>
+            </div>
+
+            <!-- Key Spec Tags -->
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              {discipline.specs.map((spec) => (
+                <span class="px-2 py-0.5 rounded-md bg-zinc-50 border border-zinc-200 text-[10px] text-zinc-600 font-medium">
+                  {spec}
+                </span>
+              ))}
+            </div>
+
+            <!-- Direct Switch Button -->
+            <div class="pt-3 border-t border-zinc-100 flex items-center justify-between">
+              <a
+                href={discipline.href}
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-800 hover:text-amber-950 uppercase tracking-wider group-hover:translate-x-1 transition-transform"
+              >
+                <span>Explore {discipline.title.split(' ')[0]}</span>
+                <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+              <span class="text-[11px] text-zinc-400">Direct Fabrication</span>
+            </div>
           </div>
-          <h3 class="text-xl sm:text-2xl font-bold text-zinc-900 font-heading mb-3 group-hover:text-amber-800 transition-colors">
-            <a href="/services/glass-canopy/">Heavy-Duty Glass &amp; Steel Canopies</a>
-          </h3>
-          <p class="text-xs sm:text-sm text-zinc-600 mb-5 leading-relaxed">
-            Cantilevered structural steel framework paired with high-tensile spider rod fittings and laminated SentryGlas shields engineered to withstand intense coastal monsoon gusts.
-          </p>
         </div>
-
-        <div class="relative z-10 h-56 w-full rounded-2xl overflow-hidden border border-zinc-200 group mt-2 bg-zinc-900 bg-cover bg-center" style="background-image: url('/images/services/canopy-banner-poster.webp');">
-          <video
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            autoplay
-            loop
-            muted
-            playsinline
-            preload="auto"
-            poster="/images/services/canopy-banner-poster.webp"
-            aria-hidden="true"
-          >
-            <source src="/videos/services/canopy-banner.mp4" type="video/mp4" />
-          </video>
-          <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent"></div>
-        </div>
-      </div>
-
-      <!-- Bento Card 3 (Span 4: Minimalist Sliding Systems) -->
-      <div class="md:col-span-4 rounded-3xl bg-white border border-zinc-200 p-6 sm:p-8 flex flex-col justify-between group hover:border-amber-500/70 transition-all duration-300 shadow-sm hover:shadow-xl">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-xs font-semibold text-amber-900 uppercase tracking-wider px-3 py-1 rounded-full bg-amber-50 border border-amber-200">
-              SERVICE 03
-            </span>
-            <span class="text-xs text-amber-800 tracking-wider font-semibold">
-              ACOUSTIC RW 42dB
-            </span>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-bold text-zinc-900 font-heading mb-3 group-hover:text-amber-800 transition-colors">
-            <a href="/services/windows/">Minimalist Acoustic &amp; Slim Sliding</a>
-          </h3>
-          <p class="text-xs sm:text-sm text-zinc-600 mb-5 leading-relaxed">
-            Ultra-narrow 20mm sightline thermally broken frames, multi-point acoustic compression seals, and oversized double-glazed acoustic insulated glass units.
-          </p>
-        </div>
-        <div class="relative h-44 w-full rounded-2xl overflow-hidden border border-zinc-200 mt-2 bg-zinc-900 bg-cover bg-center" style="background-image: url('/images/services/windows-banner-poster.webp');">
-          <video
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            autoplay
-            loop
-            muted
-            playsinline
-            preload="auto"
-            poster="/images/services/windows-banner-poster.webp"
-            aria-hidden="true"
-          >
-            <source src="/videos/services/windows-banner.mp4" type="video/mp4" />
-          </video>
-          <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent"></div>
-        </div>
-      </div>
-
-      <!-- Bento Card 4 (Span 4: Metal & Fluted Glass Screens) -->
-      <div class="md:col-span-4 rounded-3xl bg-white border border-zinc-200 p-6 sm:p-8 flex flex-col justify-between group hover:border-amber-500/70 transition-all duration-300 shadow-sm hover:shadow-xl">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-xs font-semibold text-amber-900 uppercase tracking-wider px-3 py-1 rounded-full bg-amber-50 border border-amber-200">
-              SERVICE 04
-            </span>
-            <span class="text-xs text-amber-800 tracking-wider font-semibold">
-              PRECISION INTERIOR
-            </span>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-bold text-zinc-900 font-heading mb-3 group-hover:text-amber-800 transition-colors">
-            <a href="/services/interior-work/">Custom Metal &amp; Fluted Screens</a>
-          </h3>
-          <p class="text-xs sm:text-sm text-zinc-600 mb-5 leading-relaxed">
-            Precision CNC laser-profiled stainless steel frames in brushed titanium finish, fitted with reeded, ribbed, or privacy architectural glass.
-          </p>
-        </div>
-        <div class="relative h-44 w-full rounded-2xl overflow-hidden border border-zinc-200 mt-2 bg-zinc-900 bg-cover bg-center" style="background-image: url('/images/services/interior-banner-poster.webp');">
-          <video
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            autoplay
-            loop
-            muted
-            playsinline
-            preload="auto"
-            poster="/images/services/interior-banner-poster.webp"
-            aria-hidden="true"
-          >
-            <source src="/videos/services/interior-banner.mp4" type="video/mp4" />
-          </video>
-          <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent"></div>
-        </div>
-      </div>
-
-      <!-- Bento Card 5 (Span 4: Structural Spider Glazing) -->
-      <div class="md:col-span-4 rounded-3xl bg-white border border-zinc-200 p-6 sm:p-8 flex flex-col justify-between group hover:border-amber-500/70 transition-all duration-300 shadow-sm hover:shadow-xl">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-xs font-semibold text-amber-900 uppercase tracking-wider px-3 py-1 rounded-full bg-amber-50 border border-amber-200">
-              SERVICE 05
-            </span>
-            <span class="text-xs text-amber-800 tracking-wider font-semibold">
-              STRUCTURAL FAÇADES
-            </span>
-          </div>
-          <h3 class="text-xl sm:text-2xl font-bold text-zinc-900 font-heading mb-3 group-hover:text-amber-800 transition-colors">
-            <a href="/services/construction/">Structural Spider Glazing &amp; Facades</a>
-          </h3>
-          <p class="text-xs sm:text-sm text-zinc-600 mb-5 leading-relaxed">
-            Point-supported glass curtain walls with heavy-duty cast 316 stainless rotules and structural steel backup trusses engineered specifically for coastal wind shears.
-          </p>
-        </div>
-        <div class="relative h-44 w-full rounded-2xl overflow-hidden border border-zinc-200 mt-2 bg-zinc-900 bg-cover bg-center" style="background-image: url('/images/services/construction-banner-poster.webp');">
-          <video
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            autoplay
-            loop
-            muted
-            playsinline
-            preload="auto"
-            poster="/images/services/construction-banner-poster.webp"
-            aria-hidden="true"
-          >
-            <source src="/videos/services/construction-banner.mp4" type="video/mp4" />
-          </video>
-          <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent"></div>
-        </div>
-      </div>
+      ))}
     </div>
   </section>
 
-  <!-- Animated Trust & Delivery Metrics Band -->
+  <!-- 3. Animated Trust & Delivery Metrics Band -->
   <StatsCounter />
 
-  <!-- 3. The 5-Step Fabrication Process -->
-  <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-zinc-200" id="engineering">
-    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold tracking-wider uppercase shadow-sm">
-        OUR QUALITY COMMITMENT
-      </div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight font-heading">
-        Our 5-Step <span class="text-gradient-bronze">Fabrication Process</span>
-      </h2>
-      <p class="text-zinc-600 text-sm sm:text-base leading-relaxed">
-        Every installation adheres to rigorous structural calculations, laser calibration, and proprietary anti-corrosion treatments built specifically for maritime environments.
-      </p>
-    </div>
-
-    <!-- 5-Step Horizontal Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-14">
-      <!-- Step 1 -->
-      <div class="p-6 rounded-2xl bg-white border border-zinc-200 flex flex-col justify-between group hover:border-amber-400 transition-all duration-300 shadow-sm hover:shadow-lg">
-        <div>
-          <div class="text-3xl font-extrabold text-zinc-200 group-hover:text-amber-700 transition-colors font-heading">01</div>
-          <h4 class="text-base font-bold text-zinc-900 mt-3 mb-2 font-heading">3D Laser Survey &amp; CAD</h4>
-          <p class="text-xs text-zinc-500 leading-relaxed">Precise point-cloud site scans yielding tight tolerance accuracy prior to fabrication.</p>
-        </div>
-        <div class="mt-6 pt-3 border-t border-zinc-100 text-xs text-amber-800 font-semibold">±0.5mm Accuracy</div>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="p-6 rounded-2xl bg-white border border-zinc-200 flex flex-col justify-between group hover:border-amber-400 transition-all duration-300 shadow-sm hover:shadow-lg">
-        <div>
-          <div class="text-3xl font-extrabold text-zinc-200 group-hover:text-amber-700 transition-colors font-heading">02</div>
-          <h4 class="text-base font-bold text-zinc-900 mt-3 mb-2 font-heading">CNC Laser &amp; Heavy Mill</h4>
-          <p class="text-xs text-zinc-500 leading-relaxed">Fiber-laser cutting of SS 316 plates and argon-purged TIG welded joints.</p>
-        </div>
-        <div class="mt-6 pt-3 border-t border-zinc-100 text-xs text-amber-800 font-semibold">SS 316 Pure Alloys</div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="p-6 rounded-2xl bg-white border border-zinc-200 flex flex-col justify-between group hover:border-amber-400 transition-all duration-300 shadow-sm hover:shadow-lg">
-        <div>
-          <div class="text-3xl font-extrabold text-zinc-200 group-hover:text-amber-700 transition-colors font-heading">03</div>
-          <h4 class="text-base font-bold text-zinc-900 mt-3 mb-2 font-heading">Wind &amp; Stress Testing</h4>
-          <p class="text-xs text-zinc-500 leading-relaxed">Engineering stress calculations simulating coastal cyclonic gusts and wind shear.</p>
-        </div>
-        <div class="mt-6 pt-3 border-t border-zinc-100 text-xs text-amber-800 font-semibold">IS 875 Wind Standard</div>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="p-6 rounded-2xl bg-white border border-zinc-200 flex flex-col justify-between group hover:border-amber-400 transition-all duration-300 shadow-sm hover:shadow-lg">
-        <div>
-          <div class="text-3xl font-extrabold text-zinc-200 group-hover:text-amber-700 transition-colors font-heading">04</div>
-          <h4 class="text-base font-bold text-zinc-900 mt-3 mb-2 font-heading">Structural Sealant</h4>
-          <p class="text-xs text-zinc-500 leading-relaxed">Dow Corning structural glazing silicones applied with precision curing controls.</p>
-        </div>
-        <div class="mt-6 pt-3 border-t border-zinc-100 text-xs text-amber-800 font-semibold">Dow Corning Sealants</div>
-      </div>
-
-      <!-- Step 5 -->
-      <div class="p-6 rounded-2xl bg-white border border-zinc-200 flex flex-col justify-between group hover:border-amber-400 transition-all duration-300 shadow-sm hover:shadow-lg">
-        <div>
-          <div class="text-3xl font-extrabold text-zinc-200 group-hover:text-amber-700 transition-colors font-heading">05</div>
-          <h4 class="text-base font-bold text-zinc-900 mt-3 mb-2 font-heading">10-Year Warranty</h4>
-          <p class="text-xs text-zinc-500 leading-relaxed">Official certification documentation &amp; scheduled periodic corrosion checkups.</p>
-        </div>
-        <div class="mt-6 pt-3 border-t border-zinc-100 text-xs text-amber-800 font-semibold">Certified Warranty</div>
-      </div>
-    </div>
-
-    <!-- Trust Badges & Material Partner Row -->
-    <div class="rounded-3xl bg-white border border-zinc-200 p-6 sm:p-8 flex flex-wrap items-center justify-around gap-6 sm:gap-8 shadow-md">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800 shadow-sm">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-          </svg>
-        </div>
-        <div>
-          <div class="text-sm font-bold text-zinc-900 font-heading">Saint-Gobain</div>
-          <div class="text-xs text-zinc-500">Authorized Processing Partner</div>
-        </div>
-      </div>
-
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800 shadow-sm">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-          </svg>
-        </div>
-        <div>
-          <div class="text-sm font-bold text-zinc-900 font-heading">AIS Glass</div>
-          <div class="text-xs text-zinc-500">Certified Toughened Glazing</div>
-        </div>
-      </div>
-
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800 shadow-sm">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-          </svg>
-        </div>
-        <div>
-          <div class="text-sm font-bold text-zinc-900 font-heading">Jindal Stainless</div>
-          <div class="text-xs text-zinc-500">304 / 316 Marine Alloys</div>
-        </div>
-      </div>
-
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800 shadow-sm">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <div>
-          <div class="text-sm font-bold text-zinc-900 font-heading">ISO 9001:2015</div>
-          <div class="text-xs text-zinc-500">Certified Fabrication Plant</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Cinematic Full-Width Background Video Ribbon: Metallurgy & Craftsmanship -->
-  <section class="relative py-24 sm:py-32 bg-zinc-950 text-white overflow-hidden my-6">
-    <!-- Active Video Background -->
+  <!-- 4. Cinematic Metallurgy Ribbon: Surathkal Workshop Credentials -->
+  <section class="relative py-16 sm:py-24 bg-zinc-950 text-white overflow-hidden my-4">
     <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none bg-cover bg-center" style="background-image: url('/images/about/about-poster.webp');">
       <video
-        class="w-full h-full object-cover opacity-50 scale-105"
+        class="w-full h-full object-cover opacity-45 scale-105"
         autoplay
         loop
         muted
@@ -430,36 +215,34 @@ const recentProjects = mediaManifest.projects.slice(0, 6);
       >
         <source src="/videos/services/about-workshop.mp4" type="video/mp4" />
       </video>
-      <!-- High-End Architectural Scrim & Vignette (Ensures 100% Text Legibility) -->
       <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/95 to-zinc-950/60"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/80"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(180,83,9,0.22),transparent_70%)]"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         <!-- Content Column (7 cols) -->
-        <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 border border-amber-400/30 text-amber-300 text-xs font-semibold tracking-wider uppercase shadow-sm backdrop-blur-md">
+        <div class="lg:col-span-7 space-y-4">
+          <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/10 border border-amber-400/30 text-amber-300 text-xs font-semibold tracking-wider uppercase backdrop-blur-md">
             <span class="w-2 h-2 rounded-full bg-amber-400"></span>
             <span>SURATHKAL WORKSHOP • MASTER FABRICATION</span>
           </div>
 
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-heading leading-[1.1]">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight font-heading leading-tight">
             Where Raw Metallurgy Meets <span class="text-gradient-bronze">Monolithic Glazing</span>
           </h2>
 
-          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-xl">
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed max-w-xl">
             15 years of coastal testing has shaped our manufacturing standard. Every stainless steel post is argon-purged TIG welded, passivated against saline pit corrosion, and every glass reveal is laser-calibrated to ±0.5mm precision before leaving our Surathkal workshop.
           </p>
 
-          <div class="pt-2 flex flex-wrap items-center gap-4">
+          <div class="pt-2 flex flex-wrap items-center gap-3">
             <a
               href="/about/"
-              class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-amber-700 via-amber-600 to-amber-800 text-white font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-amber-700 via-amber-600 to-amber-800 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg hover:scale-[1.01] transition-all"
             >
               <span>Explore Workshop Heritage</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
 
             <button
@@ -471,175 +254,138 @@ const recentProjects = mediaManifest.projects.slice(0, 6);
               data-title="Needs Group Workshop & Engineering Heritage"
               data-description="Inside the 15-year master fabrication facility of Needs Group in Surathkal, Mangaluru."
               data-location="Surathkal, Mangaluru"
-              class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs uppercase tracking-wider backdrop-blur-md transition-all group"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs uppercase tracking-wider backdrop-blur-md transition-all group"
             >
-              <svg class="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="w-3.5 h-3.5 text-amber-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
               <span>Watch Workshop Tour</span>
             </button>
           </div>
         </div>
 
         <!-- Workshop Standards Column (5 cols) -->
-        <div class="lg:col-span-5 grid grid-cols-2 gap-4">
-          <div class="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl space-y-2">
-            <div class="font-heading text-2xl sm:text-3xl font-extrabold text-amber-400">±0.5mm</div>
-            <div class="text-xs font-bold text-white uppercase tracking-wider font-heading">Laser Calibration</div>
-            <p class="text-[11px] text-zinc-400 leading-normal">Digital point-cloud surveying ensures flawless plumb lines on site.</p>
+        <div class="lg:col-span-5 grid grid-cols-2 gap-3.5">
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl space-y-1.5">
+            <div class="font-heading text-xl sm:text-2xl font-extrabold text-amber-400">±0.5mm</div>
+            <div class="text-[11px] font-bold text-white uppercase tracking-wider font-heading">Laser Calibration</div>
+            <p class="text-[10px] text-zinc-400 leading-normal">Digital point-cloud surveying ensures tight plumb lines on site.</p>
           </div>
 
-          <div class="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl space-y-2">
-            <div class="font-heading text-2xl sm:text-3xl font-extrabold text-amber-400">SS 316</div>
-            <div class="text-xs font-bold text-white uppercase tracking-wider font-heading">Marine-Grade Alloy</div>
-            <p class="text-[11px] text-zinc-400 leading-normal">Certified chemical batch test certificates with zero pitting guarantee.</p>
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl space-y-1.5">
+            <div class="font-heading text-xl sm:text-2xl font-extrabold text-amber-400">SS 316</div>
+            <div class="text-[11px] font-bold text-white uppercase tracking-wider font-heading">Marine-Grade Alloy</div>
+            <p class="text-[10px] text-zinc-400 leading-normal">Certified chemical batch tests with zero pitting guarantee.</p>
           </div>
 
-          <div class="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl space-y-2">
-            <div class="font-heading text-2xl sm:text-3xl font-extrabold text-amber-400">200 km/h</div>
-            <div class="text-xs font-bold text-white uppercase tracking-wider font-heading">Cyclonic Wind Rating</div>
-            <p class="text-[11px] text-zinc-400 leading-normal">FEA structural stress tested to exceed IS 875 coastal wind standards.</p>
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl space-y-1.5">
+            <div class="font-heading text-xl sm:text-2xl font-extrabold text-amber-400">200 km/h</div>
+            <div class="text-[11px] font-bold text-white uppercase tracking-wider font-heading">Cyclonic Wind Rating</div>
+            <p class="text-[10px] text-zinc-400 leading-normal">FEA structural stress tested to exceed IS 875 coastal wind standards.</p>
           </div>
 
-          <div class="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl space-y-2">
-            <div class="font-heading text-2xl sm:text-3xl font-extrabold text-amber-400">900+</div>
-            <div class="text-xs font-bold text-white uppercase tracking-wider font-heading">Completed Works</div>
-            <p class="text-[11px] text-zinc-400 leading-normal">Installed across Mangaluru, Udupi, Surathkal & coastal Karnataka.</p>
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl space-y-1.5">
+            <div class="font-heading text-xl sm:text-2xl font-extrabold text-amber-400">900+</div>
+            <div class="text-[11px] font-bold text-white uppercase tracking-wider font-heading">Completed Works</div>
+            <p class="text-[10px] text-zinc-400 leading-normal">Across Mangaluru, Udupi, Surathkal &amp; coastal Karnataka.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Video Showcase in Action -->
-  <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-zinc-200">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-      <div class="space-y-3 max-w-2xl">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold tracking-wider uppercase shadow-sm">
-          CRAFTSMANSHIP IN MOTION
+  <!-- 5. Curated Signature Installations (Clean 3-Card Snapshot) -->
+  <section class="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-zinc-200" id="projects">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-5">
+      <div class="space-y-2.5 max-w-2xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold tracking-wider uppercase shadow-xs">
+          RECENT INSTALLATIONS
         </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight font-heading">
-          See Our Craftsmanship <span class="text-gradient-bronze">in Motion</span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 tracking-tight font-heading">
+          Real Works Across <span class="text-gradient-bronze">Coastal Karnataka</span>
         </h2>
-        <p class="text-zinc-600 text-sm sm:text-base leading-relaxed">
-          Real site installations, TIG welding, glass balustrade alignments, and cantilevered canopy erections across Surathkal and Mangaluru. Click any tile to launch video playback.
+        <p class="text-zinc-600 text-xs sm:text-sm leading-relaxed">
+          A snapshot of verified site handovers. Filter through our full catalog of 900+ residential and commercial projects.
         </p>
       </div>
 
       <a
         href="/projects/"
-        class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white border border-zinc-200 hover:border-amber-400 text-zinc-800 hover:text-amber-800 text-xs font-bold uppercase tracking-wider transition-all shrink-0 group shadow-sm hover:shadow-md"
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-zinc-200 hover:border-amber-400 text-zinc-800 hover:text-amber-800 text-xs font-bold uppercase tracking-wider transition-all shrink-0 shadow-xs hover:shadow-sm"
       >
-        <span>Explore All Videos</span>
-        <svg class="w-4 h-4 text-amber-700 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <span>View All 900+ Projects</span>
+        <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
         </svg>
       </a>
     </div>
 
-    <!-- 4 Video Tiles -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {featuredVideos.map((video) => (
-        <VideoTile item={video} />
-      ))}
-    </div>
-  </section>
+    <!-- 3 Curated Project Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
+      {curatedProjects.map((item) => (
+        <div
+          class="group relative rounded-3xl overflow-hidden bg-white border border-zinc-200 hover:border-amber-400/80 transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer flex flex-col justify-between"
+          data-lightbox-trigger
+          data-type="image"
+          data-image={item.image}
+          data-title={item.title}
+          data-description={item.description}
+          data-location={item.location}
+        >
+          <div class="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100">
+            <img
+              src={item.image}
+              alt={item.alt}
+              width="600"
+              height="375"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/40 via-transparent to-transparent"></div>
 
-  <!-- 5. Signature Installations Gallery -->
-  <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-zinc-200" id="projects">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-      <div class="space-y-3 max-w-2xl">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold tracking-wider uppercase shadow-sm">
-          PORTFOLIO OF DISTINCTION
-        </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight font-heading">
-          Curated Signature <span class="text-gradient-bronze">Installations</span>
-        </h2>
-        <p class="text-zinc-600 text-sm sm:text-base leading-relaxed">
-          A glimpse into our 900+ completed installations across coastal villas, commercial hubs, and penthouses.
-        </p>
-      </div>
-
-      <a
-        href="/projects/"
-        class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white border border-zinc-200 hover:border-amber-400 text-zinc-800 hover:text-amber-800 text-xs font-bold uppercase tracking-wider transition-all shrink-0 group shadow-sm hover:shadow-md"
-      >
-        <span>All 900+ Projects</span>
-        <svg class="w-4 h-4 text-amber-700 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
-      </a>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-      {recentProjects.map((item) => (
-        item.type === 'video' ? (
-          <VideoTile item={item} />
-        ) : (
-          <div
-            class="group relative rounded-3xl overflow-hidden bg-white border border-zinc-200 hover:border-amber-500/70 transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer flex flex-col justify-between"
-            data-lightbox-trigger
-            data-type="image"
-            data-image={item.image}
-            data-title={item.title}
-            data-description={item.description}
-            data-location={item.location}
-          >
-            <div class="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100">
-              <img
-                src={item.image}
-                alt={item.alt}
-                width="800"
-                height="500"
-                loading="lazy"
-                decoding="async"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/40 via-transparent to-transparent"></div>
-
-              <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200 text-[10px] font-bold tracking-widest uppercase text-amber-900 shadow-sm">
-                {item.category}
-              </div>
-
-              <div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-sm text-[11px] text-zinc-700 border border-zinc-200 flex items-center gap-1.5 shadow-sm">
-                <svg class="w-3.5 h-3.5 text-amber-700 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <span>{item.location}</span>
-              </div>
+            <div class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-md border border-zinc-200 text-[10px] font-bold tracking-widest uppercase text-amber-900 shadow-xs">
+              {item.category}
             </div>
 
-            <div class="p-5 sm:p-6 space-y-2">
-              <h3 class="text-base sm:text-lg font-bold text-zinc-900 group-hover:text-amber-800 transition-colors font-heading line-clamp-1">
-                {item.title}
-              </h3>
-              <p class="text-xs text-zinc-500 line-clamp-2 leading-relaxed">
-                {item.description}
-              </p>
+            <div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-sm text-[11px] text-zinc-700 border border-zinc-200 flex items-center gap-1.5 shadow-xs">
+              <svg class="w-3 h-3 text-amber-700 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>{item.location}</span>
             </div>
           </div>
-        )
+
+          <div class="p-5 space-y-1.5">
+            <h3 class="text-base font-bold text-zinc-900 group-hover:text-amber-800 transition-colors font-heading line-clamp-1">
+              {item.title}
+            </h3>
+            <p class="text-xs text-zinc-500 line-clamp-2 leading-relaxed">
+              {item.description}
+            </p>
+          </div>
+        </div>
       ))}
     </div>
   </section>
 
   <!-- 6. Client Experiences -->
-  <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-zinc-200">
-    <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold tracking-wider uppercase shadow-sm">
+  <section class="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-zinc-200">
+    <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold tracking-wider uppercase shadow-xs">
         CLIENT EXPERIENCES
       </div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 tracking-tight font-heading">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 tracking-tight font-heading">
         Trusted Across Coastal Karnataka
       </h2>
-      <p class="text-zinc-600 text-sm">
-        Hear from homeowners, builders, and architects who trusted Needs Group with their precision railing and glass works.
+      <p class="text-zinc-600 text-xs sm:text-sm">
+        Homeowners, builders, and architects who trusted Needs Group with their precision fabrication works.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {siteConfig.testimonials.map((t) => (
-        <div class="rounded-3xl bg-white p-6 sm:p-8 flex flex-col justify-between space-y-5 border border-zinc-200 shadow-sm hover:shadow-lg hover:border-amber-400 transition-all">
-          <div class="space-y-3">
+        <div class="rounded-3xl bg-white p-6 flex flex-col justify-between space-y-4 border border-zinc-200 shadow-xs hover:shadow-md hover:border-amber-400 transition-all">
+          <div class="space-y-2.5">
             <div class="flex items-center gap-1 text-amber-500">
               {[...Array(t.rating)].map(() => (
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
@@ -647,22 +393,22 @@ const recentProjects = mediaManifest.projects.slice(0, 6);
                 </svg>
               ))}
             </div>
-            <p class="text-sm text-zinc-600 italic leading-relaxed">
+            <p class="text-xs sm:text-sm text-zinc-600 italic leading-relaxed">
               "{t.review}"
             </p>
           </div>
 
-          <div class="pt-4 border-t border-zinc-100">
-            <div class="font-bold text-zinc-900 text-sm font-heading">{t.name}</div>
-            <div class="text-xs text-amber-800 font-semibold">{t.project}</div>
-            <div class="text-[11px] text-zinc-400 mt-0.5">{t.location}</div>
+          <div class="pt-3 border-t border-zinc-100">
+            <div class="font-bold text-zinc-900 text-xs sm:text-sm font-heading">{t.name}</div>
+            <div class="text-[11px] text-amber-800 font-semibold">{t.project}</div>
+            <div class="text-[10px] text-zinc-400 mt-0.5">{t.location}</div>
           </div>
         </div>
       ))}
     </div>
   </section>
 
-  <!-- 7. Final High-Converting CTA Banner -->
+  <!-- 7. High-Converting CTA Banner -->
   <CTABanner
     title="Start Your Architectural Fabrication Project Today"
     subtitle="Connect directly with our senior fabricators in Surathkal, Mangaluru for site measurement, design recommendations, and a transparent quote."
