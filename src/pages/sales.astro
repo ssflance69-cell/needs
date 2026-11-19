@@ -4,7 +4,7 @@ import PageBanner from '../components/PageBanner.astro';
 import CTABanner from '../components/CTABanner.astro';
 import { mediaManifest } from '../data/media';
 
-const bannerVideo = mediaManifest.banners.construction;
+const bannerVideo = mediaManifest.banners.railings;
 
 export interface SalesCategory {
   id: string;
@@ -17,175 +17,175 @@ export interface SalesCategory {
   description: string;
   highlights: string[];
   bestUseCases: string[];
-  availableGrades: string;
-  standardLengths: string;
+  availableFinishes: string;
+  standardSizes: string;
 }
 
 const salesCategories: SalesCategory[] = [
   {
-    id: 'ss-pipes',
-    name: 'Stainless Steel Pipes & Hollow Sections',
-    subtitle: 'Grade 304 & Marine-Grade SS 316 Architectural Tubing',
-    badge: 'SS 304 / SS 316',
-    image: '/images/sales/sales-ss-pipes.webp',
-    alt: 'Stacked stainless steel round pipes and square box sections in Surathkal supply warehouse',
-    specs: 'OD 16mm–76mm Round | 12x12mm–100x50mm Box | 1.2mm–2.5mm Wall | Mirror 600# & Satin Hairline',
+    id: 'round-pipes',
+    name: 'Round Pipes (SS 304 Grade)',
+    subtitle: 'Sleek, Ergonomic Handrail & Baluster Circular Tubing',
+    badge: 'SS 304 Round Pipes',
+    image: '/images/sales/ss-round-pipes.webp',
+    alt: 'Premium SS 304 grade stainless steel round railing pipes in Surathkal workshop',
+    specs: 'OD 16mm, 19mm, 25mm, 38mm, 50.8mm (2"), 63.5mm | Wall: 1.2mm, 1.5mm, 2.0mm | 6m (20ft) Length',
     description:
-      'Directly supplied from certified primary steel producers (Jindal / Salem). Designed specifically for coastal atmospheric resilience across Mangaluru, Surathkal, and Udupi. Features high chromium-nickel metallurgy that prevents pitting corrosion from saline air.',
+      'High-grade SS 304 circular tubing engineered for comfortable tactile hand grip, seamless curves, and structural integrity. Extensively used across Mangaluru, Surathkal, and Udupi for luxury residential balconies, staircase balustrades, and institutional handrails.',
     highlights: [
-      'Genuine SS 304 and marine SS 316 with mill test certificates',
-      'Specialized slotted handrail pipes (single & double groove) for 10mm/12mm frameless glass',
-      'Consistent true gauge wall thickness (never under-gauged)',
-      'High-luster 600# Mirror Polish and 320# Satin Hairline architectural finishes',
+      'Uniform outer circumference ensuring flawless sleeve, elbow, and connector fitment',
+      'High-purity 304 metallurgy resisting coastal atmospheric oxidation and staining',
+      'Available in 600# Mirror Polish (high-gloss chrome luster) and 320# Satin Hairline brush',
+      'True gauge wall thickness guaranteed with genuine steel mill test certificates',
     ],
     bestUseCases: [
-      'Balcony balustrades, staircase handrails, and ramp grab bars',
-      'Modern compound entrance gates and boundary railings',
-      'Architectural facade louvers, pergola rafters, and exterior canopies',
+      'Staircase handrails, wall-mounted ramp grab rails, and balustrade top-rails',
+      'Horizontal multi-line infill safety barriers and intermediate balusters',
+      'Commercial lobby handrails, hospital corridor rails, and entrance ramps',
     ],
-    availableGrades: 'SS 304 (Interior/Urban) | SS 316 (Coastal/Marine)',
-    standardLengths: '6 Meters (20 Feet) standard | Custom cut-to-length available',
+    availableFinishes: '600# Mirror Polish | 320# Satin Hairline Brush',
+    standardSizes: '16mm to 63.5mm OD | 6 Meter (20 Feet) standard lengths',
   },
   {
-    id: 'gi-structural',
-    name: 'Galvanized Iron (GI) & Structural Steel',
-    subtitle: 'Heavy-Gauge Hot-Dip Galvanized Box Pipes & Sections',
-    badge: 'Heavy Hot-Dip GI',
-    image: '/images/sales/sales-gi-pipes.webp',
-    alt: 'Bundled heavy-duty galvanized iron GI rectangular box pipes and structural steel sections',
-    specs: 'SHS & RHS 20x20mm–150x150mm | ISMB/ISMC Sections | 1.6mm–4.5mm Heavy Wall',
+    id: 'square-pipes',
+    name: 'Square & Rectangular Pipes (SS 304 Grade)',
+    subtitle: 'Sharp Architectural Sightlines & Heavy-Duty Post Profiles',
+    badge: 'SS 304 Square & Box',
+    image: '/images/sales/ss-square-pipes.webp',
+    alt: 'Premium SS 304 grade square and rectangular stainless steel railing box pipes',
+    specs: 'Sizes: 12x12mm, 25x25mm, 40x40mm, 50x50mm, 60x40mm, 80x40mm | Wall: 1.2mm–2.5mm | 6m Length',
     description:
-      'Heavy-duty hot-dip galvanized rectangular (RHS) and square (SHS) hollow sections engineered for load-bearing framework and heavy weather endurance. Treated with uniform zinc spangle coating compliant with IS 4923 / IS 1161 standards.',
+      'Precision cold-formed square (SHS) and rectangular (RHS) stainless steel 304 hollow sections. Characterized by crisp 90° miter corners and high torsional stiffness, making them the benchmark for modern minimalist railing posts, privacy screens, and gate framing.',
     highlights: [
-      'Thick hot-dip zinc coating (minimum 275 g/m²–360 g/m²) resisting rust',
-      'High tensile strength suitable for high wind-pressure coastal zones',
-      'Structural steel profiles: Angles (ISA), Channels (ISMC), and Joist Beams (ISMB)',
-      'Pre-galvanized and post-weld zinc-primed for immediate on-site fabrication',
+      'Crisp, flat exterior planes providing sharp architectural definition for modern villas',
+      'High moment of inertia for superior post rigidity and zero railing vibration',
+      'Smooth, non-porous surface finish that resists coastal dirt and salt adhesion',
+      'Precision cut-to-length and miter cutting available at our Surathkal workshop',
     ],
     bestUseCases: [
-      'Heavy sliding and swing compound gate structural frames',
-      'Rooftop terrace truss extensions and coastal windbreak enclosures',
-      'Industrial shed purlins, carports, and PEB mezzanine floor supports',
+      'Heavy-duty vertical balustrade posts and corner uprights',
+      'Minimalist horizontal slat infills and modern compound gate frames',
+      'Architectural pergola rafters, boundary dividers, and terrace screens',
     ],
-    availableGrades: 'Class A, B & C Galvanized Iron | Mild Steel Structural Sections',
-    standardLengths: '6 Meters (20 Feet) bundles | Custom bundle sizes on request',
+    availableFinishes: '320# Satin Hairline | 600# Mirror Finish',
+    standardSizes: '12x12mm up to 80x40mm | 6 Meter (20 Feet) standard lengths',
   },
   {
-    id: 'railing-hardware',
-    name: 'Architectural Glass Hardware & Railing Fittings',
-    subtitle: 'Marine SS 316 Spider Fittings, Spigots & Base Shoe Channels',
-    badge: 'Architectural Hardware',
-    image: '/images/sales/sales-railing-hardware.webp',
-    alt: 'Marine grade SS 316 architectural glass railing hardware, spigots, and spider brackets',
-    specs: 'Solid Investment Cast SS 316 | 6063-T6 Base Shoes | For 10mm, 12mm & 17.52mm Glass',
+    id: 'slotted-pipes',
+    name: 'Slotted Pipes (SS 304 Grade Handrail Channels)',
+    subtitle: 'Integrated Top-Groove Capping for Frameless Glass Balustrades',
+    badge: 'SS 304 Slotted Handrail',
+    image: '/images/sales/ss-slotted-pipes.webp',
+    alt: 'Stainless steel 304 slotted handrail pipes for frameless glass railings',
+    specs: 'Round (42.4mm / 50.8mm) & Square (40x40mm / 60x40mm) | Slot Width: 14mm–20mm for 10mm–17.52mm Glass',
     description:
-      'Engineered investment-cast stainless steel and heavy extruded aluminium hardware engineered to clamp toughened and laminated safety glass securely without stress points or glass rattling. Tested for heavy coastal wind loads.',
+      'Specialized stainless steel 304 handrail tubes manufactured with a continuous bottom channel. Designed to cap directly over the top edge of toughened and laminated glass balustrades, providing mandatory handrail continuity while shielding glass edges from accidental impacts.',
     highlights: [
-      'Continuous aluminium and SS base shoe U-channels with EPDM dry-glaze rubber gaskets',
-      'Solid cast SS 316 core-drill and surface-mount spigots with leveling screws',
-      'Articulated spider brackets (1-way, 2-way, 4-way) with pivoting tension routels',
-      'Heavy-duty glass-to-glass D-clamps, 90° corner connectors, and wall brackets',
+      'Precision CNC-milled slot with EPDM rubber gasket channel for cushioned, rattle-free glass grip',
+      'No through-glass hole drilling required—preserves 100% of the tempered glass strength',
+      'Reinforces glass panels into one continuous, unified structural balustrade run',
+      'Available with matching slotted 90° elbows, wall flanges, and flush end-caps',
     ],
     bestUseCases: [
-      'Frameless glass balcony balustrades and staircase landings',
-      'Cantilevered entrance glass canopies and skylights',
-      'Commercial lobby glass partitions and swimming pool wind screens',
+      'Frameless glass balcony balustrades, oceanfront terraces, and rooftop decks',
+      'Luxury villa staircase glass handrail capping',
+      'Commercial mall atrium balustrades and corporate glass railings',
     ],
-    availableGrades: 'Cast SS 316 Marine Grade | Alloy 6063-T6 Structural Aluminium',
-    standardLengths: 'Single units, boxed hardware sets, and continuous 3m/6m channels',
+    availableFinishes: 'Satin Hairline | Mirror Polish | Matte Jet Black (PVD/Coated)',
+    standardSizes: 'Fits 10mm, 12mm, 13.52mm & 17.52mm Toughened/Laminated Glass',
   },
   {
-    id: 'aluminium-profiles',
-    name: 'Architectural Aluminium Profiles & Systems',
-    subtitle: 'Corrosion-Proof Extruded 6063-T6 Window & Railing Sections',
-    badge: 'Alloy 6063-T6',
-    image: '/images/sales/sales-aluminium-extrusions.webp',
-    alt: 'Architectural extruded aluminium window and sliding frame profiles in showroom',
-    specs: 'Alloy 6063-T6 | 2-Track & 3-Track Sliding | 25-Micron Anodized / Qualicoat Powder',
+    id: 'custom-profiles',
+    name: 'Custom-Designed Stainless Steel Profiles',
+    subtitle: 'Tailored Architectural Shapes, Laser-Cut Sections & Formed Channels',
+    badge: 'Custom SS Profiles',
+    image: '/images/sales/ss-custom-profiles.webp',
+    alt: 'Custom-designed stainless steel 304 architectural profiles fabricated in Surathkal',
+    specs: 'Custom Radii, Bends, CNC Laser Cuts & Profiles | Thickness: 1.5mm to 6.0mm | Tailored to CAD',
     description:
-      'High-grade extruded architectural aluminium systems delivering zero corrosion risk in high-humidity coastal environments. Built with multi-chamber profiles, integrated mosquito mesh tracks, and smooth stainless steel glide rails.',
+      'Bespoke stainless steel 304 architectural profiles engineered and formed to custom blueprints. Using precision CNC hydraulic press-brake bending, laser contouring, and automated edge chamfering, we create custom shapes that cannot be sourced off standard shelves.',
     highlights: [
-      '100% immune to coastal salt-air rust and oxidation',
-      'Lightweight structural profile reducing cantilevered load on building slabs',
-      'Deep stepped water drainage tracks preventing monsoon rainwater ingress',
-      'Available in charcoal matte black, champagne bronze, white, and wood finishes',
+      'Fabricated strictly to architectural drawings, site measurements, and custom CAD files',
+      'Custom base shoe covers, grooved reveal profiles, and decorative baluster fins',
+      'Uniform corner bends and laser-clean miter cuts with zero tooling marks',
+      'Available in specialized PVD titanium finishes: Brass Gold, Rose Gold, Bronze, and Black',
     ],
     bestUseCases: [
-      'European-style 2-track and 3-track sliding balcony windows',
-      'Modular lightweight terrace railings and perimeter louvers',
-      'Commercial office partition frames and fixed vision glass elevations',
+      'Signature villa entrance railings, custom handrail brackets, and post shoes',
+      'Architectural facade trims, canopy support ribs, and decorative louvers',
+      'High-end interior metal dividers and luxury duplex staircase elements',
     ],
-    availableGrades: 'Architectural Alloy 6063 Temper T6',
-    standardLengths: 'Standard 4.5m to 6.5m lengths | Custom mill cut available',
+    availableFinishes: 'Custom Hairline | Mirror | PVD Titanium Gold / Bronze / Black',
+    standardSizes: 'Manufactured to custom project dimensions & schedules',
   },
   {
-    id: 'fasteners-supplies',
-    name: 'Fasteners, Welding Consumables & Workshop Supplies',
-    subtitle: 'High-Tensile SS Anchors, TIG Rods, Discs & Buffing Compounds',
-    badge: 'Consumables & Tools',
-    image: '/images/sales/sales-fasteners-supplies.webp',
-    alt: 'Stainless steel fasteners, anchor bolts, and fabrication workshop supplies in Surathkal',
-    specs: 'SS 304/316 Anchor Fasteners | ER308L / ER316L TIG Rods | Industrial Cutting Discs',
+    id: 'ss-fittings',
+    name: 'SS 304 Railing Fittings & Hardware',
+    subtitle: 'Investment-Cast Flanges, Elbows, Connectors, End Caps & Brackets',
+    badge: 'SS 304 Cast Fittings',
+    image: '/images/sales/ss-railing-fittings.webp',
+    alt: 'SS 304 grade railing hardware, connectors, elbows, base plates, and glass clamps',
+    specs: 'Solid Investment Cast 304 | Flanges, 90°/135° Elbows, Adjustable Connectors, End Caps, Glass Clamps',
     description:
-      'The exact professional-grade fasteners, chemical anchoring resins, welding consumables, and finishing abrasives used daily by our own master fabricators. Packaged for trade contractors, metal workshops, and site installations.',
+      'Complete modular connection hardware manufactured from solid investment-cast SS 304. Designed for tight, flush-fitting assembly with our round, square, and slotted pipes, enabling clean, weld-free or concealed-weld installations with maximum structural strength.',
     highlights: [
-      'High-tensile SS 304/316 expansion anchor bolts (M8, M10, M12, M16)',
-      'Chemical resin capsules and threaded studs for heavy masonry anchoring',
-      'Argon TIG welding filler wire (ER308L & ER316L) and ceramic nozzles',
-      'Fiber cut-off discs, flap sanding wheels, and green rouge mirror-buffing bars',
+      'Solid investment-cast components ensuring zero porosity and superior tensile load tolerance',
+      'Heavy-duty floor base plates and aesthetic snap-on base cover flanges',
+      'Swiveling stair-angle connectors, flush 90° elbows, and architectural end caps',
+      'Glass-mounting D-clamps, point fixings, and adjustable wall handrail brackets',
     ],
     bestUseCases: [
-      'Structural railing base-plate anchoring into concrete slabs',
-      'Precision TIG argon welding of decorative stainless steel items',
-      'Mirror buffing and scratch removal on architectural metalwork',
+      'Rapid, weld-free modular railing installation on residential and commercial sites',
+      'Heavy base plate anchoring into concrete slabs and stringer beams',
+      'Staircase handrail turning transitions and wall-mounted returns',
     ],
-    availableGrades: 'Trade-Grade Industrial Packaging',
-    standardLengths: 'Standard boxes (50 / 100 pcs) | Wholesale bulk packs',
+    availableFinishes: 'Mirror 600# | Satin Hairline 320#',
+    standardSizes: 'Matching standard pipe ODs: 38mm, 50.8mm, 40x40mm, 50x50mm',
   },
 ];
 
 const perks = [
   {
-    title: 'Wholesale & Retail',
-    description: 'From individual piece orders for home renovations to bulk contractor consignments with competitive trade discounts.',
+    title: 'High-Quality SS 304 Grade',
+    description: 'Direct sourcing with genuine test certificates. 18% Chromium, 8% Nickel austenitic composition for proven coastal durability.',
   },
   {
-    title: 'Custom Cut-to-Length',
-    description: 'In-house workshop cutting, mitering, and deburring so your materials arrive ready for immediate on-site assembly.',
+    title: 'Elegant Surface Finishes',
+    description: 'Available in flawless 600# Mirror Polish (high-shine chrome luster) and contemporary 320# Satin Hairline brush.',
   },
   {
-    title: 'Verified Metallurgy',
-    description: 'Direct manufacturer sourcing from trusted brands with genuine grade testing (SS 304, SS 316, certified GI).',
+    title: 'Custom Cut & Profiling',
+    description: 'In-house workshop cutting, mitering, and custom profile forming in Surathkal—delivered ready for immediate installation.',
   },
   {
-    title: 'Coastal Delivery',
-    description: 'Prompt transport and direct site drop-offs across Surathkal, Mangaluru, Baikampady, Mulki, and Udupi.',
+    title: 'Wholesale & Retail Supply',
+    description: 'We cater to single-villa home renovation requirements as well as bulk contractor consignments across coastal Karnataka.',
   },
 ];
 
 const faqs = [
   {
-    q: 'What is the difference between SS 304 and SS 316 for coastal areas?',
-    a: 'SS 304 contains 18% chromium and 8% nickel, which is suitable for interior work or sheltered urban locations. SS 316 contains 2% to 3% added molybdenum, which prevents pitting corrosion caused by coastal saltwater and monsoon salt air. For any exposed balcony or beachfront property within 5 km of the Arabian Sea, we strongly recommend SS 316.',
+    q: 'Why is SS 304 the standard choice for architectural railings?',
+    a: 'SS 304 contains a robust blend of 18% chromium and 8% nickel. This metallurgical combination forms an invisible, self-healing passive chromium oxide film that shields the metal from oxygen, moisture, and daily wear, providing decades of maintenance-free service with simple periodic cleaning.',
   },
   {
-    q: 'Can pipes and steel sections be cut to exact sizes before delivery?',
-    a: 'Yes. Our Surathkal workshop has precision cold-cut saws and mitering equipment. Simply provide your cut list or bill of quantities, and we will cut, deburr, and bundle your materials to exact measurements, reducing site cutting noise and metal scrap wastage.',
+    q: 'What is the advantage of Slotted Handrail Pipes for glass balustrades?',
+    a: 'Slotted pipes feature a continuous CNC groove lined with an EPDM rubber gasket. They fit over the top edge of 10mm or 12mm toughened glass without drilling any holes in the glass, tying multiple glass panels into a unified, rigid railing run while preventing accidental edge chipping.',
   },
   {
-    q: 'Do you sell to individual homeowners or only commercial contractors?',
-    a: 'We supply both! Individual homeowners can buy single pipe lengths or hardware sets for home projects, while contractors and fabricators receive wholesale tiered pricing for bulk orders.',
+    q: 'Can pipes be cut to my specific staircase and balcony dimensions?',
+    a: 'Yes! Our Surathkal workshop is equipped with precision cold-cut saws and CNC equipment. Submit your cut list or architectural drawings, and we will deliver pipes cut, deburred, and numbered to your exact required lengths to save on-site labor and eliminate scrap.',
   },
   {
-    q: 'How quickly can orders be delivered to sites in Mangaluru or Udupi?',
-    a: 'In-stock pipes, standard hardware, and consumables are typically ready for workshop pickup immediately or dispatched for site delivery within 24 to 48 hours across Dakshina Kannada and Udupi districts.',
+    q: 'What finishes are available in SS 304 railing materials?',
+    a: 'We supply two primary finishes: 600# Mirror Polish (ultra-reflective, chrome-like shine that naturally sheds coastal rain) and 320# Satin Hairline (a modern, brushed matte texture that conceals fingerprints). Custom PVD titanium gold, bronze, and black coatings are also available for luxury interior profiles.',
   },
 ];
 ---
 
 <Layout
-  title="Pipes, Metals & Fabrication Supplies Sales – Surathkal & Mangaluru"
-  description="Wholesale and retail supplier of stainless steel pipes, GI hollow sections, structural steel, glass railing hardware, and fabrication materials at Needs Group, Surathkal."
+  title="Premium Stainless Steel Railing Materials | SS 304 Pipes & Fittings – Needs Group"
+  description="We specialize in all types of premium SS 304 Grade Railing Pipes and Fittings: Round Pipes, Square Pipes, Slotted Pipes, Custom-designed SS Profiles, and Hardware in Surathkal & Mangaluru."
   videoSchema={{
     name: bannerVideo.title,
     description: bannerVideo.description,
@@ -196,24 +196,24 @@ const faqs = [
 >
   <!-- Page Banner -->
   <PageBanner
-    title="Pipes, Metals & Fabrication Materials Supply"
-    subtitle="Wholesale & retail supply of certified stainless steel pipes, structural GI sections, railing fittings, and workshop supplies for builders, fabricators, and property owners across coastal Karnataka."
-    badge="DIRECT MATERIAL SUPPLY"
+    title="Premium Stainless Steel Railing Materials"
+    subtitle="We specialize in all types of premium SS 304 Grade Railing Pipes and Fittings: Round Pipes, Square Pipes, Slotted Pipes, and Custom-Designed Stainless Steel Profiles."
+    badge="SS 304 GRADE SPECIALIST"
     video={bannerVideo}
-    breadcrumbs={[{ label: 'Sales & Supplies' }]}
-    serviceName="Material & Pipe Supply Inquiry"
+    breadcrumbs={[{ label: 'Sales & Materials' }]}
+    serviceName="SS 304 Railing Materials Inquiry"
   />
 
   <!-- Quick Category Anchor Jump Bar -->
-  <div class="bg-white/90 border-b border-zinc-200 sticky top-20 z-30 backdrop-blur-md shadow-sm">
+  <div class="bg-white/95 border-b border-zinc-200/90 sticky top-20 z-30 backdrop-blur-md shadow-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 overflow-x-auto scrollbar-none flex items-center gap-2">
-      <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider shrink-0 mr-2">Jump To:</span>
+      <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider shrink-0 mr-2">Materials:</span>
       {salesCategories.map((c) => (
         <a
           href={`#${c.id}`}
-          class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-zinc-50 border border-zinc-200 hover:border-emerald-400 text-zinc-700 hover:text-emerald-800 transition-colors shrink-0 shadow-sm"
+          class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-zinc-50 border border-zinc-200 hover:border-emerald-400 text-zinc-700 hover:text-emerald-800 transition-colors shrink-0 shadow-xs"
         >
-          {c.name.split(' (')[0].split('&')[0].trim()}
+          {c.name.split(' (')[0].trim()}
         </a>
       ))}
     </div>
@@ -223,44 +223,45 @@ const faqs = [
   <section class="relative py-16 sm:py-24 bg-gradient-to-b from-zinc-100/90 via-slate-50 to-zinc-100/80 overflow-hidden border-b border-zinc-200">
     <!-- Ambient Architectural Grid & Dynamic Atmospheric Glows -->
     <div class="absolute inset-0 pointer-events-none">
-      <!-- Fine Architectural Dot Blueprint Grid -->
       <div class="absolute inset-0 bg-blueprint-grid opacity-75"></div>
-      <!-- Tactical Cross-Grid Overlay -->
       <div class="absolute inset-0 bg-tactical-grid opacity-40"></div>
-      <!-- Soft Emerald Ambient Radiance top-left -->
       <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-emerald-200/35 blur-3xl"></div>
-      <!-- Soft Warm Amber Ambience mid-right -->
       <div class="absolute top-1/3 -right-32 w-[32rem] h-[32rem] rounded-full bg-amber-100/40 blur-3xl"></div>
-      <!-- Soft Minty Radiance lower-left -->
       <div class="absolute bottom-1/4 -left-20 w-80 h-80 rounded-full bg-emerald-100/30 blur-3xl"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 relative z-10">
       
-      <!-- Section Header -->
-      <div class="max-w-3xl space-y-4">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 text-xs font-semibold uppercase tracking-wider shadow-sm">
-          Wholesale &amp; Retail Supply
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-900 font-heading">
-          Certified Architectural Metals &amp; <span class="text-gradient-bronze">Fabrication Hardware</span>
-        </h2>
-        <p class="text-zinc-600 text-base leading-relaxed">
-          In addition to custom turnkey fabrication, Needs Group stocks and supplies premium-grade pipes, steel sections, and railing accessories directly from our Surathkal workshop. Whether you need single lengths for a residential renovation or full truckloads for commercial projects, we deliver tested materials suited for coastal weather.
-        </p>
-      </div>
-
-      <!-- Key Service Perks Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {perks.map((perk) => (
-          <div class="p-6 rounded-2xl bg-white/95 backdrop-blur-md border border-zinc-200/90 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all space-y-2">
-            <div class="w-8 h-8 rounded-xl bg-emerald-100/70 border border-emerald-200 text-emerald-800 flex items-center justify-center font-bold text-sm mb-3">
-              ✓
-            </div>
-            <h3 class="text-base font-bold text-zinc-900 font-heading">{perk.title}</h3>
-            <p class="text-xs text-zinc-600 leading-relaxed">{perk.description}</p>
+      <!-- Primary Core Statement Banner -->
+      <div class="p-8 sm:p-12 rounded-3xl bg-white/95 backdrop-blur-xl border border-zinc-200/90 shadow-md space-y-6">
+        <div class="max-w-3xl space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 text-xs font-semibold uppercase tracking-wider shadow-xs">
+            Precision Metallurgy
           </div>
-        ))}
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 font-heading leading-tight">
+            Premium Stainless Steel <span class="text-gradient-bronze">Railing Materials</span>
+          </h2>
+          <p class="text-base sm:text-lg text-zinc-700 font-medium leading-relaxed">
+            We specialize in all types of premium <span class="text-emerald-900 font-bold">SS 304 Grade Railing Pipes and Fittings</span>, available in Round Pipes, Square Pipes, Slotted Pipes, and Custom-designed Stainless Steel Profiles.
+          </p>
+          <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-emerald-800 bg-emerald-50/80 px-4 py-2 rounded-xl border border-emerald-200/70">
+            <span>✨</span>
+            <span>High-quality 304 Grade Stainless Steel – Elegant Finish, Superior Corrosion Resistance, and Long-lasting Durability.</span>
+          </div>
+        </div>
+
+        <!-- 4-Pillar Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pt-4 border-t border-zinc-200/80">
+          {perks.map((perk) => (
+            <div class="p-5 rounded-2xl bg-zinc-50/80 border border-zinc-200/70 shadow-xs space-y-2 hover:bg-white transition-colors">
+              <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs mb-2">
+                ✓
+              </div>
+              <h3 class="text-sm font-bold text-zinc-900 font-heading">{perk.title}</h3>
+              <p class="text-xs text-zinc-600 leading-relaxed">{perk.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
       <!-- Detailed Categories List (Hero Photography + Specs) -->
@@ -304,8 +305,8 @@ const faqs = [
               </div>
               <!-- Spec Bar -->
               <div class="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-700 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                <div><span class="text-emerald-800 font-bold">Specs:</span> {cat.specs}</div>
-                <span class="text-zinc-400 text-[11px] shrink-0">Direct Workshop Stock</span>
+                <div><span class="text-emerald-800 font-bold">Specifications:</span> {cat.specs}</div>
+                <span class="text-zinc-400 text-[11px] shrink-0">Genuine SS 304</span>
               </div>
             </div>
 
@@ -313,7 +314,7 @@ const faqs = [
             <div class:list={['lg:col-span-5 space-y-5', idx % 2 === 1 ? 'lg:order-1' : '']}>
               <div class="space-y-2">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-semibold uppercase tracking-wider shadow-sm">
-                  0{idx + 1} • Material Supply
+                  0{idx + 1} • SS 304 Material
                 </div>
                 <h3 class="text-2xl sm:text-3xl font-bold text-zinc-900 font-heading">
                   {cat.name}
@@ -329,7 +330,7 @@ const faqs = [
 
               <!-- Key Highlights Checklist -->
               <div class="space-y-2">
-                <div class="text-xs font-bold text-zinc-900 uppercase tracking-wider">Quality Highlights:</div>
+                <div class="text-xs font-bold text-zinc-900 uppercase tracking-wider">Product Highlights:</div>
                 <div class="space-y-1.5 text-xs text-zinc-700">
                   {cat.highlights.map((h) => (
                     <div class="flex items-start gap-2 bg-zinc-50/80 p-2.5 rounded-lg border border-zinc-200/80">
@@ -342,7 +343,7 @@ const faqs = [
 
               <!-- Applications -->
               <div class="pt-2 border-t border-zinc-200 space-y-1">
-                <div class="text-xs font-bold text-zinc-500 uppercase tracking-wider">Common Applications:</div>
+                <div class="text-xs font-bold text-zinc-500 uppercase tracking-wider">Recommended Applications:</div>
                 <ul class="text-xs text-zinc-600 list-disc list-inside space-y-0.5">
                   {cat.bestUseCases.map((u) => (
                     <li>{u}</li>
@@ -359,13 +360,13 @@ const faqs = [
                   class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-800 hover:scale-[1.02] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
                 >
                   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
-                  <span>Inquire for {cat.name.split(' (')[0].split('&')[0].trim()}</span>
+                  <span>Inquire for {cat.name.split(' (')[0].trim()}</span>
                 </button>
                 <a
                   href="/contact/#enquiry-form"
                   class="inline-flex items-center gap-1.5 px-5 py-3 rounded-full bg-white border border-zinc-200 text-zinc-800 text-xs font-semibold hover:border-emerald-400 uppercase tracking-wider transition-colors shadow-sm"
                 >
-                  <span>Request Cut Quote</span>
+                  <span>Request Custom Quote</span>
                 </a>
               </div>
 
@@ -378,13 +379,13 @@ const faqs = [
       <div class="p-8 sm:p-12 rounded-3xl bg-zinc-900 text-white space-y-6">
         <div class="max-w-3xl space-y-3">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-700/60 text-emerald-300 text-xs font-semibold uppercase tracking-wider">
-            Bill of Quantities (BOQ) Support
+            Custom Stainless Steel Cutting &amp; Profiling
           </div>
           <h3 class="text-2xl sm:text-3xl font-extrabold font-heading">
-            Have a Specific Cut List or Material Schedule?
+            Need Pipes Cut to Exact Staircase &amp; Balcony Lengths?
           </h3>
           <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
-            Send us your architectural drawings, cut list, or pipe schedules. Our workshop estimators will calculate exact material lengths, bundle quantities, and optimal cut plans to minimize site wastage and save you money.
+            Avoid on-site metal cutting noise, jagged edges, and material wastage. Send us your railing cut-list or architectural blueprint. We will precision cold-cut, miter, deburr, and bundle your SS 304 round, square, or slotted pipes ready for immediate bolting or welding.
           </p>
         </div>
 
@@ -392,11 +393,11 @@ const faqs = [
           <button
             type="button"
             data-open-whatsapp
-            data-service="Custom Pipe Cut List & Material BOQ"
+            data-service="SS 304 Pipe Cut List & Material BOQ"
             class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md"
           >
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
-            <span>Send Cut List on WhatsApp</span>
+            <span>Send Railing Cut List on WhatsApp</span>
           </button>
           <a
             href="/contact/"
@@ -411,10 +412,10 @@ const faqs = [
       <div class="max-w-4xl mx-auto space-y-6 pt-4 bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-zinc-200/90 shadow-sm">
         <div class="text-center space-y-2">
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-800 text-xs font-semibold uppercase tracking-wider">
-            Material Knowledge
+            Railing Materials FAQ
           </div>
           <h3 class="text-2xl sm:text-3xl font-extrabold text-zinc-900 font-heading">
-            Frequently Asked Questions on Material Supply
+            Frequently Asked Questions on SS 304 Railing Materials
           </h3>
         </div>
 
@@ -433,8 +434,8 @@ const faqs = [
 
   <!-- CTA Banner -->
   <CTABanner
-    title="Need Wholesale Pricing for an Upcoming Project?"
+    title="Need Premium SS 304 Railing Pipes & Fittings?"
     subtitle="Reach out with your required dimensions, pipe wall thicknesses, and quantities. We deliver direct to site across coastal Karnataka."
-    serviceName="Wholesale Pipe & Material Supply"
+    serviceName="SS 304 Railing Materials Supply"
   />
 </Layout>
