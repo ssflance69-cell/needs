@@ -62,6 +62,12 @@
       linear-gradient(90deg, rgba(180, 83, 9, 0.035) 1px, transparent 1px);
     background-size: 48px 48px;
   }
+
+  /* Architectural Dot Matrix & Blueprint Pattern */
+  .bg-blueprint-grid {
+    background-image: radial-gradient(rgba(24, 24, 27, 0.09) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
