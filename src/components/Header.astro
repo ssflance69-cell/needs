@@ -24,6 +24,7 @@ const navLinks = [
       { label: 'Turnkey Construction', href: '/services/construction/' },
     ],
   },
+  { label: 'Sales', href: '/sales/' },
   { label: 'Projects', href: '/projects/' },
   { label: 'Contact', href: '/contact/' },
 ];
@@ -204,6 +205,15 @@ const isLinkActive = (href: string) => {
             <a href="/services/construction/" class="block px-3 py-1.5 text-xs text-zinc-600 hover:text-emerald-800">Turnkey Construction</a>
           </div>
         </div>
+        <a
+          href="/sales/"
+          class:list={[
+            'block px-4 py-2.5 rounded-xl text-sm font-medium transition-colors',
+            currentPath === '/sales/' ? 'bg-emerald-50 text-emerald-950 border border-emerald-200 font-bold' : 'text-zinc-700 hover:bg-zinc-100',
+          ]}
+        >
+          Sales &amp; Materials (Pipes &amp; Supplies)
+        </a>
         <a
           href="/projects/"
           class:list={[
