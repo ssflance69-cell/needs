@@ -6,74 +6,152 @@ import { mediaManifest } from '../data/media';
 
 const bannerVideo = mediaManifest.banners.construction;
 
-// Initial category placeholders ready for exact client specifications
-const productCategories = [
+export interface SalesCategory {
+  id: string;
+  name: string;
+  subtitle: string;
+  badge: string;
+  image: string;
+  alt: string;
+  specs: string;
+  description: string;
+  highlights: string[];
+  bestUseCases: string[];
+  availableGrades: string;
+  standardLengths: string;
+}
+
+const salesCategories: SalesCategory[] = [
   {
     id: 'ss-pipes',
-    title: 'Stainless Steel Pipes & Tubes',
-    subtitle: 'Grade 304 & Marine-Grade 316',
-    description: 'High-purity stainless steel tubular and rectangular profiles with mirror-polish and satin hairline finishes, ideal for coastal balustrades, gates, and interior fabrication.',
-    highlights: [
-      'Round Pipes (16mm to 76mm OD)',
-      'Square & Rectangular Box Tubes (12x12mm to 100x50mm)',
-      'Slotted Handrail Profiles for Frameless Glass',
-      'Tested for coastal saline corrosion resistance',
-    ],
+    name: 'Stainless Steel Pipes & Hollow Sections',
+    subtitle: 'Grade 304 & Marine-Grade SS 316 Architectural Tubing',
     badge: 'SS 304 / SS 316',
-    icon: 'pipe',
+    image: '/images/sales/sales-ss-pipes.webp',
+    alt: 'Stacked stainless steel round pipes and square box sections in Surathkal supply warehouse',
+    specs: 'OD 16mm–76mm Round | 12x12mm–100x50mm Box | 1.2mm–2.5mm Wall | Mirror 600# & Satin Hairline',
+    description:
+      'Directly supplied from certified primary steel producers (Jindal / Salem). Designed specifically for coastal atmospheric resilience across Mangaluru, Surathkal, and Udupi. Features high chromium-nickel metallurgy that prevents pitting corrosion from saline air.',
+    highlights: [
+      'Genuine SS 304 and marine SS 316 with mill test certificates',
+      'Specialized slotted handrail pipes (single & double groove) for 10mm/12mm frameless glass',
+      'Consistent true gauge wall thickness (never under-gauged)',
+      'High-luster 600# Mirror Polish and 320# Satin Hairline architectural finishes',
+    ],
+    bestUseCases: [
+      'Balcony balustrades, staircase handrails, and ramp grab bars',
+      'Modern compound entrance gates and boundary railings',
+      'Architectural facade louvers, pergola rafters, and exterior canopies',
+    ],
+    availableGrades: 'SS 304 (Interior/Urban) | SS 316 (Coastal/Marine)',
+    standardLengths: '6 Meters (20 Feet) standard | Custom cut-to-length available',
   },
   {
     id: 'gi-structural',
-    title: 'Galvanized Iron (GI) & Structural Steel',
-    subtitle: 'Heavy-Gauge Hollow Sections & Flats',
-    description: 'Hot-dip galvanized box sections, purlins, MS channels, angles, and heavy structural tubes designed for enduring structural support and perimeter security.',
-    highlights: [
-      'Square & Rectangular GI Hollow Sections (RHS / SHS)',
-      'Mild Steel (MS) Angles, Channels & Beams (ISMB / ISMC)',
-      'Galvanized Flat Bars & Solid Square Rods',
-      'Uniform zinc coating with high tensile yield strength',
-    ],
+    name: 'Galvanized Iron (GI) & Structural Steel',
+    subtitle: 'Heavy-Gauge Hot-Dip Galvanized Box Pipes & Sections',
     badge: 'Heavy Hot-Dip GI',
-    icon: 'structural',
+    image: '/images/sales/sales-gi-pipes.webp',
+    alt: 'Bundled heavy-duty galvanized iron GI rectangular box pipes and structural steel sections',
+    specs: 'SHS & RHS 20x20mm–150x150mm | ISMB/ISMC Sections | 1.6mm–4.5mm Heavy Wall',
+    description:
+      'Heavy-duty hot-dip galvanized rectangular (RHS) and square (SHS) hollow sections engineered for load-bearing framework and heavy weather endurance. Treated with uniform zinc spangle coating compliant with IS 4923 / IS 1161 standards.',
+    highlights: [
+      'Thick hot-dip zinc coating (minimum 275 g/m²–360 g/m²) resisting rust',
+      'High tensile strength suitable for high wind-pressure coastal zones',
+      'Structural steel profiles: Angles (ISA), Channels (ISMC), and Joist Beams (ISMB)',
+      'Pre-galvanized and post-weld zinc-primed for immediate on-site fabrication',
+    ],
+    bestUseCases: [
+      'Heavy sliding and swing compound gate structural frames',
+      'Rooftop terrace truss extensions and coastal windbreak enclosures',
+      'Industrial shed purlins, carports, and PEB mezzanine floor supports',
+    ],
+    availableGrades: 'Class A, B & C Galvanized Iron | Mild Steel Structural Sections',
+    standardLengths: '6 Meters (20 Feet) bundles | Custom bundle sizes on request',
   },
   {
     id: 'railing-hardware',
-    title: 'Architectural Railing Hardware & Glass Fittings',
-    subtitle: 'Precision Cast Stainless Steel Components',
-    description: 'Architectural-grade glass clamps, continuous aluminium/SS base shoe channels, solid spigots, handrail wall brackets, and articulated spider fittings.',
-    highlights: [
-      'Solid Base Shoe U-Channels for Frameless Glass',
-      'Surface & Core-Drill Spigots for Toughened Glass',
-      'Articulated Spider Fittings & Routels (SS 316)',
-      'Wall Brackets, Elbows, End-Caps & Connectors',
-    ],
+    name: 'Architectural Glass Hardware & Railing Fittings',
+    subtitle: 'Marine SS 316 Spider Fittings, Spigots & Base Shoe Channels',
     badge: 'Architectural Hardware',
-    icon: 'hardware',
+    image: '/images/sales/sales-railing-hardware.webp',
+    alt: 'Marine grade SS 316 architectural glass railing hardware, spigots, and spider brackets',
+    specs: 'Solid Investment Cast SS 316 | 6063-T6 Base Shoes | For 10mm, 12mm & 17.52mm Glass',
+    description:
+      'Engineered investment-cast stainless steel and heavy extruded aluminium hardware engineered to clamp toughened and laminated safety glass securely without stress points or glass rattling. Tested for heavy coastal wind loads.',
+    highlights: [
+      'Continuous aluminium and SS base shoe U-channels with EPDM dry-glaze rubber gaskets',
+      'Solid cast SS 316 core-drill and surface-mount spigots with leveling screws',
+      'Articulated spider brackets (1-way, 2-way, 4-way) with pivoting tension routels',
+      'Heavy-duty glass-to-glass D-clamps, 90° corner connectors, and wall brackets',
+    ],
+    bestUseCases: [
+      'Frameless glass balcony balustrades and staircase landings',
+      'Cantilevered entrance glass canopies and skylights',
+      'Commercial lobby glass partitions and swimming pool wind screens',
+    ],
+    availableGrades: 'Cast SS 316 Marine Grade | Alloy 6063-T6 Structural Aluminium',
+    standardLengths: 'Single units, boxed hardware sets, and continuous 3m/6m channels',
   },
   {
-    id: 'fabrication-supplies',
-    title: 'Fabrication Consumables & Fasteners',
-    subtitle: 'Workshop Accessories & Installation Kits',
-    description: 'Comprehensive installation hardware, anchor fasteners, cutting and grinding wheels, TIG/MIG welding accessories, and mirror buffing compounds.',
+    id: 'aluminium-profiles',
+    name: 'Architectural Aluminium Profiles & Systems',
+    subtitle: 'Corrosion-Proof Extruded 6063-T6 Window & Railing Sections',
+    badge: 'Alloy 6063-T6',
+    image: '/images/sales/sales-aluminium-extrusions.webp',
+    alt: 'Architectural extruded aluminium window and sliding frame profiles in showroom',
+    specs: 'Alloy 6063-T6 | 2-Track & 3-Track Sliding | 25-Micron Anodized / Qualicoat Powder',
+    description:
+      'High-grade extruded architectural aluminium systems delivering zero corrosion risk in high-humidity coastal environments. Built with multi-chamber profiles, integrated mosquito mesh tracks, and smooth stainless steel glide rails.',
     highlights: [
-      'High-Tensile SS 304/316 Anchor Fasteners',
-      'TIG Argon Welding Wire & Electrodes',
-      'Fiber Cut-Off Wheels & Flap Discs',
-      'Industrial Stainless Steel Buffing Compounds & Wheels',
+      '100% immune to coastal salt-air rust and oxidation',
+      'Lightweight structural profile reducing cantilevered load on building slabs',
+      'Deep stepped water drainage tracks preventing monsoon rainwater ingress',
+      'Available in charcoal matte black, champagne bronze, white, and wood finishes',
     ],
+    bestUseCases: [
+      'European-style 2-track and 3-track sliding balcony windows',
+      'Modular lightweight terrace railings and perimeter louvers',
+      'Commercial office partition frames and fixed vision glass elevations',
+    ],
+    availableGrades: 'Architectural Alloy 6063 Temper T6',
+    standardLengths: 'Standard 4.5m to 6.5m lengths | Custom mill cut available',
+  },
+  {
+    id: 'fasteners-supplies',
+    name: 'Fasteners, Welding Consumables & Workshop Supplies',
+    subtitle: 'High-Tensile SS Anchors, TIG Rods, Discs & Buffing Compounds',
     badge: 'Consumables & Tools',
-    icon: 'tools',
+    image: '/images/sales/sales-fasteners-supplies.webp',
+    alt: 'Stainless steel fasteners, anchor bolts, and fabrication workshop supplies in Surathkal',
+    specs: 'SS 304/316 Anchor Fasteners | ER308L / ER316L TIG Rods | Industrial Cutting Discs',
+    description:
+      'The exact professional-grade fasteners, chemical anchoring resins, welding consumables, and finishing abrasives used daily by our own master fabricators. Packaged for trade contractors, metal workshops, and site installations.',
+    highlights: [
+      'High-tensile SS 304/316 expansion anchor bolts (M8, M10, M12, M16)',
+      'Chemical resin capsules and threaded studs for heavy masonry anchoring',
+      'Argon TIG welding filler wire (ER308L & ER316L) and ceramic nozzles',
+      'Fiber cut-off discs, flap sanding wheels, and green rouge mirror-buffing bars',
+    ],
+    bestUseCases: [
+      'Structural railing base-plate anchoring into concrete slabs',
+      'Precision TIG argon welding of decorative stainless steel items',
+      'Mirror buffing and scratch removal on architectural metalwork',
+    ],
+    availableGrades: 'Trade-Grade Industrial Packaging',
+    standardLengths: 'Standard boxes (50 / 100 pcs) | Wholesale bulk packs',
   },
 ];
 
 const perks = [
   {
     title: 'Wholesale & Retail',
-    description: 'From individual piece orders for home renovations to bulk contractor consignments with competitive trade pricing.',
+    description: 'From individual piece orders for home renovations to bulk contractor consignments with competitive trade discounts.',
   },
   {
     title: 'Custom Cut-to-Length',
-    description: 'In-house workshop cutting, mitering, and deburring available so your materials arrive ready for immediate installation.',
+    description: 'In-house workshop cutting, mitering, and deburring so your materials arrive ready for immediate on-site assembly.',
   },
   {
     title: 'Verified Metallurgy',
@@ -81,7 +159,26 @@ const perks = [
   },
   {
     title: 'Coastal Delivery',
-    description: 'Prompt transport and site drop-offs across Surathkal, Mangaluru, Baikampady, Mulki, and Udupi.',
+    description: 'Prompt transport and direct site drop-offs across Surathkal, Mangaluru, Baikampady, Mulki, and Udupi.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'What is the difference between SS 304 and SS 316 for coastal areas?',
+    a: 'SS 304 contains 18% chromium and 8% nickel, which is suitable for interior work or sheltered urban locations. SS 316 contains 2% to 3% added molybdenum, which prevents pitting corrosion caused by coastal saltwater and monsoon salt air. For any exposed balcony or beachfront property within 5 km of the Arabian Sea, we strongly recommend SS 316.',
+  },
+  {
+    q: 'Can pipes and steel sections be cut to exact sizes before delivery?',
+    a: 'Yes. Our Surathkal workshop has precision cold-cut saws and mitering equipment. Simply provide your cut list or bill of quantities, and we will cut, deburr, and bundle your materials to exact measurements, reducing site cutting noise and metal scrap wastage.',
+  },
+  {
+    q: 'Do you sell to individual homeowners or only commercial contractors?',
+    a: 'We supply both! Individual homeowners can buy single pipe lengths or hardware sets for home projects, while contractors and fabricators receive wholesale tiered pricing for bulk orders.',
+  },
+  {
+    q: 'How quickly can orders be delivered to sites in Mangaluru or Udupi?',
+    a: 'In-stock pipes, standard hardware, and consumables are typically ready for workshop pickup immediately or dispatched for site delivery within 24 to 48 hours across Dakshina Kannada and Udupi districts.',
   },
 ];
 ---
@@ -107,9 +204,24 @@ const perks = [
     serviceName="Material & Pipe Supply Inquiry"
   />
 
+  <!-- Quick Category Anchor Jump Bar -->
+  <div class="bg-white/90 border-b border-zinc-200 sticky top-20 z-30 backdrop-blur-md shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 overflow-x-auto scrollbar-none flex items-center gap-2">
+      <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider shrink-0 mr-2">Jump To:</span>
+      {salesCategories.map((c) => (
+        <a
+          href={`#${c.id}`}
+          class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-zinc-50 border border-zinc-200 hover:border-emerald-400 text-zinc-700 hover:text-emerald-800 transition-colors shrink-0 shadow-sm"
+        >
+          {c.name.split(' (')[0].split('&')[0].trim()}
+        </a>
+      ))}
+    </div>
+  </div>
+
   <!-- Main Materials Catalog Section -->
   <section class="py-16 sm:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
       
       <!-- Section Header -->
       <div class="max-w-3xl space-y-4">
@@ -137,89 +249,119 @@ const perks = [
         ))}
       </div>
 
-      <!-- Categories Cards Grid -->
-      <div class="space-y-8">
-        <div class="flex items-center justify-between border-b border-zinc-200 pb-4">
-          <div>
-            <h3 class="text-xl sm:text-2xl font-bold text-zinc-900 font-heading">Product Categories</h3>
-            <p class="text-xs text-zinc-500 mt-1">Available for immediate workshop pickup or site dispatch</p>
-          </div>
-          <button
-            type="button"
-            data-open-whatsapp
-            data-service="Material Price List Request"
-            class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold hover:bg-emerald-100 transition-colors shadow-sm"
+      <!-- Detailed Categories List (Hero Photography + Specs) -->
+      <div class="space-y-20">
+        {salesCategories.map((cat, idx) => (
+          <div
+            id={cat.id}
+            class="scroll-mt-36 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center p-6 sm:p-8 rounded-3xl bg-zinc-50 border border-zinc-200 shadow-sm"
           >
-            <span>Request Price List</span>
-          </button>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {productCategories.map((cat) => (
-            <div
-              id={cat.id}
-              class="p-6 sm:p-8 rounded-3xl bg-zinc-50 border border-zinc-200 hover:border-emerald-300 transition-all duration-300 shadow-sm flex flex-col justify-between space-y-6"
-            >
-              <div class="space-y-4">
-                <div class="flex items-center justify-between">
-                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100/80 text-emerald-900 border border-emerald-200">
-                    {cat.badge}
-                  </span>
-                  <span class="text-xs text-zinc-400 font-medium">In Stock</span>
+            <!-- Visual Card (7 Cols) - Prominent Hero Product Photo -->
+            <div class:list={['lg:col-span-7 space-y-3', idx % 2 === 1 ? 'lg:order-2' : '']}>
+              <div class="relative aspect-[16/10] rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-100 shadow-xl group">
+                <img
+                  src={cat.image}
+                  alt={cat.alt}
+                  width="1200"
+                  height="750"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <!-- Lightbox Zoom Trigger -->
+                <button
+                  type="button"
+                  data-lightbox-trigger
+                  data-type="image"
+                  data-image={cat.image}
+                  data-title={cat.name}
+                  data-description={cat.description}
+                  data-location="Needs Group Surathkal Workshop"
+                  class="absolute top-3 right-3 p-2.5 rounded-xl bg-zinc-950/70 hover:bg-zinc-950/90 text-white border border-white/20 backdrop-blur-md transition-all shadow-md"
+                  title="Expand Full Photo"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                  </svg>
+                </button>
+                <div class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md text-white text-xs font-semibold border border-white/10">
+                  {cat.badge}
                 </div>
+              </div>
+              <!-- Spec Bar -->
+              <div class="p-3.5 rounded-xl bg-white border border-zinc-200 text-xs text-zinc-700 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                <div><span class="text-emerald-800 font-bold">Specs:</span> {cat.specs}</div>
+                <span class="text-zinc-400 text-[11px] shrink-0">Direct Workshop Stock</span>
+              </div>
+            </div>
 
-                <div>
-                  <h4 class="text-xl sm:text-2xl font-bold text-zinc-900 font-heading">
-                    {cat.title}
-                  </h4>
-                  <p class="text-xs font-semibold text-emerald-800 mt-1">
-                    {cat.subtitle}
-                  </p>
+            <!-- Content Details (5 Cols) -->
+            <div class:list={['lg:col-span-5 space-y-5', idx % 2 === 1 ? 'lg:order-1' : '']}>
+              <div class="space-y-2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-semibold uppercase tracking-wider shadow-sm">
+                  0{idx + 1} • Material Supply
                 </div>
-
-                <p class="text-sm text-zinc-600 leading-relaxed">
-                  {cat.description}
+                <h3 class="text-2xl sm:text-3xl font-bold text-zinc-900 font-heading">
+                  {cat.name}
+                </h3>
+                <p class="text-sm font-semibold text-emerald-800">
+                  {cat.subtitle}
                 </p>
+              </div>
 
-                <!-- Product Specifications Checklist -->
-                <div class="pt-3 border-t border-zinc-200/80 space-y-2">
-                  <div class="text-xs font-bold text-zinc-700 uppercase tracking-wider">Common Specifications:</div>
-                  <ul class="grid grid-cols-1 gap-1.5 text-xs text-zinc-600">
-                    {cat.highlights.map((item) => (
-                      <li class="flex items-start gap-2">
-                        <span class="text-emerald-700 font-bold shrink-0 mt-0.5">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+              <p class="text-zinc-600 text-sm leading-relaxed">
+                {cat.description}
+              </p>
+
+              <!-- Key Highlights Checklist -->
+              <div class="space-y-2">
+                <div class="text-xs font-bold text-zinc-900 uppercase tracking-wider">Quality Highlights:</div>
+                <div class="space-y-1.5 text-xs text-zinc-700">
+                  {cat.highlights.map((h) => (
+                    <div class="flex items-start gap-2 bg-white p-2 rounded-lg border border-zinc-200/80">
+                      <span class="text-emerald-600 font-bold shrink-0">✓</span>
+                      <span>{h}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <!-- Quick Quote Action for This Category -->
-              <div class="pt-4 border-t border-zinc-200/80 flex flex-wrap items-center gap-3">
+              <!-- Applications -->
+              <div class="pt-2 border-t border-zinc-200 space-y-1">
+                <div class="text-xs font-bold text-zinc-500 uppercase tracking-wider">Common Applications:</div>
+                <ul class="text-xs text-zinc-600 list-disc list-inside space-y-0.5">
+                  {cat.bestUseCases.map((u) => (
+                    <li>{u}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="pt-3 flex flex-wrap gap-3">
                 <button
                   type="button"
                   data-open-whatsapp
-                  data-service={`Sales Inquiry: ${cat.title}`}
-                  class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-sm"
+                  data-service={`Material Price Inquiry: ${cat.name}`}
+                  class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-800 hover:scale-[1.02] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
                 >
                   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
-                  <span>Inquire for {cat.title.split(' (')[0].split('&')[0].trim()}</span>
+                  <span>Inquire for {cat.name.split(' (')[0].split('&')[0].trim()}</span>
                 </button>
                 <a
                   href="/contact/#enquiry-form"
-                  class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white border border-zinc-200 text-zinc-800 text-xs font-semibold hover:border-emerald-300 uppercase tracking-wider transition-colors shadow-sm"
+                  class="inline-flex items-center gap-1.5 px-5 py-3 rounded-full bg-white border border-zinc-200 text-zinc-800 text-xs font-semibold hover:border-emerald-400 uppercase tracking-wider transition-colors shadow-sm"
                 >
-                  <span>Request BOQ Quote</span>
+                  <span>Request Cut Quote</span>
                 </a>
               </div>
+
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
 
       <!-- Custom Material Cutting & BOQ Note -->
-      <div class="p-8 sm:p-10 rounded-3xl bg-zinc-900 text-white space-y-6">
+      <div class="p-8 sm:p-12 rounded-3xl bg-zinc-900 text-white space-y-6">
         <div class="max-w-3xl space-y-3">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-700/60 text-emerald-300 text-xs font-semibold uppercase tracking-wider">
             Bill of Quantities (BOQ) Support
@@ -237,17 +379,38 @@ const perks = [
             type="button"
             data-open-whatsapp
             data-service="Custom Pipe Cut List & Material BOQ"
-            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md"
+            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md"
           >
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
             <span>Send Cut List on WhatsApp</span>
           </button>
           <a
             href="/contact/"
-            class="inline-flex items-center gap-1.5 px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold uppercase tracking-wider transition-colors"
+            class="inline-flex items-center gap-1.5 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold uppercase tracking-wider transition-colors"
           >
             <span>Visit Surathkal Workshop</span>
           </a>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="max-w-4xl mx-auto space-y-6 pt-8">
+        <div class="text-center space-y-2">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 text-zinc-700 text-xs font-semibold uppercase tracking-wider">
+            Material Knowledge
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-zinc-900 font-heading">
+            Frequently Asked Questions on Material Supply
+          </h3>
+        </div>
+
+        <div class="divide-y divide-zinc-200 border-y border-zinc-200">
+          {faqs.map((faq) => (
+            <div class="py-5 space-y-2">
+              <h4 class="text-base font-bold text-zinc-900 font-heading">{faq.q}</h4>
+              <p class="text-sm text-zinc-600 leading-relaxed">{faq.a}</p>
+            </div>
+          ))}
         </div>
       </div>
 
